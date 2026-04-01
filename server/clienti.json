@@ -1,0 +1,1602 @@
+[
+  {
+    "id": 1,
+    "ragione_sociale": "Reghitto Costruzioni Srl",
+    "telefono": "0109682038",
+    "email": "amministrazione@reghittocostruzionisrl.it",
+    "indirizzo": "Via Avosso 120",
+    "citta": "Casella (GE)"
+  },
+  {
+    "id": 2,
+    "ragione_sociale": "Dueti Consulting srl",
+    "telefono": "0108566317",
+    "email": "cristina.tripodo@dueticonsulting.com",
+    "indirizzo": "Via Malta 5/9",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 3,
+    "ragione_sociale": "Fratelli Morchio S.n.c. di Aldo Vaccari & C.",
+    "telefono": "0102472793",
+    "email": "fratellimorchio@gmail.com",
+    "indirizzo": "Piazza Banchi 15r",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 4,
+    "ragione_sociale": "Sistemi Service S.r.l.",
+    "telefono": "0106591518",
+    "email": "p.camuzzini@sistemiservice.net",
+    "indirizzo": "Via Borzoli 135",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 5,
+    "ragione_sociale": "Mantica Giorgia",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Aurelia 22",
+    "citta": "Celle Ligure (SV)"
+  },
+  {
+    "id": 6,
+    "ragione_sociale": "Italmar s.a.s.",
+    "telefono": "",
+    "email": "info@italmar-varazze.it",
+    "indirizzo": "Piazza dei Fabbri 1-Marina Varazze",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 7,
+    "ragione_sociale": "Hotel San Michele",
+    "telefono": "019990017",
+    "email": "info@hotel-sanmichele.it",
+    "indirizzo": "Via Monte Tabor 26",
+    "citta": "Celle Ligure (SV)"
+  },
+  {
+    "id": 8,
+    "ragione_sociale": "L'ostrica di Gavazza Donata",
+    "telefono": "019488277",
+    "email": "info@lostricabbigliamento.it",
+    "indirizzo": "Via Colombo 48",
+    "citta": "Albissola Superiore (SV)"
+  },
+  {
+    "id": 9,
+    "ragione_sociale": "Ala sas di Grumelli G. & C.",
+    "telefono": "0109127169",
+    "email": "info@danycuir.it",
+    "indirizzo": "Via S. M. Rapallo 42",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 10,
+    "ragione_sociale": "Vallerga Impresa di costruzioni srl",
+    "telefono": "01996271",
+    "email": "info@vallergacostruzioni.it",
+    "indirizzo": "Via Villa Grande 2/1",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 11,
+    "ragione_sociale": "Le Terrazze di Vado srl",
+    "telefono": "0192160048",
+    "email": "admin@parcoest.it",
+    "indirizzo": "Via Montegrappa 1",
+    "citta": "Vado Ligure (SV)"
+  },
+  {
+    "id": 12,
+    "ragione_sociale": "Nui Utensili Europa S.r.l.",
+    "telefono": "0106972716",
+    "email": "emilia.melis@nuiutensili.com",
+    "indirizzo": "Via Filippo Turati 40",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 13,
+    "ragione_sociale": "Montaggi & Impianti S.r.l.",
+    "telefono": "0131828432",
+    "email": "info@montaggieimpianti.it",
+    "indirizzo": "Via Riccardo Sineo 4",
+    "citta": "Sale (AL)"
+  },
+  {
+    "id": 14,
+    "ragione_sociale": "Camera sindacale A.L.D.E.P.I. Val Maremola",
+    "telefono": "019637237",
+    "email": "c.s.aldepi.valmaremola@gmail.com",
+    "indirizzo": "Via Roma 102",
+    "citta": "Tovo San Giacomo (SV)"
+  },
+  {
+    "id": 15,
+    "ragione_sociale": "Outsourcing S.r.l.",
+    "telefono": "019637237",
+    "email": "pietro@in-servicesrl.com",
+    "indirizzo": "Via Roma 102",
+    "citta": "Tovo San Giacomo (SV)"
+  },
+  {
+    "id": 16,
+    "ragione_sociale": "A.A.S.P.I. Associazione delle Attività",
+    "telefono": "081 5263983",
+    "email": "segreteria.aaspi@gmail.com",
+    "indirizzo": "Via Campana 232/G",
+    "citta": "Pozzuoli"
+  },
+  {
+    "id": 17,
+    "ragione_sociale": "Munters Italy S.p.a.",
+    "telefono": "01835211",
+    "email": "cristiana.balbo@munters.it",
+    "indirizzo": "Strada Piani 2",
+    "citta": "Chiusavecchia (IM)"
+  },
+  {
+    "id": 18,
+    "ragione_sociale": "Repetto Francesco & C. Snc",
+    "telefono": "0106197490",
+    "email": "info@repettosport.it",
+    "indirizzo": "Via Murtola 19HR",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 19,
+    "ragione_sociale": "Bolla Sergio",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Bianca 1A",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 20,
+    "ragione_sociale": "Italmatch Chemicals Spa",
+    "telefono": "010642081",
+    "email": "d.battistelli@italmatch.com",
+    "indirizzo": "Via Vismara 114",
+    "citta": "Arese (MI)"
+  },
+  {
+    "id": 21,
+    "ragione_sociale": "Grattacaso S.r.l.",
+    "telefono": "019821215",
+    "email": "amministrazione@grattacaso.it",
+    "indirizzo": "Piazza Guido Rossa 6/2",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 22,
+    "ragione_sociale": "Carrozzeria Terribile Srl",
+    "telefono": "010504311",
+    "email": "info@carrozzeriaterribilegenova.it",
+    "indirizzo": "Via E. Berno134-138",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 23,
+    "ragione_sociale": "Prato Nevoso S.p.a.",
+    "telefono": "0174334151",
+    "email": "contabilita@pratonevoso.com",
+    "indirizzo": "Corona Boreale 1",
+    "citta": "Frabosa Sottana (CN)"
+  },
+  {
+    "id": 24,
+    "ragione_sociale": "Olcese Nicola",
+    "telefono": "",
+    "email": "nicola.olcese@gmail.com",
+    "indirizzo": "Via Marconi 6/5",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 25,
+    "ragione_sociale": "Yacht Club Italiano - Associazione Sportiva",
+    "telefono": "010253381",
+    "email": "laura.gerini@yci.it",
+    "indirizzo": "Porticciolo Duca degli Abruzzi",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 26,
+    "ragione_sociale": "Toio Srl",
+    "telefono": "0100995436",
+    "email": "amministrazione@toio.it",
+    "indirizzo": "Via Gelasio Adamoli 229",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 27,
+    "ragione_sociale": "Italmatch Chemicals GB Ltd",
+    "telefono": "",
+    "email": "d.battistelli@italmatch.it",
+    "indirizzo": "One Glass Wharf -BS2 0ZX",
+    "citta": "Bristol"
+  },
+  {
+    "id": 28,
+    "ragione_sociale": "Due Di Service Srl",
+    "telefono": "019931794",
+    "email": "info@duediservice.it",
+    "indirizzo": "Via Parasio 48",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 29,
+    "ragione_sociale": "Centro Collaudi Valbisagno Srl",
+    "telefono": "0108380271",
+    "email": "mduina@tiscali.it",
+    "indirizzo": "Via Piacenza 203R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 30,
+    "ragione_sociale": "Centro Revisioni Paip",
+    "telefono": "019 264784",
+    "email": "paiprevisioni@alice.it",
+    "indirizzo": "Via Molinero 21R",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 31,
+    "ragione_sociale": "Italmatch Belgium Sprl",
+    "telefono": "",
+    "email": "d.battistelli@italmatch.it",
+    "indirizzo": "Boulevard Auguste Reyers 80",
+    "citta": "Bruxelles"
+  },
+  {
+    "id": 32,
+    "ragione_sociale": "TaoTicket Srl",
+    "telefono": "0105704878",
+    "email": "payments@taoticket.com",
+    "indirizzo": "Via Brigata Liguria 3/21",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 33,
+    "ragione_sociale": "Cavanna Olii Snc",
+    "telefono": "010976811",
+    "email": "mprivitera@cavannaolii.com",
+    "indirizzo": "Via Circonvallazione 5",
+    "citta": "Casella (GE)"
+  },
+  {
+    "id": 34,
+    "ragione_sociale": "Studio Legale Associato Avv.Gianfranco Nasuti",
+    "telefono": "019826602",
+    "email": "fornitori@studionasuti.it",
+    "indirizzo": "Via Paleocapa 9/8",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 35,
+    "ragione_sociale": "Savino Gianluca",
+    "telefono": "3496970561",
+    "email": "gianlucasavino77@gmail.com",
+    "indirizzo": "Via Montegrappa 7/11",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 36,
+    "ragione_sociale": "Sea Queen Srl",
+    "telefono": "010589578",
+    "email": "d.bosco@seaqueen.it",
+    "indirizzo": "Via Cadibona 8",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 37,
+    "ragione_sociale": "Studio Delta Srl",
+    "telefono": "010419383",
+    "email": "roberta@studiodeltagenova.it;",
+    "indirizzo": "Via Prà 28/7",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 38,
+    "ragione_sociale": "Grenke Locazione Srl",
+    "telefono": "010 25158 220",
+    "email": "servizio.genova@grenke.it",
+    "indirizzo": "Via al Porto Antico 2",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 39,
+    "ragione_sociale": "Star Mediterranea Srl",
+    "telefono": "0100992324",
+    "email": "info.starmed@marcevaggi.com",
+    "indirizzo": "Piazza Lerda 1P",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 40,
+    "ragione_sociale": "Logistic Distribution Services Srl",
+    "telefono": "010712152",
+    "email": "amministrazione@gruppozingali.net",
+    "indirizzo": "Lungo Torrente Secca 4H",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 41,
+    "ragione_sociale": "G.R.M. di Consolide Roberto & C. Snc",
+    "telefono": "019994059",
+    "email": "grm@grmcasalinghi.com",
+    "indirizzo": "Via Sanda 99B",
+    "citta": "Celle Ligure (SV)"
+  },
+  {
+    "id": 42,
+    "ragione_sociale": "F.lli Pasqualini Srl",
+    "telefono": "0182582591",
+    "email": "contabilita@pasqualiniilcaffe.it",
+    "indirizzo": "Via Benessea 7",
+    "citta": "Cisano sul Neva (SV)"
+  },
+  {
+    "id": 43,
+    "ragione_sociale": "Ma.Pr.I.Com. Spa",
+    "telefono": "010313512",
+    "email": "marco@mapricom.com",
+    "indirizzo": "Via Giuseppe Morasso 37/39/41/43",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 44,
+    "ragione_sociale": "Farmacia San Nicolò",
+    "telefono": "019489910",
+    "email": "amministrazione@sannicolofarmacia.it",
+    "indirizzo": "Via Turati 7A",
+    "citta": "Albisola Superiore (SV)"
+  },
+  {
+    "id": 45,
+    "ragione_sociale": "SAIE E & A Società cooperativa",
+    "telefono": "019501495",
+    "email": "fatture@saie-it.com",
+    "indirizzo": "Via della Nunziata 4AR",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 46,
+    "ragione_sociale": "Zucchetti Systema Srl",
+    "telefono": "0557870801",
+    "email": "amministrazione@zucchettisystema.it",
+    "indirizzo": "Via Dei Ceramisti 38",
+    "citta": "Lastra A Signa (FI)"
+  },
+  {
+    "id": 47,
+    "ragione_sociale": "Aron Srl",
+    "telefono": "010 7450030",
+    "email": "aronvernici@arongenova.it",
+    "indirizzo": "Via Pastorino 236R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 48,
+    "ragione_sociale": "Brillbird Europe SRL",
+    "telefono": "",
+    "email": "amministrazione@brillbird.it",
+    "indirizzo": "Via Dell'Ombra, 22-24r",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 49,
+    "ragione_sociale": "Pecoraro Maurizio",
+    "telefono": "010562330",
+    "email": "maurizio@studiopecoraro.net",
+    "indirizzo": "Via I. Frugoni 19/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 50,
+    "ragione_sociale": "Farmacia Dott. Piaggio",
+    "telefono": "010503325",
+    "email": "segreteria@farmaciapiaggio.it",
+    "indirizzo": "Via Giovanni Torti 26R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 51,
+    "ragione_sociale": "Farmacia Pontepila",
+    "telefono": "010541612",
+    "email": "farmaciapontepila@alice.it",
+    "indirizzo": "Viale Brigate Bisagno 28R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 52,
+    "ragione_sociale": "S.m.i.t. Srl",
+    "telefono": "010591241",
+    "email": "smit@smitge.it",
+    "indirizzo": "Via Roma 10/5B",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 53,
+    "ragione_sociale": "Ghigliotti Srl",
+    "telefono": "0106121413",
+    "email": "ghigliotti.ti@libero.it",
+    "indirizzo": "Via delle Fabbriche 14Mnr",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 54,
+    "ragione_sociale": "Consorzio Le Officine",
+    "telefono": "019264857",
+    "email": "info@leofficinesavona.it",
+    "indirizzo": "Via Stalingrado 94R",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 55,
+    "ragione_sociale": "I.R.M.I.R. di Amarù Roberto",
+    "telefono": "010389119",
+    "email": "robertoamaru@libero.it",
+    "indirizzo": "Via Palizzi Filippo 74-76",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 56,
+    "ragione_sociale": "Dema Srl",
+    "telefono": "0199354711",
+    "email": "contab@demasassi.it",
+    "indirizzo": "Via E. Vecchia 100",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 57,
+    "ragione_sociale": "Silipo Giuseppe",
+    "telefono": "",
+    "email": "antonellasilipo@libero.it",
+    "indirizzo": "Via Pietra Ligure 56/20",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 58,
+    "ragione_sociale": "Univex Servizi Srl",
+    "telefono": "0104802812",
+    "email": "help@cloud3.srl",
+    "indirizzo": "Viale Enrico Forlanini 23",
+    "citta": "Milano (CO)"
+  },
+  {
+    "id": 59,
+    "ragione_sociale": "STONE BEACH DI COLA E. & c. s.a.s.",
+    "telefono": "",
+    "email": "stonebeachcogoleto@gmail.com",
+    "indirizzo": "Via Aurelia di Ponente",
+    "citta": "Cogoleto (GE)"
+  },
+  {
+    "id": 60,
+    "ragione_sociale": "Avv. Cesare Putignano",
+    "telefono": "",
+    "email": "cesareputignano@libero.it",
+    "indirizzo": "Via Villagrande 66/17",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 61,
+    "ragione_sociale": "Interform Linea SAS di Ferrari",
+    "telefono": "010561038",
+    "email": "amministrazione@interformlinea.it",
+    "indirizzo": "VIA S. ZITA 9/11R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 62,
+    "ragione_sociale": "Lab & Co Srl",
+    "telefono": "0109752040",
+    "email": "amministrazione@labcare.it",
+    "indirizzo": "Piazza Dante 8/11",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 63,
+    "ragione_sociale": "Taramasso Graziano",
+    "telefono": "",
+    "email": "gt@duetstudio.it",
+    "indirizzo": "Via Monsignor Cambiaso 13",
+    "citta": "Albenga (SV)"
+  },
+  {
+    "id": 64,
+    "ragione_sociale": "Zena Pan di Ottolini Carla",
+    "telefono": "0103025851",
+    "email": "zena.pan@yahoo.it",
+    "indirizzo": "Via Valsugana 5P",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 65,
+    "ragione_sociale": "Coelme Srl",
+    "telefono": "0106041594",
+    "email": "amministrazione@coelmesrl.it",
+    "indirizzo": "Via Sestri 37/5",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 66,
+    "ragione_sociale": "Studio Serafini",
+    "telefono": "0102468470",
+    "email": "aldosandro@stserafini.it",
+    "indirizzo": "Via San Lorenzo 23/12",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 67,
+    "ragione_sociale": "Genovastand Eventi Srl",
+    "telefono": "0102925223",
+    "email": "amministrazione@genovastand.com",
+    "indirizzo": "Via Cesarea 3/6",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 68,
+    "ragione_sociale": "Novimm Snc di G. Novella & F. Cocchiere",
+    "telefono": "0105957015",
+    "email": "g.orsi@novellagl.com;",
+    "indirizzo": "Via XX Settembre 26/4",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 69,
+    "ragione_sociale": "Parodi Emilio Snc",
+    "telefono": "010780596",
+    "email": "cparodi.ceranesi@libero.it",
+    "indirizzo": "Via B. Parodi 102",
+    "citta": "Ceranesi (GE)"
+  },
+  {
+    "id": 70,
+    "ragione_sociale": "MASTERFIRE ANTIINCENDIO SRL",
+    "telefono": "0108441442",
+    "email": "info@masterfireantincendio.it;",
+    "indirizzo": "VIA GALATA 37/6",
+    "citta": "GENOVA (GE)"
+  },
+  {
+    "id": 71,
+    "ragione_sociale": "Baroncelli Carlantonio",
+    "telefono": "0103622178",
+    "email": "c.baroncelli@virgilio.it",
+    "indirizzo": "Via Montezovetto 6/3",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 72,
+    "ragione_sociale": "TUTTOLEGNO SAS di Tutto legno di Badano & C. snc",
+    "telefono": "010710620",
+    "email": "danielam@tuttolegnodibadano.it",
+    "indirizzo": "Via San Quirico 149G/R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 73,
+    "ragione_sociale": "Delta Arredamenti Srl",
+    "telefono": "010709635",
+    "email": "info@arredamentidelta.it",
+    "indirizzo": "Via Bachelet 10",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 74,
+    "ragione_sociale": "Ovodoro Snc",
+    "telefono": "0100012743",
+    "email": "ovodorodestefano@gmail.com",
+    "indirizzo": "Via Brignoni 3/1",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 75,
+    "ragione_sociale": "G.o.a.l. System Srl",
+    "telefono": "0104225766",
+    "email": "",
+    "indirizzo": "Via Borzoli 135-137",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 76,
+    "ragione_sociale": "Balestrero 1961 S.r.l.",
+    "telefono": "010589578",
+    "email": "giovannazanardi@balestrero1961.com",
+    "indirizzo": "Piazza Rossetti 4/2A",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 77,
+    "ragione_sociale": "G.&P. ARREDAMENTI SNC",
+    "telefono": "0106130969",
+    "email": "Gabriella.piccardo@alice.it",
+    "indirizzo": "Via Chiaramone 6/1",
+    "citta": "GENOVA (GE)"
+  },
+  {
+    "id": 78,
+    "ragione_sociale": "Studio Dott. Giorgio Cavallo",
+    "telefono": "010562623",
+    "email": "studiogcavallo@studiogcavallo.it",
+    "indirizzo": "Via C.R, Ceccardi 4/26",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 79,
+    "ragione_sociale": "Pizzeria Antico Borgo vepa snc",
+    "telefono": "01997694",
+    "email": "danielepalomba84@gmail.com",
+    "indirizzo": "Via Cairoli 18",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 80,
+    "ragione_sociale": "City Delivery Srl",
+    "telefono": "0183578200",
+    "email": "lds@ldslogistic.it",
+    "indirizzo": "Strada Statale 28",
+    "citta": "Imperia (IM)"
+  },
+  {
+    "id": 81,
+    "ragione_sociale": "P.A. Ecologia S.a.s.",
+    "telefono": "0103627278",
+    "email": "info@paecologia.it",
+    "indirizzo": "Piazza Rossetti 3B/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 82,
+    "ragione_sociale": "Naumachos Viaggi di Erica Wurth",
+    "telefono": "019930331",
+    "email": "info@naumachosviaggi.com",
+    "indirizzo": "Via Carattini 37",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 83,
+    "ragione_sociale": "Fallimento FT Genoa Tankers Srl",
+    "telefono": "0105601861",
+    "email": "accounting@ftgoa.it",
+    "indirizzo": "Salita S. Caterina 2/4",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 84,
+    "ragione_sociale": "Tuttolegno Sas di Badano Daniela & C.",
+    "telefono": "010710620",
+    "email": "danielam@tuttolegnodibadano.it",
+    "indirizzo": "Via San Quirico 149G/R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 85,
+    "ragione_sociale": "Omnia Service Srl",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Borzoli 135-137",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 86,
+    "ragione_sociale": "Assonautica Savona",
+    "telefono": "019821451",
+    "email": "amministrazione@assonauticasv.it",
+    "indirizzo": "Lungomare Matteotti 1",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 87,
+    "ragione_sociale": "Cloud3 Srl",
+    "telefono": "",
+    "email": "giada.ferro@alice.it",
+    "indirizzo": "Piazza Camillo Golgi 28C",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 88,
+    "ragione_sociale": "Emilio Grassini e figlio Srl",
+    "telefono": "0106513634",
+    "email": "amministrazione@officinagrassini.com",
+    "indirizzo": "Via degli Artigiani 90",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 89,
+    "ragione_sociale": "Drafinsub Survey",
+    "telefono": "0102518399",
+    "email": "dssurvey@dssurvey.com",
+    "indirizzo": "Via al Molo Giano",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 90,
+    "ragione_sociale": "Consult Studio Associato",
+    "telefono": "0182543017",
+    "email": "albenga@studioconsult.net",
+    "indirizzo": "Via Fiume 18",
+    "citta": "Albenga (SV)"
+  },
+  {
+    "id": 91,
+    "ragione_sociale": "Lemcolor Group SRL",
+    "telefono": "010714850",
+    "email": "info@lemcolorgroup.it",
+    "indirizzo": "VIA ANFOSSI 36R",
+    "citta": "GENOVA (GE)"
+  },
+  {
+    "id": 92,
+    "ragione_sociale": "COMITATO COMP. ASS.NI MARITTIME",
+    "telefono": "0105702306",
+    "email": "info@comitatogenova.it",
+    "indirizzo": "VIA C.R. CECCARDI 4/26",
+    "citta": "GENOVA (GE)"
+  },
+  {
+    "id": 93,
+    "ragione_sociale": "De Stefano Gioielleria di De Stefano",
+    "telefono": "",
+    "email": "info@ovodoro.it",
+    "indirizzo": "Via Boselli 43R",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 94,
+    "ragione_sociale": "ERREPI DISTRIBUZIONE SRL",
+    "telefono": "0564416816",
+    "email": "sebastiano.milana@errepidistribuzione.it",
+    "indirizzo": "VIA SENEGAL, 71",
+    "citta": "GROSSETO (GR)"
+  },
+  {
+    "id": 95,
+    "ragione_sociale": "Romanengo Paolo",
+    "telefono": "",
+    "email": "paolo.romanengo@gmail.com",
+    "indirizzo": "Corso Carbonara 15",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 96,
+    "ragione_sociale": "Morese Angelo Pio",
+    "telefono": "3355474388",
+    "email": "angelo.morese@tin.it",
+    "indirizzo": "Via Pivata Olivetta 32",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 97,
+    "ragione_sociale": "YOUNG di Canepa Fausto & C. snc",
+    "telefono": "0106974070",
+    "email": "young.italy@virgilio.it",
+    "indirizzo": "Piazza G. della Chiesa 3/2",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 98,
+    "ragione_sociale": "Marforio Massimo",
+    "telefono": "",
+    "email": "m.marforio@interformlinea.it",
+    "indirizzo": "Via Bocchella 2/33",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 99,
+    "ragione_sociale": "Lorettu Maria Teresa",
+    "telefono": "",
+    "email": "lorettu.mteresa@studiodeltagenova.it",
+    "indirizzo": "Via Cantore 11A/5",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 100,
+    "ragione_sociale": "LR Studio di Luca Riva",
+    "telefono": "",
+    "email": "info@lucarivastudio.it",
+    "indirizzo": "Via del Vegerio 6/6B",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 101,
+    "ragione_sociale": "Zunino Stefano",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Migliarini 26H",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 102,
+    "ragione_sociale": "SICCARDO MARIA CRISTINA",
+    "telefono": "019826626",
+    "email": "mariacristina@studiosiccardo.it",
+    "indirizzo": "VIA PALEOCAPA 18/22",
+    "citta": "SAVONA (SV)"
+  },
+  {
+    "id": 103,
+    "ragione_sociale": "G.E.P. VALVES S.A.S. DI E. ROTA & C.",
+    "telefono": "0109642843",
+    "email": "elisa.sarmoria@gepvalves.com",
+    "indirizzo": "VIA SEMINELLA 27/E",
+    "citta": "BUSALLA (GE)"
+  },
+  {
+    "id": 104,
+    "ragione_sociale": "OPTIMA EVENTI SRL",
+    "telefono": "0103472249",
+    "email": "optima@optimaeventi.it",
+    "indirizzo": "VIA MACAGGI 23/3",
+    "citta": "genova (GE)"
+  },
+  {
+    "id": 105,
+    "ragione_sociale": "Giagoni Agostino",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Pero 156",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 106,
+    "ragione_sociale": "Peg sas",
+    "telefono": "",
+    "email": "p.fanti@seaqueen.it",
+    "indirizzo": "Via Cadibona 8",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 107,
+    "ragione_sociale": "Furtrans Tanker & Ship Management Srl",
+    "telefono": "010550161",
+    "email": "accounting@ftgoa.it",
+    "indirizzo": "Salita Santa Caterina 2/4",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 108,
+    "ragione_sociale": "Geom. Jonny Antichi",
+    "telefono": "010542300",
+    "email": "paolagiac@alice.it",
+    "indirizzo": "Via C. Barabino 30/2",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 109,
+    "ragione_sociale": "Acconciature Sianaba di Simona Bessone",
+    "telefono": "0174627060",
+    "email": "simona.bessone@gmail.com",
+    "indirizzo": "Via Autostrada 17/c",
+    "citta": "Magliano Alpi (CN)"
+  },
+  {
+    "id": 110,
+    "ragione_sociale": "F.EL.C.I. SNC di Passaro & C.",
+    "telefono": "0106136589",
+    "email": "info@felci.com",
+    "indirizzo": "Via Buffa 8/10/12R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 111,
+    "ragione_sociale": "So.Ge.Im. Società Genovese Immobilire Srl",
+    "telefono": "0109756650",
+    "email": "sogeim@sogeimsrl.com",
+    "indirizzo": "Via Roma 10/5",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 112,
+    "ragione_sociale": "Hotel Astor Srl",
+    "telefono": "010329011",
+    "email": "maggif@astorhotel.it",
+    "indirizzo": "Via delle Palme 16",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 113,
+    "ragione_sociale": "S.A.P. Società Albergo Palme Srl",
+    "telefono": "0103741562",
+    "email": "maggif@salvas.com",
+    "indirizzo": "Via Mameli 3/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 114,
+    "ragione_sociale": "R.B. Automazione Srl",
+    "telefono": "0106090095",
+    "email": "giorgio.pronzato@rb-autom.it",
+    "indirizzo": "Corso Europa 202",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 115,
+    "ragione_sociale": "Paolo Taras",
+    "telefono": "",
+    "email": "info@paolotaras.it",
+    "indirizzo": "Via Edoardo Jenner 28",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 116,
+    "ragione_sociale": "Taffurelli Ermanna",
+    "telefono": "010589513",
+    "email": "taffurelli@studioetro.it",
+    "indirizzo": "Via Aureliano Galeazzo 2/13",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 117,
+    "ragione_sociale": "Co.li.M.Ex.",
+    "telefono": "0104696955",
+    "email": "paolo.colimex@gmail.com",
+    "indirizzo": "Via G.B. Monti 9/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 118,
+    "ragione_sociale": "Alteco Snc",
+    "telefono": "010961689",
+    "email": "monaco@altecogenova.it",
+    "indirizzo": "Via Cesarea 5/7B",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 119,
+    "ragione_sociale": "Zurigo Sas di Giaccardi Maria Cristina",
+    "telefono": "019932618",
+    "email": "info@hotelzurigo.it",
+    "indirizzo": "Via Amendola 4",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 120,
+    "ragione_sociale": "Studio Centanaro & Fossati Comm.sti Ass.ti",
+    "telefono": "010460824",
+    "email": "studio@centafos.it",
+    "indirizzo": "Via Federico Avio 1/7",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 121,
+    "ragione_sociale": "Della Bianca Maurizio",
+    "telefono": "010391917",
+    "email": "info@laradiodepoca.it",
+    "indirizzo": "Via Borgoratti 84/51",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 122,
+    "ragione_sociale": "Ape Richetta Srl",
+    "telefono": "0108301555",
+    "email": "info@aperichetta.it",
+    "indirizzo": "Via Luigi Canepa 7D/3",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 123,
+    "ragione_sociale": "Lubritex Srl",
+    "telefono": "010712997",
+    "email": "elisa@lubritex.it",
+    "indirizzo": "Via Gramsci 10",
+    "citta": "Manesseno (GE)"
+  },
+  {
+    "id": 124,
+    "ragione_sociale": "Teknit Srl",
+    "telefono": "0106140445",
+    "email": "tomaselli@teknit.it",
+    "indirizzo": "Via Merano 82",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 125,
+    "ragione_sociale": "Hotel Eden snc",
+    "telefono": "019932888",
+    "email": "info@hoteledenvarazze.it",
+    "indirizzo": "Via Villagrande 1",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 126,
+    "ragione_sociale": "Vetreria Amisano Srl",
+    "telefono": "010513479",
+    "email": "info@vetreriaamisano.com",
+    "indirizzo": "Via Torti 117/a",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 127,
+    "ragione_sociale": "Alvaro Poggiani",
+    "telefono": "",
+    "email": "alvaro@poggiani.net",
+    "indirizzo": "Via Del Salice 13",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 128,
+    "ragione_sociale": "Barillaro e Pellegatti Srl",
+    "telefono": "010561225",
+    "email": "contpa@barpel.it",
+    "indirizzo": "Via Granello 1/1 Sc DX",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 129,
+    "ragione_sociale": "Alimentaria Sas",
+    "telefono": "0105222842",
+    "email": "morasso@alimentariasnc.it",
+    "indirizzo": "Via di Serretto 25/6",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 130,
+    "ragione_sociale": "A.r.e.m. Srl",
+    "telefono": "0102543578",
+    "email": "aremdep@libero.it",
+    "indirizzo": "Via Al Molo Giano Box 23",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 131,
+    "ragione_sociale": "Giannini Alessandro",
+    "telefono": "",
+    "email": "giannini@altecogenova.it",
+    "indirizzo": "Via Caldesi 97",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 132,
+    "ragione_sociale": "Laboratorio Odontotecnico di Caviglia Lorenzo snc",
+    "telefono": "0109184855",
+    "email": "amministrazione@lorenzocaviglia.com",
+    "indirizzo": "Via Ratti 34/2",
+    "citta": "Cogoleto (GE)"
+  },
+  {
+    "id": 133,
+    "ragione_sociale": "Casa del Santo Bambino Onlus Soc. Coop. Sociale",
+    "telefono": "0106197782",
+    "email": "casadelsantobambino@libero.it",
+    "indirizzo": "Via Tosonotti 5",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 134,
+    "ragione_sociale": "Barone Andrea Carlo",
+    "telefono": "3465204427",
+    "email": "baroneandreacarlo@pec.it",
+    "indirizzo": "C.so De Stefanis 122R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 135,
+    "ragione_sociale": "Balestrero G&G Srl",
+    "telefono": "010589578",
+    "email": "d.bosco@balestrero1961.com",
+    "indirizzo": "Piazza Rossetti 2",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 136,
+    "ragione_sociale": "Agroeuropa Spa",
+    "telefono": "010574161",
+    "email": "ctardito@agrosuper.com",
+    "indirizzo": "Via Fabio Filzi 18",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 137,
+    "ragione_sociale": "Tecnova di Ciccarello Spitaleri Angelo",
+    "telefono": "010653309",
+    "email": "info@tecnovagenova.it",
+    "indirizzo": "Passo Ruscarolo 11",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 138,
+    "ragione_sociale": "E.xi.t. Scarl",
+    "telefono": "0106045045",
+    "email": "info@exitgenova.it",
+    "indirizzo": "Via Muratori 28",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 139,
+    "ragione_sociale": "Enter Srl",
+    "telefono": "0106045045",
+    "email": "enter.ge@yahoo.it",
+    "indirizzo": "Via Casati 10",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 140,
+    "ragione_sociale": "Hucke Italia Srl in liquidazione",
+    "telefono": "010323577",
+    "email": "aldosandro@stserafini.it",
+    "indirizzo": "Via delle Palme 20A",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 141,
+    "ragione_sociale": "Hucke Douceur Srl in liquidazione",
+    "telefono": "",
+    "email": "aldosandro@stserafini.it",
+    "indirizzo": "Via San Lorenzo 23/125",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 142,
+    "ragione_sociale": "Dimensione Donna di Calisi Giovanna",
+    "telefono": "",
+    "email": "lopez1977ge@gmail.com",
+    "indirizzo": "Via Napoli 127/C/R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 143,
+    "ragione_sociale": "G.M.I. Srl",
+    "telefono": "0107401800",
+    "email": "info@gmimarmi.it",
+    "indirizzo": "Via Porta degli Archi 3/12",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 144,
+    "ragione_sociale": "G/3 Informatica Aziendale sas",
+    "telefono": "0106130855",
+    "email": "grosso.antonella@tiscali.it",
+    "indirizzo": "Via Chiaramone 6/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 145,
+    "ragione_sociale": "Riviera Medical Residence Srl",
+    "telefono": "019932132",
+    "email": "info@rivieramedicalresidence.com",
+    "indirizzo": "Via Giovane Italia 34",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 146,
+    "ragione_sociale": "Luciano Lensi",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via S. Nazario 17/8",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 147,
+    "ragione_sociale": "ADHOC Genova Srl",
+    "telefono": "010255869",
+    "email": "alessandrab@adhocge.it",
+    "indirizzo": "Piazza G. Matteotti 2/8ab",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 148,
+    "ragione_sociale": "Tecnoparquet Snc di Patrone Alessio &Co.",
+    "telefono": "0106135382",
+    "email": "tecnoparquetgenova@libero.it",
+    "indirizzo": "Via Ovada 4N",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 149,
+    "ragione_sociale": "Circolo Velico Monterosso",
+    "telefono": "0187817484",
+    "email": "info@circolovelicomonterosso.it",
+    "indirizzo": "Via Fegins 13",
+    "citta": "Monterosso Al Mare (SP)"
+  },
+  {
+    "id": 150,
+    "ragione_sociale": "Poggio Hotel di Tixe V&M & C. SAS",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via di Francia 24",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 151,
+    "ragione_sociale": "Carosini, Parodi e Scarso sas",
+    "telefono": "0105957567",
+    "email": "monica.debenedictis.510@agenzie.realemutua.it",
+    "indirizzo": "Piazza Dante 8/4",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 152,
+    "ragione_sociale": "Gestimm Srl",
+    "telefono": "010592330",
+    "email": "gestimmsrl@gmail.com",
+    "indirizzo": "Via Luccoli 30/13",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 153,
+    "ragione_sociale": "AUDIT FOSSATI S.R.L.STP",
+    "telefono": "010460824",
+    "email": "studio@auditfossati.it",
+    "indirizzo": "Via F. Avio 1/7",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 154,
+    "ragione_sociale": "CSEN Nazionale",
+    "telefono": "",
+    "email": "spadoni8@libero.it",
+    "indirizzo": "Via Luigi Bodio 57",
+    "citta": "Roma (RM)"
+  },
+  {
+    "id": 155,
+    "ragione_sociale": "Mami di Glori Maddalena",
+    "telefono": "0199354312",
+    "email": "madda@mami-varazze.it",
+    "indirizzo": "Via Campana 45",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 156,
+    "ragione_sociale": "Il Pesce Pazzo Snc",
+    "telefono": "019930032",
+    "email": "ilpescepazzo1@gmail.com",
+    "indirizzo": "Via S.Caterina 46/6",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 157,
+    "ragione_sociale": "Dott. Torre Umberto",
+    "telefono": "0100985310",
+    "email": "",
+    "indirizzo": "Via Ilva 5/6",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 158,
+    "ragione_sociale": "Pastorino Sabrina",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Provinciale 26/9",
+    "citta": "Mele (GE)"
+  },
+  {
+    "id": 159,
+    "ragione_sociale": "Ciccia Angela",
+    "telefono": "",
+    "email": "angi.ge@libero.it",
+    "indirizzo": "Via Marras 11/21",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 160,
+    "ragione_sociale": "SBC Automazione s.r.l.",
+    "telefono": "0106599384",
+    "email": "info@sbcautomazione.it",
+    "indirizzo": "Via Sestri 37/3",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 161,
+    "ragione_sociale": "Fava Alessandro",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Viale Modugno 15/7",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 162,
+    "ragione_sociale": "Parafarmacia Longo di Longo Antonella",
+    "telefono": "010 098 3314",
+    "email": "info@pharmandbeauty.com",
+    "indirizzo": "Via Martiri della Libertà 60 R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 163,
+    "ragione_sociale": "VP MAR di Pellinacci Vilma Margherita",
+    "telefono": "",
+    "email": "vilma.pellinacci@gmail.com",
+    "indirizzo": "Via Bartolomeo Bosco 57/1",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 164,
+    "ragione_sociale": "Savona Shipyard Srl",
+    "telefono": "",
+    "email": "amministrazione@savonashipyard.com",
+    "indirizzo": "Lungomare Matteotti 8/G",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 165,
+    "ragione_sociale": "GRS Chemical Technologies S.r.l.",
+    "telefono": "0818185289",
+    "email": "info.grs@italmatch.com",
+    "indirizzo": "Località Ponte Riccio",
+    "citta": "Qualiano"
+  },
+  {
+    "id": 166,
+    "ragione_sociale": "Villata Paolo",
+    "telefono": "",
+    "email": "villatapaolo@gmail.com",
+    "indirizzo": "Via Brunenghi 267",
+    "citta": "Finale Ligure (SV)"
+  },
+  {
+    "id": 167,
+    "ragione_sociale": "VoipVoice Srl",
+    "telefono": "0550935400",
+    "email": "info@voipvoice.it",
+    "indirizzo": "Via Bonifacio Lupi  14",
+    "citta": "Firenze (FI)"
+  },
+  {
+    "id": 168,
+    "ragione_sociale": "Avv.to Maria Iezzi",
+    "telefono": "",
+    "email": "avv.mariaiezzi@gmail.com",
+    "indirizzo": "Via Nazario Sauro 1/7",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 169,
+    "ragione_sociale": "MB di Merello Nicoletta Sas",
+    "telefono": "0106196302",
+    "email": "mbrifiniture1@virgilio.it",
+    "indirizzo": "Via delle Fabbriche 14q",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 170,
+    "ragione_sociale": "Tripodo Cristina",
+    "telefono": "",
+    "email": "cristina.tripodo@dueticonsulting.com",
+    "indirizzo": "Via Malta 5/9",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 171,
+    "ragione_sociale": "ROTUNDO ANTONIO SRL",
+    "telefono": "",
+    "email": "rotundoantoniosrl@gmail.com",
+    "indirizzo": "VIA DELLA COOPERAZIONE 55/2B",
+    "citta": "COGOLETO (GE)"
+  },
+  {
+    "id": 172,
+    "ragione_sociale": "Il Risveglio77 di Danilo Cassarà",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Pegli 40R",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 173,
+    "ragione_sociale": "SOVAMAX TRADING GmbH",
+    "telefono": "",
+    "email": "info@sova-max.com",
+    "indirizzo": "Lindenhorster Str. 44",
+    "citta": "Dortmund"
+  },
+  {
+    "id": 174,
+    "ragione_sociale": "AMM.NE CONDOMINIO VIA DODERO 15",
+    "telefono": "010 3774487",
+    "email": "info@studioilcondominio.com",
+    "indirizzo": "Via Posalunga",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 175,
+    "ragione_sociale": "POLVICINO LIA",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "VIA MASCAGNI 5 INT 4",
+    "citta": "ALBISOLA MARE (SV)"
+  },
+  {
+    "id": 176,
+    "ragione_sociale": "Lorenzo Monaco",
+    "telefono": "",
+    "email": "monaco@altecogenova.it",
+    "indirizzo": "Via Pisacane 11/14",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 177,
+    "ragione_sociale": "Wind Tre Spa",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Largo metropolitana 5",
+    "citta": "Rho (MI)"
+  },
+  {
+    "id": 178,
+    "ragione_sociale": "OASI SOLE MARE SRL",
+    "telefono": "0109127079",
+    "email": "oasisolemare2005@libero.it",
+    "indirizzo": "VIA PUCCINI 8",
+    "citta": "ARENZANO (GE)"
+  },
+  {
+    "id": 179,
+    "ragione_sociale": "LA CICLOFFICINA DI PAOLO POGGI",
+    "telefono": "3454487500",
+    "email": "pabl80@hotmail.it",
+    "indirizzo": "Vico S. Celso 6",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 180,
+    "ragione_sociale": "MG PULIZIE DI MASSIMO BANCHERO",
+    "telefono": "3492478640",
+    "email": "mg.massimo.banchero@gmail.com",
+    "indirizzo": "Piazza Camillo Golgi 26 C",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 181,
+    "ragione_sociale": "FUTURA MASK SRL",
+    "telefono": "0197702718",
+    "email": "futura.amministrativo@gmail.com",
+    "indirizzo": "VIA SANTA CATERINA 46/6",
+    "citta": "VARAZZE (SV)"
+  },
+  {
+    "id": 182,
+    "ragione_sociale": "Univex Srl",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Viale Enrico Forlanini 23",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 183,
+    "ragione_sociale": "BCC LEASE SPA",
+    "telefono": "0672071",
+    "email": "",
+    "indirizzo": "VIA LUCREZIA ROMANA 41/47",
+    "citta": "ROMA (RM)"
+  },
+  {
+    "id": 184,
+    "ragione_sociale": "Elettrosystem di Salvatore Iacono",
+    "telefono": "0932666438",
+    "email": "info@elettrosystemragusa.it",
+    "indirizzo": "Zona Indiustriale I fase",
+    "citta": "Ragusa (RG)"
+  },
+  {
+    "id": 185,
+    "ragione_sociale": "Dott. Gaio Marzio",
+    "telefono": "0108566317",
+    "email": "",
+    "indirizzo": "Via Malta, 5 int. 9",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 186,
+    "ragione_sociale": "Mattoni a volontà Srl",
+    "telefono": "",
+    "email": "amministrazione@toio.it",
+    "indirizzo": "Piazza Rossetti 2/2",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 187,
+    "ragione_sociale": "VERNAZZA ETTORE",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Tessarole 16",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 188,
+    "ragione_sociale": "UESSE S.r.l.",
+    "telefono": "010 645 97 93",
+    "email": "amministrazione@uesse.com",
+    "indirizzo": "Via R. Pieragostini, 73",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 189,
+    "ragione_sociale": "Dolcezze di Riviera Srl",
+    "telefono": "0197702718",
+    "email": "amministrazione@lavoratti.it",
+    "indirizzo": "Via Parasio 36",
+    "citta": "Varazze (SV)"
+  },
+  {
+    "id": 190,
+    "ragione_sociale": "Carrozzeria F.LLI LUCCHINI di Lucchini Claudio",
+    "telefono": "051382522",
+    "email": "f.lli-lucchini-carr@libero.it",
+    "indirizzo": "Via Segantini, 38",
+    "citta": "Bologna (BO)"
+  },
+  {
+    "id": 191,
+    "ragione_sociale": "TEAM BUILDING SRL",
+    "telefono": "",
+    "email": "teambuilding.posa@gmail.com",
+    "indirizzo": "VIA L. MURATORI 37 R",
+    "citta": "CORNIGLIANO (GE)"
+  },
+  {
+    "id": 192,
+    "ragione_sociale": "La Torre Marina Srl",
+    "telefono": "0192076531",
+    "email": "amarchese@stlamanna.it",
+    "indirizzo": "Via Montegrappa 1",
+    "citta": "Vado Ligure (SV)"
+  },
+  {
+    "id": 193,
+    "ragione_sociale": "MUNDULA PAOLO",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "VIA CALAMANDREI 119/12",
+    "citta": "GENOVA (GE)"
+  },
+  {
+    "id": 194,
+    "ragione_sociale": "STUDIO FALLUCCA",
+    "telefono": "019801699",
+    "email": "fallucca@studiofallucca.it",
+    "indirizzo": "Via Fiume 2/4",
+    "citta": "Savona (SV)"
+  },
+  {
+    "id": 195,
+    "ragione_sociale": "Ferrando Daniela",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Riva 19",
+    "citta": "Peio (TN)"
+  },
+  {
+    "id": 196,
+    "ragione_sociale": "Buffet Stazione FS Arenzano Srl",
+    "telefono": "0109125427",
+    "email": "",
+    "indirizzo": "Piazza Golgi 4",
+    "citta": "Arenzano (GE)"
+  },
+  {
+    "id": 197,
+    "ragione_sociale": "FRATELLI IMMORDINO DI IMMORDINO GIOVANNI & C. - SOCIETA' INE",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Via Delle Medaglie D'Oro, 20",
+    "citta": "Albenga (SV)"
+  },
+  {
+    "id": 198,
+    "ragione_sociale": "Auto 1 Italia Commercio Srl",
+    "telefono": "",
+    "email": "",
+    "indirizzo": "Piazzale Luigi Cadorna 2",
+    "citta": "Milano (MI)"
+  },
+  {
+    "id": 199,
+    "ragione_sociale": "Dott.ssa Roberta Cavanna",
+    "telefono": "3498201458",
+    "email": "cavannaroberta@gmail.com",
+    "indirizzo": "Via Emilio Salgari, 123/14",
+    "citta": "Genova (GE)"
+  },
+  {
+    "id": 200,
+    "ragione_sociale": "Compagnia Olearia Italiana Srl",
+    "telefono": "0805241456",
+    "email": "info@compagniaolearia.it",
+    "indirizzo": "Strada San Giorgio Martire 87/D",
+    "citta": "Bari (BA)"
+  }
+]

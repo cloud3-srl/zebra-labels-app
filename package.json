@@ -1,0 +1,18 @@
+{
+  "name": "zebra-labels-app",
+  "version": "1.0.0",
+  "description": "Zebra Labels WebApp - Cloud3 Srl",
+  "private": true,
+  "scripts": {
+    "start": "cd server && node index.js",
+    "setup": "node installer.js",
+    "install-service": "node service-install.js install",
+    "uninstall-service": "node service-install.js uninstall",
+    "status": "node service-install.js status",
+    "tray": "node tray/tray-app.js"
+  },
+  "dependencies": {
+    "node-windows": "^1.0.0-beta.8",
+    "systray2": "^2.1.4"
+  }
+}
