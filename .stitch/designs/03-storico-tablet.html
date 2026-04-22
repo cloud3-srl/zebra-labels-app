@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Storico - ZebraPrint Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#001a41",
+                    "on-surface": "#1a1c1f",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2e3034",
+                    "inverse-on-surface": "#f0f0f5",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c1c6d7",
+                    "surface-tint": "#005bc1",
+                    "on-surface-variant": "#414755",
+                    "primary-fixed": "#d8e2ff",
+                    "primary-container": "#0070eb",
+                    "tertiary-fixed-dim": "#53e16f",
+                    "tertiary-container": "#008733",
+                    "surface-dim": "#d9dade",
+                    "surface-container": "#ededf2",
+                    "secondary-fixed": "#e3e2e5",
+                    "tertiary": "#006b27",
+                    "secondary-fixed-dim": "#c7c6c9",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-primary-container": "#fefcff",
+                    "on-background": "#1a1c1f",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "outline": "#717786",
+                    "background": "#f9f9fe",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e1dfe2",
+                    "surface-container-highest": "#e2e2e7",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "surface-container-low": "#f3f3f8",
+                    "on-primary": "#ffffff",
+                    "primary": "#0058bc",
+                    "on-secondary-container": "#626265",
+                    "secondary": "#5e5e61",
+                    "surface-variant": "#e2e2e7",
+                    "surface-container-high": "#e8e8ed",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#72fe88",
+                    "on-tertiary-fixed-variant": "#00531c",
+                    "on-tertiary-fixed": "#002107",
+                    "surface-bright": "#f9f9fe",
+                    "surface": "#f9f9fe",
+                    "on-secondary-fixed-variant": "#464649",
+                    "inverse-primary": "#adc6ff",
+                    "on-tertiary-container": "#f7fff2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {}
+    },
+        },
+      }
+    </script>
+<style>
+        /* Custom iOS Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-[#F2F2F7] text-on-surface font-body antialiased min-h-screen flex flex-col pb-32">
+<!-- TopNavBar (Shared Component) -->
+<nav class="flex justify-between items-center w-full px-6 py-4 h-16 sticky top-0 z-50 bg-white/85 dark:bg-[#1C1C1E]/85 backdrop-blur-[40px] docked full-width border-b border-white/20 shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-xl border-white/10">
+<div class="text-xl font-bold text-[#1C1C1E] dark:text-white font-headline">ZebraPrint Pro</div>
+<!-- Large Title (Contextual to this screen) -->
+<h1 class="absolute left-1/2 -translate-x-1/2 text-[34px] font-bold font-headline text-on-surface hidden md:block">Storico</h1>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-70 transition-opacity active:scale-95 duration-200 text-[#007AFF]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+</button>
+<button class="hover:opacity-70 transition-opacity active:scale-95 duration-200 text-[#007AFF]">
+<span class="material-symbols-outlined">print_connect</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 px-6 py-6 max-w-7xl mx-auto w-full flex flex-col gap-6">
+<!-- Summary Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1: Totale Stampe -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.08)] flex items-center justify-between border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-3xl font-headline font-bold text-on-surface">247</span>
+<span class="text-sm font-label text-on-surface-variant">Totale Stampe</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">print</span>
+</div>
+</div>
+<!-- Card 2: Tasso Successo -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.08)] flex items-center justify-between border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-3xl font-headline font-bold text-[#34C759]">98.3%</span>
+<span class="text-sm font-label text-on-surface-variant">Tasso Successo</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-[#34C759]/10 flex items-center justify-center text-[#34C759]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+<!-- Card 3: Errori -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.08)] flex items-center justify-between border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-3xl font-headline font-bold text-error">4</span>
+<span class="text-sm font-label text-on-surface-variant">Errori</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="bg-surface rounded-[12px] p-4 shadow-[0_2px_20px_rgba(0,0,0,0.08)] flex flex-col md:flex-row md:items-center justify-between gap-4 border border-outline-variant/30">
+<!-- Search Input -->
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-[rgba(118,118,128,0.12)] border-0 rounded-full py-2.5 pl-10 pr-4 text-on-surface font-body text-[15px] focus:ring-2 focus:ring-primary-container outline-none transition-shadow placeholder:text-on-surface-variant/60" placeholder="Cerca cliente, modello..." type="text"/>
+</div>
+<!-- Filters & Count -->
+<div class="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
+<div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 hide-scrollbar" style="-ms-overflow-style: none; scrollbar-width: none;">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-[#007AFF] text-white font-medium text-sm transition-opacity hover:opacity-80">Tutti</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-medium text-sm transition-colors hover:bg-surface-variant">Successo</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-transparent border border-outline text-on-surface-variant font-medium text-sm transition-colors hover:bg-surface-variant">Errore</button>
+</div>
+<span class="text-sm font-medium text-on-surface-variant whitespace-nowrap hidden sm:block">247 stampe totali</span>
+</div>
+</div>
+<!-- Main Table (InsetGrouped Card) -->
+<div class="bg-surface rounded-[12px] shadow-[0_2px_20px_rgba(0,0,0,0.08)] border border-outline-variant/30 overflow-hidden flex flex-col">
+<!-- List Rows -->
+<div class="flex flex-col divide-y divide-outline-variant/20">
+<!-- Row 1 (Success) -->
+<div class="flex items-center p-4 gap-4 hover:bg-surface-variant/30 transition-colors bg-white">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#34C759]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#34C759] text-[20px]">check_circle</span>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<span class="font-headline font-bold text-[17px] text-on-surface truncate">Rossi Marco</span>
+<span class="font-body text-[15px] text-on-surface-variant truncate">Standard A4 · Dell XPS 15 · ROSSIDell001</span>
+<span class="font-body text-[13px] text-on-surface-variant/80 truncate">22 apr 2026, 14:32</span>
+</div>
+<button class="flex-shrink-0 text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity px-2 py-1 rounded-md active:bg-primary-container/10">Ristampa</button>
+</div>
+<!-- Row 2 (Success) -->
+<div class="flex items-center p-4 gap-4 hover:bg-surface-variant/30 transition-colors bg-surface-container-lowest">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#34C759]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#34C759] text-[20px]">check_circle</span>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<span class="font-headline font-bold text-[17px] text-on-surface truncate">Bianchi Giulia</span>
+<span class="font-body text-[15px] text-on-surface-variant truncate">Label 10x15 · Zebra GX420d · BIANCHIZebra02</span>
+<span class="font-body text-[13px] text-on-surface-variant/80 truncate">22 apr 2026, 14:15</span>
+</div>
+<button class="flex-shrink-0 text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity px-2 py-1 rounded-md active:bg-primary-container/10">Ristampa</button>
+</div>
+<!-- Row 3 (Error) -->
+<div class="flex items-center p-4 gap-4 hover:bg-surface-variant/30 transition-colors bg-white">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-[20px]">cancel</span>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<span class="font-headline font-bold text-[17px] text-on-surface truncate">Verdi Luca</span>
+<span class="font-body text-[15px] text-on-surface-variant truncate">Standard A4 · HP LaserJet Pro · VERDIHP001</span>
+<span class="font-body text-[13px] text-error truncate">22 apr 2026, 13:45 - Errore inceppamento carta</span>
+</div>
+<button class="flex-shrink-0 text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity px-2 py-1 rounded-md active:bg-primary-container/10">Riprova</button>
+</div>
+<!-- Row 4 (Success) -->
+<div class="flex items-center p-4 gap-4 hover:bg-surface-variant/30 transition-colors bg-surface-container-lowest">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#34C759]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#34C759] text-[20px]">check_circle</span>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<span class="font-headline font-bold text-[17px] text-on-surface truncate">Esposito Anna</span>
+<span class="font-body text-[15px] text-on-surface-variant truncate">Receipt 80mm · Epson TM-T88VI · ESPOSITOEpson</span>
+<span class="font-body text-[13px] text-on-surface-variant/80 truncate">22 apr 2026, 11:20</span>
+</div>
+<button class="flex-shrink-0 text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity px-2 py-1 rounded-md active:bg-primary-container/10">Ristampa</button>
+</div>
+<!-- Row 5 (Success) -->
+<div class="flex items-center p-4 gap-4 hover:bg-surface-variant/30 transition-colors bg-white">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#34C759]/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#34C759] text-[20px]">check_circle</span>
+</div>
+<div class="flex-1 flex flex-col min-w-0">
+<span class="font-headline font-bold text-[17px] text-on-surface truncate">Ferrari Matteo</span>
+<span class="font-body text-[15px] text-on-surface-variant truncate">Standard A4 · Dell XPS 15 · FERRARIDell001</span>
+<span class="font-body text-[13px] text-on-surface-variant/80 truncate">21 apr 2026, 16:05</span>
+</div>
+<button class="flex-shrink-0 text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity px-2 py-1 rounded-md active:bg-primary-container/10">Ristampa</button>
+</div>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-outline-variant/20 flex items-center justify-between bg-surface-container-lowest">
+<button class="text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity flex items-center gap-1 disabled:opacity-30 disabled:cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span> Precedente
+                </button>
+<span class="font-body text-sm text-on-surface-variant font-medium">Pagina 1 di 25</span>
+<button class="text-[#007AFF] font-medium text-[15px] hover:opacity-70 transition-opacity flex items-center gap-1">
+                    Successiva <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-around px-8 py-3 gap-8 bg-white/85 dark:bg-[#1C1C1E]/85 backdrop-blur-[40px] fixed bottom-6 left-1/2 -translate-x-1/2 w-auto min-w-[400px] rounded-full border border-white/20 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+<button class="text-[#636366] dark:text-[#8E8E93] flex flex-col items-center gap-1 hover:text-[#007AFF]/80 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-[24px]">print</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Print</span>
+</button>
+<button class="text-[#636366] dark:text-[#8E8E93] flex flex-col items-center gap-1 hover:text-[#007AFF]/80 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-[24px]">label</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Labels</span>
+</button>
+<button class="text-[#007AFF] flex flex-col items-center gap-1 scale-110 hover:text-[#007AFF]/80 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold">History</span>
+</button>
+<button class="text-[#636366] dark:text-[#8E8E93] flex flex-col items-center gap-1 hover:text-[#007AFF]/80 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-[24px]">print_connect</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Printers</span>
+</button>
+<button class="text-[#636366] dark:text-[#8E8E93] flex flex-col items-center gap-1 hover:text-[#007AFF]/80 transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-medium">Settings</span>
+</button>
+</nav>
+</body></html>

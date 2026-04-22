@@ -2,373 +2,766 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zebra Labels - Sistema Stampa Etichette</title>
-  <meta name="theme-color" content="#1A73E8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Zebra Labels">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#F2F2F7">
+  <title>Zebra Labels — Cloud3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
   <style>
     :root {
-      --bg: #f8f9fa;
-      --bg2: #ffffff;
-      --bg3: #f1f3f4;
-      --accent: #1a73e8;
-      --accent-hover: #1557b0;
-      --accent-light: rgba(26,115,232,.08);
-      --green: #1e8e3e;
-      --green-light: rgba(30,142,62,.08);
-      --red: #d93025;
-      --red-light: rgba(217,48,37,.08);
-      --yellow: #e8710a;
-      --yellow-light: rgba(232,113,10,.08);
-      --purple: #9334e6;
-      --purple-light: rgba(147,52,230,.08);
-      --text: #1f1f1f;
-      --text2: #5f6368;
-      --text3: #9aa0a6;
-      --border: #e8eaed;
-      --border2: #dadce0;
-      --radius: 16px;
-      --radius-sm: 12px;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
-      --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,.08);
-      --surface-hover: #f1f3f4;
+      /* iOS 26 System Colors */
+      --bg: #F2F2F7;
+      --bg2: #FFFFFF;
+      --bg3: rgba(118,118,128,0.12);
+      --accent: #007AFF;
+      --accent-hover: #0063CC;
+      --accent-light: rgba(0,122,255,0.12);
+      --green: #34C759;
+      --green-light: rgba(52,199,89,0.14);
+      --red: #FF3B30;
+      --red-light: rgba(255,59,48,0.12);
+      --yellow: #FF9500;
+      --yellow-light: rgba(255,149,0,0.14);
+      --purple: #AF52DE;
+      --purple-light: rgba(175,82,222,0.14);
+      --text: #1C1C1E;
+      --text2: #636366;
+      --text3: #AEAEB2;
+      --border: rgba(60,60,67,0.12);
+      --border2: rgba(60,60,67,0.22);
+      --radius: 12px;
+      --radius-sm: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+      --shadow: 0 2px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+      --glass-nav: rgba(242,242,247,0.82);
+      --glass-tab: rgba(255,255,255,0.78);
+      --hairline: 0.5px solid rgba(60,60,67,0.18);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Google Sans','Inter',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; font-size:14px; -webkit-font-smoothing:antialiased; }
 
-    /* Header */
-    .app-header {
-      background:var(--bg2); border-bottom:1px solid var(--border);
-      padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between;
-      position:sticky; top:0; z-index:100;
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    html, body { height:100%; }
+    body {
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;
+      background:var(--bg); color:var(--text); font-size:15px; line-height:1.4;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding-bottom:env(safe-area-inset-bottom);
     }
-    .app-header .logo-area { display:flex; align-items:center; gap:12px; }
-    .app-header .logo-area svg { flex-shrink:0; }
-    .app-header h1 { font-size:18px; font-weight:500; color:var(--text); letter-spacing:-.2px; }
-    .app-header h1 span { color:var(--text3); font-weight:400; font-size:14px; }
+    h1, h2, h3, h4, h5, h6 { font-family:'Plus Jakarta Sans','Inter',sans-serif; letter-spacing:-0.02em; }
+
+    /* ═══════════ HEADER — Liquid Glass Navigation Bar ═══════════ */
+    .app-header {
+      background:var(--glass-nav);
+      backdrop-filter:saturate(180%) blur(30px);
+      -webkit-backdrop-filter:saturate(180%) blur(30px);
+      border-bottom:var(--hairline);
+      padding:0 20px; height:56px;
+      display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:100;
+      padding-top:env(safe-area-inset-top);
+      height:calc(56px + env(safe-area-inset-top));
+    }
+    .app-header .logo-area { display:flex; align-items:center; gap:10px; }
+    .app-header h1 {
+      font-size:19px; font-weight:700; color:var(--text);
+      letter-spacing:-0.02em; line-height:1;
+    }
+    .app-header h1 span { color:var(--text2); font-weight:500; }
 
     .printer-status {
-      display:flex; align-items:center; gap:8px; padding:8px 16px;
-      border-radius:100px; font-size:13px; font-weight:500; cursor:pointer;
-      transition:all .2s; border:none;
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 12px; border-radius:var(--radius-pill);
+      font-size:13px; font-weight:600; cursor:pointer;
+      transition:all .2s var(--spring); border:none;
       background:var(--bg3); color:var(--text2);
     }
+    .printer-status:active { transform:scale(0.95); }
     .printer-status.online { background:var(--green-light); color:var(--green); }
     .printer-status.offline { background:var(--red-light); color:var(--red); }
     .printer-status.checking { background:var(--yellow-light); color:var(--yellow); }
-    .dot { width:8px; height:8px; border-radius:50%; }
-    .dot.green { background:var(--green); }
-    .dot.red { background:var(--red); }
-    .dot.yellow { background:var(--yellow); animation:pulse 1.5s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .printer-status .ip { font-size:11px; opacity:.65; font-weight:500; }
+    .dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .dot.green { background:var(--green); box-shadow:0 0 0 2px rgba(52,199,89,0.25); }
+    .dot.red { background:var(--red); box-shadow:0 0 0 2px rgba(255,59,48,0.25); }
+    .dot.yellow { background:var(--yellow); animation:pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(0.85); } }
 
-    /* Tabs */
+    /* ═══════════ BOTTOM TAB BAR — Floating Pill Liquid Glass ═══════════ */
     .tabs {
-      display:flex; gap:4px; background:var(--bg2); border-bottom:1px solid var(--border);
-      padding:8px 24px 0;
+      position:fixed; bottom:calc(14px + env(safe-area-inset-bottom));
+      left:50%; transform:translateX(-50%);
+      background:rgba(255,255,255,0.82);
+      backdrop-filter:saturate(180%) blur(40px);
+      -webkit-backdrop-filter:saturate(180%) blur(40px);
+      border:0.5px solid rgba(255,255,255,0.4);
+      border-radius:var(--radius-pill);
+      display:flex; padding:8px 10px; gap:4px;
+      z-index:100;
+      box-shadow:0 8px 32px rgba(0,0,0,0.14), 0 0 0 0.5px rgba(0,0,0,0.04);
+      max-width:calc(100% - 24px);
     }
     .tab {
-      padding:10px 20px; cursor:pointer; font-size:14px; color:var(--text2);
-      border-bottom:3px solid transparent; transition:all .2s; font-weight:500;
-      border-radius:var(--radius-sm) var(--radius-sm) 0 0;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:6px 12px; gap:2px; font-size:10px; font-weight:600;
+      color:var(--text2); cursor:pointer; border-radius:var(--radius-pill);
+      transition:all .2s var(--spring); letter-spacing:0.01em;
+      min-width:56px;
     }
-    .tab:hover { color:var(--text); background:var(--surface-hover); }
-    .tab.active { color:var(--accent); border-bottom-color:var(--accent); background:transparent; }
+    .tab:active { transform:scale(0.92); }
+    .tab.active { color:var(--accent); }
+    .tab svg { width:22px; height:22px; transition:transform .2s var(--spring); }
+    .tab.active svg { transform:scale(1.08); }
 
-    /* Main */
-    .main { max-width:1400px; margin:0 auto; padding:28px; }
-    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-    @media(max-width:900px) { .grid-2 { grid-template-columns:1fr; } }
-
-    /* Designer 3-col layout */
-    .designer-grid { display:grid; grid-template-columns:260px 1fr 340px; gap:16px; }
-    .designer-grid .designer-models { overflow-y:auto; max-height:calc(100vh - 140px); }
-    .designer-grid .designer-form { overflow-y:auto; max-height:calc(100vh - 140px); }
-    .designer-grid .designer-preview { position:sticky; top:120px; align-self:start; order:2; }
-    .designer-grid .designer-form { order:3; }
-    @media(max-width:1200px) { .designer-grid { grid-template-columns:220px 1fr 300px; gap:12px; } }
-    @media(max-width:920px) { .designer-grid { grid-template-columns:1fr; gap:12px; } .designer-preview { position:static; } }
-    @media(max-width:600px) { .designer-grid { grid-template-columns:1fr; } .designer-models { max-height:none; } .designer-form { max-height:none; } }
-
-    .designer-preview-inline { display:none; }
-    @media(max-width:820px) { .designer-preview-inline { display:block; } }
-
-    /* Responsive tabs */
-    /* Responsive mobile */
-    @media(max-width:600px) {
-      .tabs { padding:0 8px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-      .tab { padding:8px 14px; font-size:13px; white-space:nowrap; }
-      .main { padding:16px; }
-      .app-header { padding:0 16px; height:56px; }
-      .app-header h1 { font-size:15px; }
-      .app-header h1 span { display:none; }
-      .printer-status { font-size:12px; padding:6px 12px; }
-      .grid-2 { gap:16px; }
-      .card { padding:16px; }
-      .inline-row { flex-direction:column; gap:0; }
-      .settings-grid { grid-template-columns:1fr; }
+    /* Tablet: larger floating pill */
+    @media(min-width:768px) {
+      .tabs { padding:8px 14px; gap:6px; bottom:calc(18px + env(safe-area-inset-bottom)); }
+      .tab { flex-direction:row; gap:8px; font-size:13px; padding:10px 18px; min-width:auto; }
+      .tab svg { width:20px; height:20px; }
     }
 
-    /* Card */
+    /* ═══════════ MAIN CONTENT ═══════════ */
+    .main {
+      max-width:1400px; margin:0 auto; padding:16px 16px 130px;
+    }
+    @media(min-width:768px) {
+      .main { padding:24px 28px 110px; }
+    }
+    .grid-2 { display:grid; grid-template-columns:1fr; gap:16px; }
+    @media(min-width:900px) { .grid-2 { grid-template-columns:1fr 1fr; gap:20px; } }
+
+    /* Page title */
+    .page-title {
+      font-size:28px; font-weight:700; letter-spacing:-0.03em;
+      color:var(--text); margin-bottom:4px; line-height:1.15;
+    }
+    .page-subtitle { font-size:15px; color:var(--text2); margin-bottom:20px; font-weight:400; }
+
+    /* ═══════════ DESIGNER LAYOUT ═══════════ */
+    .designer-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+    @media(min-width:820px) {
+      .designer-grid { grid-template-columns:220px 1fr; gap:14px; }
+      .designer-grid .designer-models { overflow-y:auto; max-height:calc(100vh - 200px); }
+      .designer-grid .designer-form { overflow-y:auto; max-height:calc(100vh - 200px); }
+      .designer-preview { display:none; }
+    }
+    @media(min-width:1100px) {
+      .designer-grid { grid-template-columns:260px 1fr 280px; gap:16px; }
+      .designer-preview { display:block !important; position:sticky; top:80px; align-self:start; }
+      .designer-preview-inline { display:none !important; }
+    }
+
+    /* ═══════════ CARDS — Grouped Inset List ═══════════ */
     .card {
-      background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius);
-      padding:24px; margin-bottom:20px;
+      background:var(--bg2); border:none; border-radius:var(--radius);
+      padding:16px; margin-bottom:14px; box-shadow:var(--shadow);
+      border:0.5px solid rgba(255,255,255,0.5);
     }
     .card h2 {
-      font-size:14px; color:var(--text); margin-bottom:20px;
-      font-weight:500; letter-spacing:normal;
-      display:flex; align-items:center; gap:8px;
+      font-size:11px; color:var(--text2); margin-bottom:14px;
+      text-transform:uppercase; letter-spacing:0.08em; font-weight:700;
+      display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif;
     }
+    .card h2 svg { opacity:0.6; }
 
-    /* Form elements */
-    label { display:block; font-size:12px; color:var(--text2); margin-bottom:6px; font-weight:500; letter-spacing:.1px; }
-    .field { margin-bottom:16px; }
+    /* Section label (outside card, mockup style) */
+    .section-label {
+      font-size:12px; font-weight:700; color:var(--text2);
+      text-transform:uppercase; letter-spacing:0.06em;
+      margin:0 4px 8px; display:flex; align-items:center; gap:6px;
+    }
+    .section-block { margin-bottom:18px; }
+
+    /* ═══════════ FORM — iOS Input Style ═══════════ */
+    label {
+      display:block; font-size:13px; color:var(--text2);
+      margin-bottom:6px; font-weight:500; letter-spacing:0.01em;
+    }
+    .field { margin-bottom:14px; }
     input, select, textarea {
-      width:100%; padding:10px 14px; font-size:14px; font-family:'Google Sans','Inter',sans-serif;
-      background:var(--bg3); border:1px solid transparent; border-radius:var(--radius-sm);
-      color:var(--text); outline:none; transition:all .2s;
+      width:100%; padding:11px 14px; font-size:15px;
+      font-family:'Inter',sans-serif; font-weight:500;
+      background:var(--bg3); border:none; border-radius:var(--radius-sm);
+      color:var(--text); outline:none; transition:all .15s ease;
+      -webkit-appearance:none; appearance:none;
     }
-    input:focus, select:focus, textarea:focus { background:var(--bg2); border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-light); }
-    input:hover, select:hover, textarea:hover { background:#e8eaed; }
-    input:focus:hover, select:focus:hover, textarea:focus:hover { background:var(--bg2); }
-    select { cursor:pointer; }
-    textarea { resize:vertical; min-height:60px; }
+    input::placeholder, textarea::placeholder { color:var(--text3); font-weight:400; }
+    input:focus, select:focus, textarea:focus {
+      background:rgba(118,118,128,0.18);
+      box-shadow:0 0 0 3px rgba(0,122,255,0.18);
+    }
+    select {
+      cursor:pointer;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%23636366' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+      background-repeat:no-repeat; background-position:right 14px center;
+      padding-right:36px;
+    }
+    textarea { resize:vertical; min-height:72px; }
+    input[type=checkbox] { width:auto; accent-color:var(--accent); }
 
-    /* Search */
+    /* ═══════════ SEARCH ═══════════ */
     .search-input { position:relative; }
-    .search-input input { padding-right:32px; }
+    .search-input input {
+      padding-left:38px; padding-right:14px;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238E8E93' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>");
+      background-repeat:no-repeat; background-position:left 12px center;
+    }
     .search-dropdown {
-      position:absolute; top:calc(100% + 4px); left:0; right:0; background:var(--bg2);
-      border:1px solid var(--border); border-radius:var(--radius-sm);
+      position:absolute; top:calc(100% + 6px); left:0; right:0;
+      background:var(--bg2); border:none; border-radius:var(--radius);
       max-height:260px; overflow-y:auto; z-index:50; box-shadow:var(--shadow-lg);
     }
-    .search-item { padding:10px 14px; cursor:pointer; font-size:14px; border-bottom:1px solid var(--bg3); transition:background .15s; }
-    .search-item:hover { background:var(--surface-hover); }
+    .search-item {
+      padding:12px 16px; cursor:pointer; font-size:15px;
+      border-bottom:var(--hairline); transition:background .1s;
+    }
     .search-item:last-child { border-bottom:none; }
-    .search-item .name { font-weight:500; color:var(--text); }
-    .search-item .detail { font-size:12px; color:var(--text2); margin-top:2px; }
+    .search-item:hover { background:var(--bg3); }
+    .search-item:active { background:var(--accent-light); }
+    .search-item .name { font-weight:600; color:var(--text); font-size:15px; }
+    .search-item .detail { font-size:13px; color:var(--text2); margin-top:2px; }
 
-    /* Client info */
+    /* ═══════════ CLIENT INFO ROW ═══════════ */
     .client-info {
       display:grid; grid-template-columns:1fr 1fr; gap:10px;
-      background:var(--bg3); border-radius:var(--radius-sm); padding:14px; font-size:13px; margin-top:10px;
-      border:none;
+      background:var(--bg3); border-radius:var(--radius-sm);
+      padding:14px; font-size:14px; margin-top:10px; border:none;
     }
-    .client-info .ci-label { color:var(--text3); font-size:11px; font-weight:500; }
-    .client-info .ci-value { color:var(--text); word-break:break-all; }
+    .client-info .ci-label {
+      color:var(--text2); font-size:11px; font-weight:600;
+      text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px;
+    }
+    .client-info .ci-value { color:var(--text); word-break:break-word; font-weight:500; }
 
-    /* Buttons */
+    /* ═══════════ BUTTONS — iOS Pill Style ═══════════ */
     .btn {
-      padding:10px 20px; border:none; border-radius:100px; cursor:pointer;
-      font-size:14px; font-weight:500; font-family:'Google Sans','Inter',sans-serif;
-      transition:all .2s; display:inline-flex; align-items:center; gap:8px;
-      letter-spacing:.1px;
+      padding:11px 20px; border:none; border-radius:var(--radius-pill);
+      cursor:pointer; font-size:15px; font-weight:600;
+      font-family:'Inter',sans-serif; letter-spacing:-0.01em;
+      transition:all .15s var(--spring);
+      display:inline-flex; align-items:center; justify-content:center; gap:7px;
+      min-height:44px;
     }
-    .btn-primary { background:var(--accent); color:#fff; }
-    .btn-primary:hover { background:var(--accent-hover); box-shadow:var(--shadow); }
+    .btn:active { transform:scale(0.96); }
+    .btn-primary { background:var(--accent); color:#fff; box-shadow:0 8px 16px rgba(0,122,255,0.28); }
+    .btn-primary:hover { background:var(--accent-hover); }
+    .btn-primary.btn-lg { height:52px; font-size:16px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; }
     .btn-success { background:var(--green); color:#fff; }
-    .btn-success:hover { background:#1a7c37; box-shadow:var(--shadow); }
+    .btn-success:hover { background:#2FB352; }
     .btn-danger { background:var(--red); color:#fff; }
-    .btn-danger:hover { background:#c42b21; }
+    .btn-danger:hover { background:#E6342A; }
     .btn-purple { background:var(--purple); color:#fff; }
-    .btn-purple:hover { background:#7b2bc9; }
     .btn-outline {
-      background:var(--bg2); color:var(--text2); border:1px solid var(--border2);
+      background:var(--accent-light); color:var(--accent); font-weight:600;
     }
-    .btn-outline:hover { background:var(--surface-hover); border-color:var(--border2); color:var(--text); }
-    .btn-sm { padding:6px 14px; font-size:13px; }
-    .btn:disabled { opacity:.4; cursor:not-allowed; }
+    .btn-outline:hover { background:rgba(0,122,255,0.18); }
+    .btn-sm {
+      padding:7px 14px; font-size:13px; min-height:34px; border-radius:var(--radius-pill);
+    }
+    .btn-icon {
+      padding:8px; min-height:36px; min-width:36px;
+      border-radius:var(--radius-pill); background:var(--bg3);
+      color:var(--text2);
+    }
+    .btn-icon:hover { background:rgba(118,118,128,0.22); color:var(--text); }
+    .btn:disabled { opacity:.4; cursor:not-allowed; transform:none; }
 
-    /* Preview label */
+    /* ═══════════ LABEL PREVIEW CARD ═══════════ */
     .preview-label {
-      background:#fff; color:#000; border-radius:var(--radius-sm); padding:14px 16px;
-      font-family:'Courier New',monospace; font-size:11px; line-height:1.6;
-      min-height:180px; border:2px dashed var(--border2); position:relative; overflow:hidden;
+      background:#fff; color:#000; border-radius:16px;
+      padding:20px 22px; font-family:'Courier New',monospace;
+      font-size:11px; line-height:1.6; min-height:200px;
+      border:1.5px dashed rgba(0,0,0,0.15); position:relative; overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(0,0,0,0.02);
+      transition:transform .3s var(--spring);
     }
+    .preview-label:hover { transform:translateY(-2px); }
     .preview-label .pl-header { display:flex; align-items:flex-start; gap:8px; margin-bottom:4px; }
     .preview-label .pl-logo {
-      width:40px; height:40px; background:var(--bg3); border:1px solid var(--border);
-      border-radius:8px; display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; background:#F2F2F7; border:1px solid rgba(0,0,0,0.08);
+      border-radius:6px; display:flex; align-items:center; justify-content:center;
       font-size:8px; color:#999; flex-shrink:0; overflow:hidden;
     }
     .preview-label .pl-logo img { width:100%; height:100%; object-fit:contain; }
     .preview-label .pl-title { text-align:center; font-weight:bold; font-size:13px; flex:1; }
-    .preview-label .pl-line { border-top:1px solid var(--border); margin:4px 0; }
+    .preview-label .pl-line { border-top:1px solid rgba(0,0,0,0.08); margin:4px 0; }
     .preview-label .pl-motivo { font-weight:bold; text-align:center; margin:4px 0; }
-    .preview-label .pl-barcode { text-align:center; font-size:10px; margin-top:6px; padding:4px; background:var(--bg); border-radius:6px; }
-    .preview-label .pl-barcode-text { text-align:center; font-size:9px; color:var(--text2); }
-    .label-canvas-wrap { border:1px solid var(--border); border-radius:14px; background:linear-gradient(180deg,#fff,#fafafa); padding:10px; }
-    .label-canvas {
-      position:relative; width:100%; aspect-ratio:440/280; border:2px dashed var(--border2);
-      border-radius:12px; background:#fff; overflow:hidden; font-family:'Courier New',monospace;
-      touch-action:none;
+    .preview-label .pl-barcode {
+      text-align:center; font-size:10px; margin-top:6px;
+      padding:4px; background:#FAFAFA; border-radius:4px;
     }
-    .label-item {
-      position:absolute; border:1px dashed transparent; border-radius:6px; padding:2px 4px;
-      font-size:11px; color:#111; cursor:grab; user-select:none; -webkit-user-select:none; white-space:nowrap; overflow:hidden;
-      text-overflow:ellipsis; background:rgba(255,255,255,.65);
-    }
-    .label-item.line { background:transparent; padding:0; border:none; cursor:grab; }
-    .label-item.line::after { content:''; position:absolute; left:0; right:0; top:0; height:2px; background:#111; }
-    .label-item.barcode { text-align:center; letter-spacing:1px; }
-    .label-item.hidden { opacity:.3; }
-    .label-item.selected { border-color:var(--accent); background:rgba(26,115,232,.08); }
-    .layout-info { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px; }
+    .preview-label .pl-barcode-text { text-align:center; font-size:9px; color:#636366; }
 
-    /* ZPL code */
+    /* ═══════════ ZPL CODE VIEWER — Terminal Style ═══════════ */
+    .zpl-viewer {
+      background:#1C1C1E; border-radius:var(--radius);
+      overflow:hidden; box-shadow:var(--shadow);
+      border:0.5px solid rgba(255,255,255,0.06);
+    }
+    .zpl-viewer-header {
+      background:#2C2C2E; padding:10px 14px;
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:13px; font-weight:600; color:#fff;
+      font-family:'Plus Jakarta Sans',sans-serif;
+    }
+    .zpl-viewer-header .left { display:flex; align-items:center; gap:8px; color:#8E8E93; }
+    .zpl-viewer-header .left span { color:#fff; }
     .zpl-code {
-      background:#202124; color:#81c995; padding:16px; border-radius:var(--radius-sm);
-      font-family:'Courier New',monospace; font-size:12px; max-height:200px;
-      overflow-y:auto; white-space:pre-wrap; word-break:break-all;
+      background:#1C1C1E; color:#30D158;
+      padding:14px 16px;
+      font-family:'SF Mono','JetBrains Mono','Courier New',monospace;
+      font-size:12px; line-height:1.5;
+      max-height:220px; overflow:auto;
+      white-space:pre-wrap; word-break:break-all;
     }
 
-    /* Toast */
+    /* Device pill chips (horizontal scroll) */
+    .device-pills { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; }
+    .device-pills::-webkit-scrollbar { display:none; }
+    .device-pill {
+      padding:8px 16px; border-radius:var(--radius-pill);
+      font-size:14px; font-weight:600; white-space:nowrap;
+      background:#fff; color:var(--text); cursor:pointer;
+      border:0.5px solid rgba(60,60,67,0.12);
+      box-shadow:0 1px 3px rgba(0,0,0,0.04);
+      transition:all .15s var(--spring);
+    }
+    .device-pill:hover { background:var(--bg3); }
+    .device-pill.active { background:var(--accent); color:#fff; border-color:transparent; box-shadow:0 2px 8px rgba(0,122,255,0.25); }
+
+    /* ═══════════ TOAST — iOS Top Pill ═══════════ */
     .toast {
-      position:fixed; bottom:24px; right:24px; padding:14px 24px;
-      border-radius:var(--radius-sm); font-size:14px; font-weight:500;
-      box-shadow:var(--shadow-lg); z-index:1000; animation:slideIn .3s cubic-bezier(.2,.6,.35,1);
-      display:flex; align-items:center; gap:10px;
+      position:fixed; top:calc(72px + env(safe-area-inset-top));
+      left:50%; transform:translateX(-50%);
+      padding:12px 22px; border-radius:var(--radius-pill);
+      font-size:14px; font-weight:600;
+      box-shadow:0 8px 32px rgba(0,0,0,0.24);
+      z-index:1000;
+      animation:toastIn .35s var(--spring);
+      display:inline-flex; align-items:center; gap:8px;
+      max-width:calc(100% - 32px); white-space:nowrap;
+      backdrop-filter:blur(20px);
     }
-    .toast.success { background:#1e8e3e; color:#fff; }
-    .toast.error { background:#d93025; color:#fff; }
-    @keyframes slideIn { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
+    .toast.success { background:rgba(28,28,30,0.92); color:#fff; }
+    .toast.error { background:rgba(255,59,48,0.95); color:#fff; }
+    @keyframes toastIn {
+      from { transform:translateX(-50%) translateY(-24px); opacity:0; }
+      to { transform:translateX(-50%) translateY(0); opacity:1; }
+    }
 
-    /* Table */
+    /* ═══════════ TABLE / LIST ROWS ═══════════ */
     .log-table { width:100%; border-collapse:collapse; font-size:14px; }
     .log-table th {
-      text-align:left; padding:12px 14px; background:var(--bg3); color:var(--text2);
-      font-weight:500; font-size:12px; letter-spacing:.2px;
+      text-align:left; padding:10px 14px; background:transparent;
+      color:var(--text2); font-weight:600; font-size:11px;
+      text-transform:uppercase; letter-spacing:0.05em;
+      border-bottom:var(--hairline);
     }
-    .log-table th:first-child { border-radius:var(--radius-sm) 0 0 var(--radius-sm); }
-    .log-table th:last-child { border-radius:0 var(--radius-sm) var(--radius-sm) 0; }
-    .log-table td { padding:12px 14px; border-bottom:1px solid var(--border); }
-    .log-table tr:hover td { background:var(--surface-hover); }
+    .log-table td {
+      padding:14px; border-bottom:var(--hairline); color:var(--text);
+    }
+    .log-table tr:last-child td { border-bottom:none; }
+    .log-table tr:hover td { background:var(--bg3); }
 
-    /* Badges */
-    .badge { padding:4px 10px; border-radius:100px; font-size:12px; font-weight:500; }
+    /* ═══════════ BADGES ═══════════ */
+    .badge {
+      padding:3px 10px; border-radius:var(--radius-pill);
+      font-size:11px; font-weight:600; letter-spacing:0.02em;
+      display:inline-flex; align-items:center; gap:4px;
+    }
     .badge-green { background:var(--green-light); color:var(--green); }
     .badge-red { background:var(--red-light); color:var(--red); }
     .badge-blue { background:var(--accent-light); color:var(--accent); }
     .badge-purple { background:var(--purple-light); color:var(--purple); }
 
-    /* Radio/toggle */
-    .radio-group { display:flex; gap:8px; }
+    /* ═══════════ SEGMENTED CONTROL / RADIO GROUP ═══════════ */
+    .radio-group {
+      display:inline-flex; background:var(--bg3); padding:2px;
+      border-radius:var(--radius-sm); gap:0; flex-wrap:wrap;
+    }
     .radio-option {
-      padding:8px 16px; border:1px solid var(--border2); border-radius:100px;
-      cursor:pointer; font-size:14px; transition:all .2s; color:var(--text2); font-weight:500;
+      padding:8px 16px; border:none; border-radius:8px;
+      cursor:pointer; font-size:14px; transition:all .18s var(--spring);
+      color:var(--text2); font-weight:600; background:transparent;
+      flex:1; text-align:center; min-width:fit-content;
     }
-    .radio-option:hover { background:var(--surface-hover); }
-    .radio-option.selected { border-color:var(--accent); background:var(--accent-light); color:var(--accent); }
+    .radio-option:hover { color:var(--text); }
+    .radio-option.selected {
+      background:var(--bg2); color:var(--text);
+      box-shadow:0 1px 3px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(0,0,0,0.04);
+    }
 
-    /* Counter */
-    .counter { display:flex; align-items:center; gap:8px; }
+    /* ═══════════ COUNTER (Stepper — iOS Pill) ═══════════ */
+    .counter {
+      display:inline-flex; align-items:center; gap:0;
+      background:var(--bg3); border-radius:var(--radius-pill);
+      padding:3px;
+    }
     .counter button {
-      width:36px; height:36px; border-radius:100px; border:1px solid var(--border2);
-      background:var(--bg2); color:var(--text); cursor:pointer; font-size:16px;
-      display:flex; align-items:center; justify-content:center; transition:all .2s;
+      width:32px; height:32px; border-radius:50%;
+      border:none; cursor:pointer; font-size:16px; font-weight:600;
+      display:flex; align-items:center; justify-content:center;
+      transition:all .15s var(--spring);
+      background:#fff; color:var(--accent);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1);
     }
-    .counter button:hover { background:var(--surface-hover); }
-    .counter input { width:56px; text-align:center; border-radius:var(--radius-sm); }
+    .counter button.plus { background:var(--accent); color:#fff; }
+    .counter button:hover { filter:brightness(0.97); }
+    .counter button:active { transform:scale(0.88); }
+    .counter input {
+      width:44px; text-align:center; margin:0 6px;
+      font-weight:700; font-size:15px;
+      background:transparent; padding:0;
+    }
+    .counter input:focus { background:transparent; box-shadow:none; }
 
-    /* Empty state */
-    .empty-state { text-align:center; padding:48px 24px; color:var(--text2); }
-    .empty-state .icon { font-size:40px; margin-bottom:16px; opacity:.4; }
+    /* ═══════════ EMPTY STATE ═══════════ */
+    .empty-state { text-align:center; padding:48px 20px; color:var(--text2); }
+    .empty-state .icon {
+      width:56px; height:56px; border-radius:50%;
+      background:var(--bg3); margin:0 auto 14px;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text3);
+    }
+    .empty-state div:last-child { font-size:14px; line-height:1.5; }
 
-    /* Modal */
+    /* ═══════════ MODAL / SHEET ═══════════ */
     .modal-overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,.25); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
-      display:flex; align-items:center; justify-content:center; z-index:200;
-      animation:fadeIn .2s ease;
+      position:fixed; inset:0; background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(4px);
+      display:flex; align-items:flex-end; justify-content:center; z-index:200;
+      animation:overlayIn .25s ease-out;
     }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @media(min-width:768px) { .modal-overlay { align-items:center; } }
+    @keyframes overlayIn { from { opacity:0; } to { opacity:1; } }
     .modal {
-      background:var(--bg2); border:none; border-radius:28px;
-      padding:28px; width:90%; max-width:600px; max-height:85vh; overflow-y:auto;
-      box-shadow:0 8px 32px rgba(0,0,0,.12);
-      animation:modalIn .25s cubic-bezier(.2,.6,.35,1);
+      background:var(--bg2); border:none;
+      border-radius:16px 16px 0 0;
+      padding:24px 20px 32px; width:100%; max-width:540px;
+      max-height:85vh; overflow-y:auto;
+      box-shadow:0 -8px 40px rgba(0,0,0,0.15);
+      animation:sheetUp .35s var(--spring);
+      padding-bottom:calc(32px + env(safe-area-inset-bottom));
     }
-    @keyframes modalIn { from{transform:scale(.95);opacity:0} to{transform:scale(1);opacity:1} }
-    .modal h3 { margin-bottom:20px; font-size:18px; font-weight:500; }
-    .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:24px; }
+    @media(min-width:768px) {
+      .modal { border-radius:18px; padding:28px; max-height:82vh; }
+    }
+    @keyframes sheetUp { from { transform:translateY(50px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+    .modal h3 {
+      margin-bottom:18px; font-size:20px; font-weight:700;
+      letter-spacing:-0.02em; color:var(--text);
+    }
+    .modal-actions {
+      display:flex; gap:10px; justify-content:flex-end; margin-top:22px;
+      padding-top:16px; border-top:var(--hairline);
+    }
+    .modal-actions .btn { flex:1; }
+    @media(min-width:768px) { .modal-actions .btn { flex:0 0 auto; } }
 
-    /* Chips */
-    .chip-group { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    /* ═══════════ CHIPS ═══════════ */
+    .chip-group { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
     .chip {
-      padding:6px 14px; border-radius:100px; font-size:13px; cursor:pointer;
-      border:1px solid var(--border2); transition:all .2s; user-select:none; -webkit-user-select:none; font-weight:500;
-      color:var(--text2);
+      padding:6px 14px; border-radius:var(--radius-pill); font-size:13px;
+      cursor:pointer; border:none; transition:all .15s var(--spring);
+      user-select:none; font-weight:600; background:var(--bg3); color:var(--text2);
     }
-    .chip.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-    .chip:hover { background:var(--surface-hover); }
-    .chip.active:hover { background:var(--accent-hover); }
+    .chip:active { transform:scale(0.94); }
+    .chip.active { background:var(--accent); color:#fff; }
 
-    /* Logo upload */
+    /* ═══════════ LOGO UPLOAD ═══════════ */
     .logo-upload {
-      border:2px dashed var(--border2); border-radius:var(--radius); padding:20px;
-      text-align:center; cursor:pointer; transition:all .2s;
+      border:2px dashed var(--border2); border-radius:var(--radius);
+      padding:20px; text-align:center; cursor:pointer;
+      transition:all .2s var(--spring); background:var(--bg3);
     }
     .logo-upload:hover { border-color:var(--accent); background:var(--accent-light); }
-    .logo-upload.has-logo { border-style:solid; border-color:var(--green); }
+    .logo-upload.has-logo { border-style:solid; border-color:var(--green); background:var(--green-light); }
     .logo-preview { max-width:80px; max-height:60px; margin:8px auto; display:block; }
 
-    /* Font slider */
-    .font-slider { display:flex; align-items:center; gap:10px; }
-    .font-slider input[type=range] { flex:1; accent-color:var(--accent); height:4px; }
-    .font-slider .val { min-width:36px; text-align:center; font-size:13px; color:var(--text2); font-weight:500; }
-
-    /* Model card */
-    .model-card {
-      background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm);
-      padding:14px; cursor:pointer; transition:all .2s;
+    /* ═══════════ FONT SLIDER ═══════════ */
+    .font-slider { display:flex; align-items:center; gap:10px; padding:6px 0; }
+    .font-slider input[type=range] {
+      flex:1; accent-color:var(--accent); height:4px; cursor:pointer;
     }
-    .model-card:hover { background:var(--surface-hover); }
-    .model-card.selected { border-color:var(--accent); background:var(--accent-light); }
-    .model-card .mc-name { font-weight:500; font-size:14px; color:var(--text); }
-    .model-card .mc-desc { font-size:12px; color:var(--text2); margin-top:4px; }
-    .model-card .mc-badges { display:flex; gap:6px; margin-top:8px; }
+    .font-slider .val {
+      min-width:42px; text-align:right; font-size:13px;
+      color:var(--accent); font-weight:600;
+      font-variant-numeric:tabular-nums;
+    }
 
-    .inline-row { display:flex; gap:14px; }
-    .inline-row > * { flex:1; }
+    /* ═══════════ MODEL CARD ═══════════ */
+    .model-card {
+      background:var(--bg2); border:none; border-radius:var(--radius);
+      padding:14px; cursor:pointer; transition:all .2s var(--spring);
+      box-shadow:var(--shadow-sm); margin-bottom:8px;
+    }
+    .model-card:hover { box-shadow:var(--shadow); transform:translateY(-1px); }
+    .model-card:active { transform:scale(0.98); }
+    .model-card.selected {
+      background:var(--accent-light); box-shadow:0 0 0 2px var(--accent);
+    }
+    .model-card .mc-name { font-weight:700; font-size:15px; color:var(--text); letter-spacing:-0.01em; }
+    .model-card .mc-desc { font-size:13px; color:var(--text2); margin-top:3px; line-height:1.35; }
+    .model-card .mc-badges { display:flex; gap:5px; margin-top:8px; flex-wrap:wrap; }
 
-    /* Settings */
-    .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .settings-section { margin-bottom:24px; }
-    .settings-section h3 { font-size:14px; font-weight:500; color:var(--text); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
-    .dim-preview { font-size:12px; color:var(--text3); margin-top:4px; }
+    .inline-row { display:flex; flex-direction:column; gap:0; }
+    @media(min-width:600px) { .inline-row { flex-direction:row; gap:14px; } .inline-row > * { flex:1; } }
 
-    /* Scrollbar styling */
-    ::-webkit-scrollbar { width:6px; height:6px; }
+    /* ═══════════ SETTINGS ═══════════ */
+    .settings-grid { display:grid; grid-template-columns:1fr; gap:20px; }
+    @media(min-width:768px) { .settings-grid { grid-template-columns:1fr 1fr; } }
+    .settings-section { margin-bottom:8px; }
+    .settings-section h3 {
+      font-size:12px; font-weight:700; color:var(--text2);
+      margin-bottom:12px; text-transform:uppercase; letter-spacing:0.08em;
+      font-family:'Inter',sans-serif;
+    }
+    .dim-preview {
+      font-size:12px; color:var(--text2); margin-top:4px;
+      font-variant-numeric:tabular-nums;
+    }
+    .summary-box {
+      background:var(--bg3); border-radius:var(--radius);
+      padding:16px; margin-bottom:16px;
+    }
+    .summary-box .label {
+      font-size:11px; font-weight:700; color:var(--text2);
+      text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;
+    }
+    .summary-box .row {
+      display:flex; flex-direction:column; gap:12px; font-size:14px;
+    }
+    @media(min-width:600px) { .summary-box .row { flex-direction:row; gap:24px; } }
+    .summary-box .row span { color:var(--text2); }
+
+    /* Scrollbar hiding for iOS feel */
+    ::-webkit-scrollbar { width:8px; height:8px; }
     ::-webkit-scrollbar-track { background:transparent; }
-    ::-webkit-scrollbar-thumb { background:var(--border2); border-radius:100px; }
-    ::-webkit-scrollbar-thumb:hover { background:var(--text3); }
+    ::-webkit-scrollbar-thumb { background:rgba(60,60,67,0.2); border-radius:4px; }
+    ::-webkit-scrollbar-thumb:hover { background:rgba(60,60,67,0.3); }
+
+    /* ═══════════ CANVAS DESIGNER ═══════════ */
+    .canvas-shell {
+      display:grid; grid-template-columns:1fr; gap:14px;
+      margin-bottom:14px;
+    }
+    @media(min-width:900px) {
+      .canvas-shell { grid-template-columns:240px 1fr; }
+    }
+
+    .canvas-stage {
+      background:linear-gradient(135deg,#E5E5EA 0%,#F2F2F7 100%);
+      border-radius:var(--radius-lg); padding:32px 20px;
+      min-height:420px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+      border:0.5px solid rgba(0,0,0,0.06);
+      touch-action:none;
+    }
+    .canvas-stage::before {
+      content:''; position:absolute; inset:0;
+      background-image:radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size:20px 20px; opacity:0.6;
+    }
+
+    .canvas-label {
+      position:relative; background:#fff;
+      box-shadow:0 20px 60px rgba(0,0,0,0.18), 0 0 0 0.5px rgba(0,0,0,0.06);
+      border-radius:6px; overflow:visible;
+      transition:transform .2s var(--spring);
+    }
+
+    .canvas-el {
+      position:absolute; box-sizing:border-box;
+      cursor:move; user-select:none; -webkit-user-select:none;
+      padding:2px 6px; border-radius:3px;
+      display:flex; align-items:center; justify-content:flex-start;
+      font-family:-apple-system,'SF Pro Text',sans-serif;
+      line-height:1.15; color:#000; white-space:nowrap;
+      transition:box-shadow .15s ease;
+      touch-action:none;
+    }
+    .canvas-el:hover { background:rgba(0,122,255,0.04); }
+    .canvas-el.selected {
+      box-shadow:0 0 0 2px var(--accent), 0 4px 16px rgba(0,122,255,0.2);
+      background:rgba(0,122,255,0.04);
+      z-index:10;
+    }
+    .canvas-el .handle {
+      position:absolute; width:14px; height:14px;
+      background:#fff; border:2px solid var(--accent); border-radius:50%;
+      box-shadow:0 1px 4px rgba(0,0,0,0.2); cursor:nwse-resize;
+    }
+    .canvas-el .handle.br { right:-7px; bottom:-7px; cursor:nwse-resize; }
+    .canvas-el.type-barcode {
+      background:repeating-linear-gradient(90deg,#000 0,#000 1.5px,transparent 1.5px,transparent 3px);
+      color:transparent; border-radius:0;
+    }
+    .canvas-el.type-line { background:#000; padding:0; border-radius:0; }
+    .canvas-el.type-logo {
+      background:#F2F2F7; border:1px dashed rgba(0,0,0,0.2);
+      justify-content:center; color:#8E8E93; font-size:9px;
+    }
+    .canvas-el.type-logo img { max-width:100%; max-height:100%; object-fit:contain; }
+    .canvas-el.type-rect { background:transparent; border:1px solid #000; }
+
+    /* Placed-elements side panel */
+    .layers-panel {
+      background:var(--bg2); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:14px;
+      border:0.5px solid rgba(255,255,255,0.5);
+    }
+    .layers-panel h3 {
+      font-size:11px; font-weight:700; color:var(--text2);
+      text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;
+      font-family:'Inter',sans-serif;
+    }
+    .layer-item {
+      display:flex; align-items:center; gap:10px;
+      padding:9px 10px; border-radius:8px; cursor:pointer;
+      font-size:13px; color:var(--text); font-weight:500;
+      transition:background .12s ease;
+    }
+    .layer-item:hover { background:var(--bg3); }
+    .layer-item.selected { background:var(--accent-light); color:var(--accent); font-weight:600; }
+    .layer-item .lk-icon {
+      width:22px; height:22px; border-radius:6px;
+      background:var(--bg3); display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; color:var(--text2);
+    }
+    .layer-item.selected .lk-icon { background:rgba(0,122,255,0.18); color:var(--accent); }
+    .layer-item .lk-label { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+    /* FAB — Floating Action Button */
+    .fab-wrap { position:absolute; right:18px; bottom:18px; z-index:50; }
+    .fab {
+      width:56px; height:56px; border-radius:50%;
+      background:var(--accent); color:#fff; border:none;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 24px rgba(0,122,255,0.45), 0 4px 8px rgba(0,0,0,0.15);
+      transition:transform .25s var(--spring);
+    }
+    .fab:active { transform:scale(0.92); }
+    .fab.open { transform:rotate(45deg); background:var(--red); box-shadow:0 8px 24px rgba(255,59,48,0.4); }
+
+    .fab-menu {
+      position:absolute; right:0; bottom:68px;
+      display:flex; flex-direction:column; gap:10px;
+      opacity:0; pointer-events:none;
+      transform:translateY(10px) scale(0.9); transform-origin:bottom right;
+      transition:all .22s var(--spring);
+    }
+    .fab-menu.open { opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
+    .fab-item {
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,0.95); backdrop-filter:blur(20px);
+      border:none; border-radius:var(--radius-pill);
+      padding:10px 18px 10px 12px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.12), 0 0 0 0.5px rgba(0,0,0,0.04);
+      cursor:pointer; font-size:14px; font-weight:600;
+      color:var(--text); white-space:nowrap;
+      transition:transform .15s var(--spring);
+    }
+    .fab-item:hover { transform:translateX(-2px); }
+    .fab-item:active { transform:scale(0.95); }
+    .fab-item .ico {
+      width:32px; height:32px; border-radius:50%;
+      background:var(--accent-light); color:var(--accent);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+
+    /* Bottom Inspector Sheet */
+    .inspector {
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:calc(90px + env(safe-area-inset-bottom));
+      width:calc(100% - 32px); max-width:500px;
+      background:rgba(255,255,255,0.92); backdrop-filter:saturate(180%) blur(30px);
+      border-radius:18px; padding:14px 16px 12px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.18), 0 0 0 0.5px rgba(0,0,0,0.06);
+      z-index:80;
+      animation:sheetUp .3s var(--spring);
+    }
+    .inspector-row {
+      display:flex; align-items:center; gap:10px; padding:6px 0;
+    }
+    .inspector-row + .inspector-row { border-top:var(--hairline); }
+    .inspector-row .k {
+      font-size:11px; font-weight:700; color:var(--text2);
+      text-transform:uppercase; letter-spacing:0.05em;
+      min-width:58px;
+    }
+    .inspector-row input[type=range] { flex:1; accent-color:var(--accent); }
+    .inspector-row input[type=text] {
+      flex:1; background:var(--bg3); border:none; border-radius:8px;
+      padding:8px 12px; font-size:14px;
+    }
+    .inspector-head {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:4px;
+    }
+    .inspector-head .title {
+      font-size:14px; font-weight:700; color:var(--text);
+    }
+    .inspector-head .type-pill {
+      font-size:10px; font-weight:700; text-transform:uppercase;
+      background:var(--accent-light); color:var(--accent);
+      padding:3px 8px; border-radius:var(--radius-pill);
+      letter-spacing:0.04em;
+    }
+
+    /* Designer toolbar */
+    .designer-topbar {
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px; margin-bottom:14px; flex-wrap:wrap;
+    }
+    .designer-topbar .left-group { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+    .model-pill {
+      display:inline-flex; align-items:center; gap:6px;
+      background:var(--bg2); padding:7px 14px;
+      border-radius:var(--radius-pill);
+      font-size:13px; font-weight:600; color:var(--text);
+      box-shadow:var(--shadow-sm);
+      border:0.5px solid rgba(0,0,0,0.04);
+      cursor:pointer; transition:all .15s var(--spring);
+      max-width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+    .model-pill:hover { background:var(--bg3); }
+    .model-pill.selected { background:var(--accent-light); color:var(--accent); }
+
+    /* Mobile refinements */
+    @media(max-width:599px) {
+      .app-header { padding:0 14px; }
+      .app-header h1 { font-size:16px; }
+      .app-header h1 span { display:none; }
+      .printer-status { padding:5px 10px; font-size:12px; }
+      .printer-status .ip { display:none; }
+      .card { padding:16px; border-radius:14px; }
+      .page-title { font-size:24px; }
+      .main { padding:12px 12px 110px; }
+    }
   </style>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const { useState, useEffect, useRef, useCallback } = React;
+    const { useState, useEffect, useRef, useCallback, useMemo, useLayoutEffect } = React;
     const API = '/api';
 
     // ====== SVG Logo Cloud3 ======
     function Cloud3Logo({ size = 32 }) {
       return (
         <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="200" height="200" rx="40" fill="#006fff"/>
-          <path d="M140 105c0-22.1-17.9-40-40-40-17.6 0-32.5 11.4-37.8 27.2C48.8 94.8 38 107.2 38 122c0 17.7 14.3 32 32 32h68c15.5 0 28-12.5 28-28 0-13.8-10-25.3-23.4-27.6C143.5 113.2 140 105 140 105z" fill="white" opacity=".9"/>
-          <text x="100" y="135" textAnchor="middle" fill="#006fff" fontFamily="Inter,sans-serif" fontWeight="700" fontSize="38">C3</text>
+          <rect width="200" height="200" rx="46" fill="#007AFF"/>
+          <path d="M140 105c0-22.1-17.9-40-40-40-17.6 0-32.5 11.4-37.8 27.2C48.8 94.8 38 107.2 38 122c0 17.7 14.3 32 32 32h68c15.5 0 28-12.5 28-28 0-13.8-10-25.3-23.4-27.6C143.5 113.2 140 105 140 105z" fill="white" opacity=".95"/>
+          <text x="100" y="135" textAnchor="middle" fill="#007AFF" fontFamily="Plus Jakarta Sans,sans-serif" fontWeight="800" fontSize="38">C3</text>
         </svg>
       );
     }
@@ -376,7 +769,7 @@
     // ====== Toast ======
     function Toast({ message, type, onClose }) {
       useEffect(() => { const t = setTimeout(onClose, 3000); return () => clearTimeout(t); }, []);
-      return <div className={`toast ${type}`}>{type === 'success' ? '✅' : '❌'} {message}</div>;
+      return <div className={`toast ${type}`}>{type === 'success' ? '✓' : '✕'} {message}</div>;
     }
 
     // ====== Client Search ======
@@ -406,116 +799,6 @@
               ))}
             </div>
           )}
-        </div>
-      );
-    }
-
-    const FIELD_DEFS = {
-      cloud3: { label: 'CLOUD3', type: 'text', maxW: 180, maxH: 28, sample: 'CLOUD3' },
-      data_top: { label: 'Data Header', type: 'text', maxW: 130, maxH: 24, sample: '01/04/2026' },
-      titolo: { label: 'Titolo', type: 'text', maxW: 420, maxH: 40, sample: 'RITIRO ASSISTENZA' },
-      line1: { label: 'Linea 1', type: 'line', maxW: 420, maxH: 4, sample: '' },
-      cliente: { label: 'Cliente', type: 'text', maxW: 420, maxH: 30, sample: 'Cliente: Azienda Demo Srl' },
-      dispositivo: { label: 'Dispositivo', type: 'text', maxW: 420, maxH: 26, sample: 'Disp: PC Desktop | DEMO2026PC01' },
-      telefono_email: { label: 'Tel/Email', type: 'text', maxW: 420, maxH: 24, sample: 'Tel: 010123456 | info@demo.it' },
-      indirizzo: { label: 'Indirizzo', type: 'text', maxW: 420, maxH: 24, sample: 'Ind: Via Roma 1 - Genova (GE)' },
-      motivo: { label: 'Motivo', type: 'text', maxW: 420, maxH: 30, sample: '>> RITIRO ASSISTENZA <<' },
-      line2: { label: 'Linea 2', type: 'line', maxW: 420, maxH: 4, sample: '' },
-      data: { label: 'Data', type: 'text', maxW: 120, maxH: 22, sample: 'Data: 01/04/2026' },
-      barcode: { label: 'Barcode', type: 'barcode', maxW: 300, maxH: 80, sample: '|||||||||||||||||||||||' }
-    };
-    const CAMPI_VISIBILI_KEYS = new Set(['cliente','dispositivo','telefono_email','indirizzo','motivo','data','barcode']);
-
-    function makeDefaultLayout(campi = [], withBarcode = true) {
-      return {
-        items: {
-          cloud3: { key: 'cloud3', type: 'text', x: 10, y: 12, w: 100, h: 18, font: 18, align: 'L', z: 1, visible: true },
-          data_top: { key: 'data_top', type: 'text', x: 318, y: 12, w: 112, h: 18, font: 14, align: 'R', z: 1, visible: true },
-          titolo: { key: 'titolo', type: 'text', x: 10, y: 34, w: 420, h: 28, font: 24, align: 'C', z: 2, visible: true },
-          line1: { key: 'line1', type: 'line', x: 10, y: 62, w: 420, h: 2, thickness: 2, z: 2, visible: true },
-          cliente: { key: 'cliente', type: 'text', x: 10, y: 70, w: 420, h: 22, font: 20, align: 'L', z: 3, visible: campi.includes('cliente') },
-          dispositivo: { key: 'dispositivo', type: 'text', x: 10, y: 92, w: 420, h: 20, font: 18, align: 'L', z: 3, visible: campi.includes('dispositivo') },
-          telefono_email: { key: 'telefono_email', type: 'text', x: 10, y: 112, w: 420, h: 18, font: 16, align: 'L', z: 3, visible: campi.includes('telefono_email') },
-          indirizzo: { key: 'indirizzo', type: 'text', x: 10, y: 130, w: 420, h: 18, font: 16, align: 'L', z: 3, visible: campi.includes('indirizzo') },
-          motivo: { key: 'motivo', type: 'text', x: 10, y: 148, w: 420, h: 20, font: 18, align: 'C', z: 3, visible: campi.includes('motivo') },
-          line2: { key: 'line2', type: 'line', x: 10, y: 168, w: 420, h: 2, thickness: 2, z: 3, visible: true },
-          data: { key: 'data', type: 'text', x: 10, y: 176, w: 120, h: 16, font: 14, align: 'L', z: 4, visible: campi.includes('data') },
-          barcode: { key: 'barcode', type: 'barcode', x: 90, y: 196, w: 260, h: 54, font: 12, align: 'C', z: 4, visible: campi.includes('barcode') && withBarcode }
-        }
-      };
-    }
-
-    function LabelLayoutEditor({ layout, setLayout, selectedKey, setSelectedKey }) {
-      const canvasRef = useRef(null);
-      const dragRef = useRef(null);
-
-      const onMouseDown = (e, key) => {
-        e.preventDefault();
-        const box = canvasRef.current.getBoundingClientRect();
-        const it = layout.items[key];
-        dragRef.current = {
-          key,
-          startX: e.clientX,
-          startY: e.clientY,
-          origX: it.x,
-          origY: it.y,
-          scaleX: 440 / box.width,
-          scaleY: 280 / box.height
-        };
-        setSelectedKey(key);
-      };
-
-      useEffect(() => {
-        const onMove = (e) => {
-          if (!dragRef.current) return;
-          const d = dragRef.current;
-          const it = layout.items[d.key];
-          const dx = Math.round((e.clientX - d.startX) * d.scaleX);
-          const dy = Math.round((e.clientY - d.startY) * d.scaleY);
-          const nx = Math.max(0, Math.min(440 - it.w, d.origX + dx));
-          const ny = Math.max(0, Math.min(280 - it.h, d.origY + dy));
-          setLayout(prev => ({
-            ...prev,
-            items: { ...prev.items, [d.key]: { ...prev.items[d.key], x: nx, y: ny } }
-          }));
-        };
-        const onUp = () => { dragRef.current = null; };
-        window.addEventListener('mousemove', onMove);
-        window.addEventListener('mouseup', onUp);
-        return () => {
-          window.removeEventListener('mousemove', onMove);
-          window.removeEventListener('mouseup', onUp);
-        };
-      }, [layout, setLayout]);
-
-      return (
-        <div className="label-canvas-wrap">
-          <div className="label-canvas" ref={canvasRef}>
-            {Object.values(layout.items).sort((a,b)=>(a.z||0)-(b.z||0)).map(it => {
-              const def = FIELD_DEFS[it.key] || {};
-              const style = {
-                left: `${(it.x / 440) * 100}%`,
-                top: `${(it.y / 280) * 100}%`,
-                width: `${(it.w / 440) * 100}%`,
-                height: `${(it.h / 280) * 100}%`,
-                fontSize: `${Math.max(9, Math.round((it.font || 14) * 0.55))}px`,
-                textAlign: it.align === 'R' ? 'right' : (it.align === 'C' ? 'center' : 'left'),
-                display: it.visible === false ? 'none' : 'block'
-              };
-              return (
-                <div
-                  key={it.key}
-                  className={`label-item ${it.type === 'line' ? 'line' : ''} ${it.type === 'barcode' ? 'barcode' : ''} ${selectedKey === it.key ? 'selected' : ''}`}
-                  style={style}
-                  onMouseDown={(e) => onMouseDown(e, it.key)}
-                  onClick={() => setSelectedKey(it.key)}
-                  title={`${def.label || it.key} — drag`}
-                >
-                  {it.type === 'line' ? '' : (def.sample || it.key)}
-                </div>
-              );
-            })}
-          </div>
         </div>
       );
     }
@@ -597,19 +880,16 @@
       const handleReset = () => {
         setForm({
           printer_ip: '10.0.50.92', printer_port: 9100,
-          label_width_mm: 55, label_height_mm: 35, dpi: 203,
-          top_margin_dots: 14, show_barcode: false, show_cloud3_header: true, hide_logo: true
+          label_width_mm: 55, label_height_mm: 35, dpi: 203
         });
       };
 
       return (
-        <div style={{maxWidth:700}}>
-          <div className="card">
-            <h2>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-              Impostazioni Stampante
-            </h2>
+        <div style={{maxWidth:760, margin:'0 auto'}}>
+          <div className="page-title">Impostazioni</div>
+          <div className="page-subtitle">Configurazione stampante Zebra e formato etichetta</div>
 
+          <div className="card">
             <div className="settings-grid">
               <div>
                 <div className="settings-section">
@@ -620,7 +900,7 @@
                       placeholder="Es: 10.0.50.92" />
                   </div>
                   <div className="field">
-                    <label>Porta</label>
+                    <label>Porta TCP</label>
                     <input type="number" value={form.printer_port || 9100}
                       onChange={e => setForm({...form, printer_port: parseInt(e.target.value) || 9100})} />
                   </div>
@@ -649,50 +929,20 @@
                       <option value={300}>300 DPI</option>
                     </select>
                   </div>
-                  <div className="field">
-                    <label>Margine Superiore (dot)</label>
-                    <input type="number" value={form.top_margin_dots ?? 14} min="0" max="60"
-                      onChange={e => setForm({...form, top_margin_dots: parseInt(e.target.value) || 0})} />
-                    <div className="dim-preview">Aumenta questo valore se il testo in alto viene tagliato</div>
-                  </div>
-                  <div className="field">
-                    <label>Layout Header</label>
-                    <div style={{display:'flex',flexDirection:'column',gap:6,paddingTop:4}}>
-                      <label style={{display:'flex',alignItems:'center',gap:8,fontWeight:500}}>
-                        <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)'}}
-                          checked={form.show_cloud3_header !== false}
-                          onChange={e => setForm({...form, show_cloud3_header: e.target.checked})} />
-                        CLOUD3 a sinistra e data a destra
-                      </label>
-                      <label style={{display:'flex',alignItems:'center',gap:8,fontWeight:500}}>
-                        <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)'}}
-                          checked={form.hide_logo !== false}
-                          onChange={e => setForm({...form, hide_logo: e.target.checked})} />
-                        Nascondi logo/nuvoletta nel layout stampa
-                      </label>
-                      <label style={{display:'flex',alignItems:'center',gap:8,fontWeight:500}}>
-                        <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)'}}
-                          checked={!!form.show_barcode}
-                          onChange={e => setForm({...form, show_barcode: e.target.checked})} />
-                        Mostra barcode
-                      </label>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
 
-            <div style={{background:'var(--bg)',borderRadius:6,padding:14,marginBottom:16,border:'1px solid var(--border)'}}>
-              <div style={{fontSize:12,fontWeight:600,color:'var(--text2)',marginBottom:8}}>Riepilogo</div>
-              <div style={{display:'flex',gap:24,fontSize:13}}>
-                <div><span style={{color:'var(--text2)'}}>Stampante:</span> <strong>{form.printer_ip}:{form.printer_port}</strong></div>
-                <div><span style={{color:'var(--text2)'}}>Etichetta:</span> <strong>{form.label_width_mm} x {form.label_height_mm} mm</strong></div>
-                <div><span style={{color:'var(--text2)'}}>Dot:</span> <strong>{labelWidthDot} x {labelHeightDot}</strong></div>
-                <div><span style={{color:'var(--text2)'}}>Margine Top:</span> <strong>{form.top_margin_dots ?? 14} dot</strong></div>
+            <div className="summary-box">
+              <div className="label">Riepilogo</div>
+              <div className="row">
+                <div><span>Stampante</span><br/><strong style={{fontSize:15}}>{form.printer_ip}:{form.printer_port}</strong></div>
+                <div><span>Etichetta</span><br/><strong style={{fontSize:15}}>{form.label_width_mm} × {form.label_height_mm} mm</strong></div>
+                <div><span>Risoluzione</span><br/><strong style={{fontSize:15}}>{labelWidthDot} × {labelHeightDot} dot</strong></div>
               </div>
             </div>
 
-            <div style={{display:'flex',gap:8,justifyContent:'flex-end'}}>
+            <div style={{display:'flex',gap:10,justifyContent:'flex-end',flexWrap:'wrap'}}>
               <button className="btn btn-outline" onClick={handleReset}>Ripristina Default</button>
               <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
                 {saving ? 'Salvataggio...' : 'Salva Impostazioni'}
@@ -703,8 +953,445 @@
       );
     }
 
-    // ====== DESIGNER PAGE ======
-    function DesignerPage({ modelli, reloadModelli, setToast, settings }) {
+    // ====== CANVAS DESIGNER (Tablet WYSIWYG) ======
+    const FIELD_META = {
+      cliente:       { label:'Cliente',      sample:'Mario Rossi SpA',      fs:11 },
+      dispositivo:   { label:'Dispositivo',  sample:'PC Desktop | PC01',    fs:10 },
+      telefono_email:{ label:'Tel / Email',  sample:'010123456 | x@demo',   fs:9 },
+      indirizzo:     { label:'Indirizzo',    sample:'Via Roma 1, Genova',   fs:9 },
+      motivo:        { label:'Motivo',       sample:'>> IN LAVORAZIONE <<', fs:11 },
+      referente:     { label:'Referente',    sample:'Rif: ____________',     fs:9 },
+      data:          { label:'Data',         sample:'Data: 22/04/2026',     fs:9 },
+      note:          { label:'Note',         sample:'Note: ____________',    fs:9 }
+    };
+
+    function CanvasDesignerPage({ modelli, reloadModelli, setToast, settings }) {
+      const LW = settings.label_width_mm || 55;
+      const LH = settings.label_height_mm || 35;
+      const stageRef = useRef(null);
+      const [scale, setScale] = useState(8);
+      const [selectedModel, setSelectedModel] = useState(null);
+      const [name, setName] = useState('Nuovo Modello');
+      const [desc, setDesc] = useState('');
+      const [logoDataUrl, setLogoDataUrl] = useState(null);
+      const [elements, setElements] = useState([]);
+      const [selId, setSelId] = useState(null);
+      const [fabOpen, setFabOpen] = useState(false);
+      const [editingText, setEditingText] = useState(false);
+      const [showModels, setShowModels] = useState(false);
+      const logoInputRef = useRef(null);
+      const dragRef = useRef(null);
+      const resizeRef = useRef(null);
+
+      // Fit-to-stage scale
+      useLayoutEffect(() => {
+        const compute = () => {
+          if (!stageRef.current) return;
+          const rect = stageRef.current.getBoundingClientRect();
+          const pad = 64;
+          const maxW = rect.width - pad;
+          const maxH = rect.height - pad;
+          const s = Math.min(maxW / LW, maxH / LH, 14);
+          setScale(Math.max(4, s));
+        };
+        compute();
+        window.addEventListener('resize', compute);
+        return () => window.removeEventListener('resize', compute);
+      }, [LW, LH]);
+
+      // Default layout
+      const freshLayout = () => [
+        { id:'title', type:'text', x:2, y:1.5, w:LW-4, h:5.5, text:'TITOLO ETICHETTA', fontSize:14, bold:true, align:'center' },
+        { id:'f_cliente', type:'field', field:'cliente', x:2, y:9,  w:LW-4, h:4.5, fontSize:11, bold:false, align:'left' },
+        { id:'f_disp',    type:'field', field:'dispositivo', x:2, y:14, w:LW-4, h:4.5, fontSize:10, bold:false, align:'left' },
+        { id:'f_motivo',  type:'field', field:'motivo', x:2, y:19, w:LW-4, h:4.5, fontSize:10, bold:true, align:'center' },
+        { id:'barcode',   type:'barcode', x:(LW-30)/2, y:LH-9, w:30, h:7 }
+      ];
+
+      // Load model into canvas
+      const loadModel = (m) => {
+        setSelectedModel(m);
+        setName(m.nome || '');
+        setDesc(m.descrizione || '');
+        setLogoDataUrl(null);
+        let els = null;
+        if (m.layout_json) {
+          try { els = typeof m.layout_json === 'string' ? JSON.parse(m.layout_json) : m.layout_json; } catch(e){}
+        }
+        if (!els || !Array.isArray(els) || els.length === 0) {
+          // Build from legacy fields
+          const campi = m.campi_visibili ? (typeof m.campi_visibili === 'string' ? JSON.parse(m.campi_visibili) : m.campi_visibili) : [];
+          const arr = [{ id:'title', type:'text', x:2, y:1.5, w:LW-4, h:5.5, text:m.titolo_zpl||'TITOLO', fontSize:m.font_titolo||14, bold:true, align:'center' }];
+          let y = 8.5;
+          campi.forEach((k,i) => {
+            if (k === 'barcode' || k === 'footer_contatti' || k === 'intestazione' || !FIELD_META[k]) return;
+            const fs = k==='cliente'?(m.font_cliente||11):k==='dispositivo'?(m.font_dispositivo||10):k==='motivo'?(m.font_motivo||10):k==='data'?(m.font_data||9):(m.font_dettagli||9);
+            arr.push({ id:`f_${k}_${i}`, type:'field', field:k, x:2, y, w:LW-4, h:4.5, fontSize:fs, bold:k==='motivo', align:k==='motivo'?'center':'left' });
+            y += 4.5;
+          });
+          if (campi.includes('barcode') && m.show_barcode) arr.push({ id:'barcode', type:'barcode', x:(LW-30)/2, y:LH-9, w:30, h:7 });
+          els = arr;
+        }
+        setElements(els);
+        setSelId(null);
+        setFabOpen(false);
+      };
+
+      const newModel = () => {
+        setSelectedModel(null);
+        setName('Nuovo Modello'); setDesc('');
+        setLogoDataUrl(null);
+        setElements(freshLayout());
+        setSelId('title'); setFabOpen(false);
+      };
+
+      useEffect(() => { if (!selectedModel && elements.length === 0) newModel(); }, []);
+
+      // Pointer drag for element
+      const onElPointerDown = (e, el) => {
+        if (editingText) return;
+        e.stopPropagation();
+        setSelId(el.id);
+        setFabOpen(false);
+        const startX = e.clientX, startY = e.clientY;
+        const origX = el.x, origY = el.y;
+        dragRef.current = { id: el.id };
+        const move = (ev) => {
+          const dx = (ev.clientX - startX) / scale;
+          const dy = (ev.clientY - startY) / scale;
+          setElements(prev => prev.map(p => p.id === el.id
+            ? { ...p, x: Math.max(0, Math.min(LW - p.w, origX + dx)),
+                     y: Math.max(0, Math.min(LH - p.h, origY + dy)) }
+            : p));
+        };
+        const up = () => {
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+          dragRef.current = null;
+        };
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+      };
+
+      const onResizePointerDown = (e, el) => {
+        e.stopPropagation();
+        const startX = e.clientX, startY = e.clientY;
+        const origW = el.w, origH = el.h;
+        resizeRef.current = { id: el.id };
+        const move = (ev) => {
+          const dw = (ev.clientX - startX) / scale;
+          const dh = (ev.clientY - startY) / scale;
+          setElements(prev => prev.map(p => p.id === el.id
+            ? { ...p, w: Math.max(4, Math.min(LW - p.x, origW + dw)),
+                     h: Math.max(2, Math.min(LH - p.y, origH + dh)) }
+            : p));
+        };
+        const up = () => {
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+          resizeRef.current = null;
+        };
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+      };
+
+      const sel = elements.find(e => e.id === selId);
+
+      const updateSel = (patch) => {
+        setElements(prev => prev.map(p => p.id === selId ? { ...p, ...patch } : p));
+      };
+      const deleteSel = () => {
+        setElements(prev => prev.filter(p => p.id !== selId));
+        setSelId(null);
+      };
+
+      const addElement = (kind) => {
+        setFabOpen(false);
+        const id = kind + '_' + Date.now().toString(36);
+        const cx = LW/2, cy = LH/2;
+        let el;
+        if (kind === 'text') el = { id, type:'text', x:cx-12, y:cy-3, w:24, h:6, text:'Testo', fontSize:11, bold:false, align:'left' };
+        else if (kind === 'barcode') el = { id, type:'barcode', x:cx-15, y:cy-3.5, w:30, h:7 };
+        else if (kind === 'line') el = { id, type:'line', x:2, y:cy, w:LW-4, h:0.3 };
+        else if (kind === 'logo') { el = { id, type:'logo', x:2, y:2, w:14, h:8 }; if (!logoDataUrl) logoInputRef.current?.click(); }
+        else if (kind === 'rect') el = { id, type:'rect', x:cx-10, y:cy-4, w:20, h:8 };
+        else if (kind.startsWith('field:')) {
+          const f = kind.split(':')[1];
+          el = { id, type:'field', field:f, x:2, y:cy, w:LW-4, h:4.5, fontSize:FIELD_META[f].fs, bold:false, align:'left' };
+        }
+        if (el) { setElements(prev => [...prev, el]); setSelId(id); }
+      };
+
+      const handleLogoUpload = (e) => {
+        const f = e.target.files[0]; if (!f) return;
+        if (f.size > 500000) return setToast({message:'Logo troppo grande (max 500KB)', type:'error'});
+        const r = new FileReader();
+        r.onload = (ev) => setLogoDataUrl(ev.target.result);
+        r.readAsDataURL(f);
+      };
+
+      // Derive legacy fields from canvas at save time
+      const save = async () => {
+        if (!name.trim()) return setToast({ message:'Nome modello obbligatorio', type:'error' });
+        const title = elements.find(e => e.id === 'title' || (e.type==='text' && e.bold)) || elements.find(e => e.type==='text');
+        const motivo = elements.find(e => e.type==='field' && e.field==='motivo');
+        const fields = elements.filter(e => e.type==='field').map(e => e.field);
+        const hasBarcode = elements.some(e => e.type==='barcode');
+        if (hasBarcode) fields.push('barcode');
+        const byField = (k) => elements.find(e => e.type==='field' && e.field===k);
+        const body = {
+          nome: name.trim(),
+          descrizione: desc,
+          titolo_zpl: (title?.text || name).toUpperCase(),
+          motivo_zpl: (motivo ? FIELD_META.motivo.sample : '>>  <<'),
+          campi_visibili: Array.from(new Set(fields)),
+          font_titolo: title?.fontSize || 14,
+          font_cliente: byField('cliente')?.fontSize || 11,
+          font_dispositivo: byField('dispositivo')?.fontSize || 10,
+          font_dettagli: byField('indirizzo')?.fontSize || byField('telefono_email')?.fontSize || 9,
+          font_motivo: byField('motivo')?.fontSize || 10,
+          font_data: byField('data')?.fontSize || 9,
+          show_barcode: hasBarcode ? 1 : 0,
+          layout_json: elements
+        };
+        try {
+          const url = selectedModel ? `${API}/modelli/${selectedModel.id}` : `${API}/modelli`;
+          const method = selectedModel ? 'PUT' : 'POST';
+          const res = await fetch(url, { method, headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+          const data = await res.json();
+          if (!res.ok) return setToast({ message: data.error || 'Errore salvataggio', type:'error' });
+          const modelId = data.id || selectedModel?.id;
+          if (logoDataUrl && modelId) {
+            const base64 = logoDataUrl.split(',')[1];
+            await fetch(`${API}/modelli/${modelId}/logo`, {
+              method:'POST', headers:{'Content-Type':'application/json'},
+              body: JSON.stringify({ image_base64: base64, max_width: 80, max_height: 60 })
+            });
+          }
+          setToast({ message: selectedModel ? 'Modello aggiornato!' : 'Modello creato!', type:'success' });
+          await reloadModelli();
+          setSelectedModel(data);
+        } catch(e) {
+          setToast({ message:'Errore: '+e.message, type:'error' });
+        }
+      };
+
+      const deleteModel = async () => {
+        if (!selectedModel || !selectedModel.is_custom) return setToast({message:'Solo i modelli custom possono essere eliminati',type:'error'});
+        if (!confirm(`Eliminare "${selectedModel.nome}"?`)) return;
+        await fetch(`${API}/modelli/${selectedModel.id}`, { method:'DELETE' });
+        setToast({ message:'Modello eliminato', type:'success' });
+        reloadModelli(); newModel();
+      };
+
+      const renderElText = (el) => {
+        if (el.type === 'text') return el.text;
+        if (el.type === 'field') return FIELD_META[el.field]?.sample || el.field;
+        return '';
+      };
+
+      const toolItems = [
+        { key:'text',    label:'Testo',      iconPath:'M4 7h16M12 7v13' },
+        { key:'field:cliente',     label:'+ Cliente',     iconPath:'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z' },
+        { key:'field:dispositivo', label:'+ Dispositivo', iconPath:'M9 2h6l2 4v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V6l2-4z' },
+        { key:'field:telefono_email', label:'+ Tel/Email', iconPath:'M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72a2 2 0 0 1 1.72 2z' },
+        { key:'field:indirizzo',  label:'+ Indirizzo',   iconPath:'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z' },
+        { key:'field:motivo',     label:'+ Motivo',      iconPath:'M12 20v-16 M6 14l6 6 6-6' },
+        { key:'field:data',       label:'+ Data',        iconPath:'M3 5h18v16H3z M16 3v4 M8 3v4 M3 9h18' },
+        { key:'field:referente',  label:'+ Referente',   iconPath:'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z' },
+        { key:'field:note',       label:'+ Note',        iconPath:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M8 13h8 M8 17h5' },
+        { key:'barcode', label:'Barcode',    iconPath:'M3 5v14 M7 5v14 M11 5v14 M15 5v14 M19 5v14' },
+        { key:'line',    label:'Linea',      iconPath:'M4 12h16' },
+        { key:'logo',    label:'Logo',       iconPath:'M21 15l-5-5L5 21 M21 5H3v16h18V5z' },
+        { key:'rect',   label:'Rettangolo', iconPath:'M3 3h18v18H3z' }
+      ];
+
+      return (
+        <>
+          <div className="designer-topbar">
+            <div>
+              <div className="page-title" style={{marginBottom:0}}>Designer</div>
+              <div className="page-subtitle" style={{marginBottom:0}}>Trascina, tocca, personalizza — come un foglio reale</div>
+            </div>
+            <div className="left-group">
+              <button className="btn btn-outline btn-sm" onClick={() => setShowModels(s=>!s)}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18 M3 12h18 M3 18h18"/></svg>
+                Modelli ({modelli.length})
+              </button>
+              <button className="btn btn-outline btn-sm" onClick={newModel}>+ Nuovo</button>
+              {selectedModel?.is_custom && (
+                <button className="btn btn-sm" style={{background:'var(--red-light)',color:'var(--red)'}} onClick={deleteModel}>Elimina</button>
+              )}
+              <button className="btn btn-primary btn-sm" onClick={save}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Salva
+              </button>
+            </div>
+          </div>
+
+          <div className="canvas-shell">
+            {/* Layers / Info panel */}
+            <div style={{display:'flex',flexDirection:'column',gap:12}}>
+              <div className="card" style={{padding:14,marginBottom:0}}>
+                <label style={{fontSize:11,fontWeight:700,color:'var(--text2)',textTransform:'uppercase',letterSpacing:'0.05em'}}>Nome Modello</label>
+                <input value={name} onChange={e=>setName(e.target.value)} style={{marginTop:6}} />
+                <label style={{fontSize:11,fontWeight:700,color:'var(--text2)',textTransform:'uppercase',letterSpacing:'0.05em',marginTop:10,display:'block'}}>Descrizione</label>
+                <input value={desc} onChange={e=>setDesc(e.target.value)} style={{marginTop:6}} placeholder="Breve descrizione"/>
+              </div>
+
+              <div className="layers-panel">
+                <h3>Elementi ({elements.length})</h3>
+                <div style={{display:'flex',flexDirection:'column',gap:2}}>
+                  {elements.map(el => (
+                    <div key={el.id} className={`layer-item ${selId===el.id?'selected':''}`} onClick={()=>setSelId(el.id)}>
+                      <div className="lk-icon">
+                        {el.type==='text' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 7h16M12 7v13"/></svg>}
+                        {el.type==='field' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 5h18v14H3z"/><path d="M7 9h10M7 13h6"/></svg>}
+                        {el.type==='barcode' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 5v14 M7 5v14 M11 5v14 M15 5v14 M19 5v14"/></svg>}
+                        {el.type==='logo' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>}
+                        {el.type==='line' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12h16"/></svg>}
+                        {el.type==='rect' && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18"/></svg>}
+                      </div>
+                      <div className="lk-label">
+                        {el.type==='text' ? el.text : el.type==='field' ? FIELD_META[el.field]?.label : el.type==='barcode' ? 'Barcode' : el.type==='logo' ? 'Logo' : el.type==='line' ? 'Linea' : 'Rettangolo'}
+                      </div>
+                    </div>
+                  ))}
+                  {elements.length === 0 && <div style={{fontSize:13,color:'var(--text3)',padding:12,textAlign:'center'}}>Tocca + per aggiungere</div>}
+                </div>
+              </div>
+
+              {showModels && (
+                <div className="card" style={{padding:12,margin:0}}>
+                  <h2 style={{marginBottom:8}}>Modelli salvati</h2>
+                  <div style={{display:'flex',flexDirection:'column',gap:4,maxHeight:260,overflowY:'auto'}}>
+                    {modelli.map(m => (
+                      <div key={m.id} className={`layer-item ${selectedModel?.id===m.id?'selected':''}`} onClick={()=>{loadModel(m); setShowModels(false);}}>
+                        <div className="lk-icon">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                        </div>
+                        <div className="lk-label">{m.nome}</div>
+                        {m.is_custom ? <span className="badge badge-purple" style={{fontSize:9}}>Custom</span> : <span className="badge badge-blue" style={{fontSize:9}}>Base</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Canvas Stage */}
+            <div className="canvas-stage" ref={stageRef} onPointerDown={() => setSelId(null)}>
+              <div className="canvas-label"
+                   style={{ width: LW*scale, height: LH*scale }}
+                   onPointerDown={(e) => e.stopPropagation()}>
+                {elements.map(el => {
+                  const style = {
+                    left: el.x*scale, top: el.y*scale,
+                    width: el.w*scale, height: el.h*scale,
+                    fontSize: el.fontSize ? (el.fontSize * scale / 14) + 'px' : undefined,
+                    fontWeight: el.bold ? 700 : 400,
+                    justifyContent: el.align==='center'?'center':el.align==='right'?'flex-end':'flex-start',
+                    textAlign: el.align || 'left'
+                  };
+                  return (
+                    <div key={el.id}
+                         className={`canvas-el type-${el.type} ${selId===el.id?'selected':''}`}
+                         style={style}
+                         onPointerDown={(e) => onElPointerDown(e, el)}
+                         onDoubleClick={() => { if (el.type==='text') setEditingText(true); }}>
+                      {el.type === 'logo' && logoDataUrl ? <img src={logoDataUrl} alt="logo"/> :
+                       el.type === 'logo' ? 'LOGO' :
+                       el.type === 'line' || el.type === 'rect' || el.type === 'barcode' ? null :
+                       selId===el.id && el.type==='text' && editingText ? (
+                         <input autoFocus value={el.text} onChange={e=>updateSel({text:e.target.value})}
+                                onBlur={()=>setEditingText(false)}
+                                onKeyDown={e=>{if(e.key==='Enter')setEditingText(false);}}
+                                style={{background:'transparent',border:'none',width:'100%',outline:'none',fontSize:'inherit',fontWeight:'inherit',textAlign:'inherit',color:'inherit',padding:0}}
+                                onPointerDown={e=>e.stopPropagation()} />
+                       ) : renderElText(el)}
+                      {selId === el.id && (
+                        <div className="handle br" onPointerDown={(e)=>onResizePointerDown(e, el)}></div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* FAB Tool Palette */}
+              <div className="fab-wrap">
+                <div className={`fab-menu ${fabOpen?'open':''}`}>
+                  {toolItems.map(t => (
+                    <button key={t.key} className="fab-item" onClick={()=>addElement(t.key)}>
+                      <span className="ico">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                             dangerouslySetInnerHTML={{__html: t.iconPath.split(/ (?=M)/).map(p=>`<path d="${p}"/>`).join('')}} />
+                      </span>
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+                <button className={`fab ${fabOpen?'open':''}`} onClick={()=>setFabOpen(o=>!o)} aria-label="Aggiungi elemento">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14 M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <input ref={logoInputRef} type="file" accept="image/png,image/jpeg" style={{display:'none'}} onChange={handleLogoUpload}/>
+
+          {/* Contextual Inspector */}
+          {sel && (
+            <div className="inspector" onPointerDown={e=>e.stopPropagation()}>
+              <div className="inspector-head">
+                <div className="title">
+                  {sel.type==='text' ? 'Testo' : sel.type==='field' ? FIELD_META[sel.field]?.label : sel.type==='barcode' ? 'Barcode' : sel.type==='logo' ? 'Logo' : sel.type==='line' ? 'Linea' : 'Rettangolo'}
+                </div>
+                <span className="type-pill">{sel.type}</span>
+              </div>
+              {(sel.type==='text' || sel.type==='field') && (
+                <>
+                  {sel.type==='text' && (
+                    <div className="inspector-row">
+                      <div className="k">Testo</div>
+                      <input type="text" value={sel.text} onChange={e=>updateSel({text:e.target.value})}/>
+                    </div>
+                  )}
+                  <div className="inspector-row">
+                    <div className="k">Font</div>
+                    <input type="range" min="7" max="22" value={sel.fontSize} onChange={e=>updateSel({fontSize:parseInt(e.target.value)})}/>
+                    <span style={{fontSize:13,fontWeight:600,color:'var(--accent)',minWidth:36,textAlign:'right'}}>{sel.fontSize}pt</span>
+                  </div>
+                  <div className="inspector-row">
+                    <div className="k">Stile</div>
+                    <button className={`btn btn-sm ${sel.bold?'btn-primary':'btn-outline'}`} style={{minHeight:30,padding:'4px 14px'}} onClick={()=>updateSel({bold:!sel.bold})}><b>B</b></button>
+                    <div className="radio-group" style={{marginLeft:'auto'}}>
+                      {['left','center','right'].map(a => (
+                        <div key={a} className={`radio-option ${sel.align===a?'selected':''}`} style={{padding:'4px 10px',fontSize:12}} onClick={()=>updateSel({align:a})}>
+                          {a==='left'?'◧':a==='center'?'▣':'◨'}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className="inspector-row" style={{justifyContent:'flex-end',gap:8}}>
+                <button className="btn btn-outline btn-sm" onClick={()=>setSelId(null)}>Chiudi</button>
+                <button className="btn btn-sm" style={{background:'var(--red-light)',color:'var(--red)'}} onClick={deleteSel}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                  Elimina
+                </button>
+              </div>
+            </div>
+          )}
+        </>
+      );
+    }
+
+    // Alias for router
+    const DesignerPage = CanvasDesignerPage;
+
+    // ====== LEGACY DESIGNER (unused, kept for reference) ======
+    function DesignerPageLegacy({ modelli, reloadModelli, setToast }) {
       const [selected, setSelected] = useState(null);
       const [editing, setEditing] = useState(false);
       const [form, setForm] = useState({
@@ -716,32 +1403,30 @@
       const [logoFile, setLogoFile] = useState(null);
       const [logoPreview, setLogoPreview] = useState(null);
       const fileInputRef = useRef(null);
-      const [layout, setLayout] = useState(makeDefaultLayout(['cliente','dispositivo','telefono_email','indirizzo','motivo','data','barcode'], true));
-      const [selectedItemKey, setSelectedItemKey] = useState('titolo');
 
       const allCampi = [
-        { id: 'cloud3', label: 'Header CLOUD3' },
-        { id: 'data_top', label: 'Header Data DX' },
-        { id: 'titolo', label: 'Titolo' },
+        { id: 'intestazione', label: 'Intestazione' },
         { id: 'cliente', label: 'Cliente' },
         { id: 'dispositivo', label: 'Dispositivo' },
         { id: 'telefono_email', label: 'Tel/Email' },
         { id: 'indirizzo', label: 'Indirizzo' },
+        { id: 'referente', label: 'Referente' },
         { id: 'motivo', label: 'Motivo' },
+        { id: 'note', label: 'Note' },
+        { id: 'note_grandi', label: 'Note Grandi' },
+        { id: 'note_piccole', label: 'Note Piccole' },
         { id: 'data', label: 'Data' },
-        { id: 'barcode', label: 'Barcode' }
+        { id: 'barcode', label: 'Barcode' },
+        { id: 'footer_contatti', label: 'Footer Contatti' }
       ];
 
       const openNew = () => {
-        const newCampi = ['cliente','dispositivo','telefono_email','indirizzo','motivo','data','barcode'];
         setForm({
           nome: '', descrizione: '', titolo_zpl: '', motivo_zpl: '',
-          campi_visibili: newCampi,
+          campi_visibili: ['cliente','dispositivo','telefono_email','indirizzo','motivo','data','barcode'],
           font_titolo: 24, font_cliente: 20, font_dispositivo: 18, font_dettagli: 16, font_motivo: 18, font_data: 14,
           show_barcode: 1
         });
-        setLayout(makeDefaultLayout(newCampi, true));
-        setSelectedItemKey('titolo');
         setLogoFile(null); setLogoPreview(null);
         setSelected(null); setEditing(true);
       };
@@ -756,35 +1441,17 @@
           font_motivo: m.font_motivo || 18, font_data: m.font_data || 14,
           show_barcode: m.show_barcode !== undefined ? m.show_barcode : 1
         });
-        const parsedLayout = (() => {
-          try {
-            const lj = m.layout_json ? (typeof m.layout_json === 'string' ? JSON.parse(m.layout_json) : m.layout_json) : null;
-            if (lj && lj.items) return lj;
-          } catch(e) {}
-          return makeDefaultLayout(campi, (m.show_barcode !== 0));
-        })();
-        setLayout(parsedLayout);
-        setSelectedItemKey('titolo');
         setLogoFile(null);
         setLogoPreview(m.logo_zpl && m.logo_zpl.length > 10 ? 'existing' : null);
         setSelected(m); setEditing(true);
       };
 
       const toggleCampo = (id) => {
-        if (CAMPI_VISIBILI_KEYS.has(id)) {
-          setForm(f => ({
-            ...f,
-            campi_visibili: f.campi_visibili.includes(id)
-              ? f.campi_visibili.filter(c => c !== id)
-              : [...f.campi_visibili, id]
-          }));
-        }
-        setLayout(prev => ({
-          ...prev,
-          items: {
-            ...prev.items,
-            [id]: prev.items[id] ? { ...prev.items[id], visible: !(prev.items[id].visible !== false) } : prev.items[id]
-          }
+        setForm(f => ({
+          ...f,
+          campi_visibili: f.campi_visibili.includes(id)
+            ? f.campi_visibili.filter(c => c !== id)
+            : [...f.campi_visibili, id]
         }));
       };
 
@@ -806,10 +1473,7 @@
           const method = selected ? 'PUT' : 'POST';
           const res = await fetch(url, {
             method, headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...form,
-              layout_json: layout
-            })
+            body: JSON.stringify(form)
           });
           const data = await res.json();
           if (res.ok) {
@@ -894,214 +1558,170 @@
           logoDataUrl={logoPreview !== 'existing' ? logoPreview : null}
         />
       );
-      const selectedItem = layout?.items?.[selectedItemKey];
-      const itemDef = FIELD_DEFS[selectedItemKey] || {};
 
       return (
-        <div className="designer-grid">
-          {/* Colonna 1: Lista modelli */}
-          <div className="designer-models">
-            <div className="card">
-              <h2>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                Modelli Etichetta
-              </h2>
-              <button className="btn btn-primary btn-sm" onClick={openNew} style={{marginBottom:12,width:'100%'}}>+ Nuovo Modello</button>
-              <div style={{display:'flex',flexDirection:'column',gap:6}}>
-                {modelli.map(m => (
-                  <div key={m.id} className={`model-card ${selected?.id === m.id ? 'selected' : ''}`} onClick={() => openEdit(m)} style={{padding:10}}>
-                    <div className="mc-name" style={{fontSize:13}}>{m.nome}</div>
-                    <div className="mc-desc" style={{fontSize:11}}>{m.descrizione || m.titolo_zpl}</div>
-                    <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:6}}>
-                      <div className="mc-badges">
-                        <span className={`badge ${m.is_custom ? 'badge-purple' : 'badge-blue'}`}>{m.is_custom ? 'Custom' : 'Base'}</span>
-                        {m.logo_zpl && m.logo_zpl.length > 10 && <span className="badge badge-green">Logo</span>}
-                      </div>
-                      <div style={{display:'flex',gap:3}}>
-                        <button className="btn btn-outline btn-sm" style={{padding:'3px 6px'}} onClick={(e) => { e.stopPropagation(); handleClone(m); }} title="Clona">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                        </button>
-                        {m.is_custom ? (
-                          <button className="btn btn-danger btn-sm" style={{padding:'3px 6px'}} onClick={(e) => { e.stopPropagation(); handleDelete(m); }} title="Elimina">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <>
+          <div className="page-title">Designer</div>
+          <div className="page-subtitle">Crea e personalizza modelli di etichetta</div>
+          <div className="designer-grid">
+            {/* Colonna 1: Lista modelli */}
+            <div className="designer-models">
+              <div className="card">
+                <h2>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                  Modelli
+                </h2>
+                <button className="btn btn-primary btn-sm" onClick={openNew} style={{marginBottom:12,width:'100%'}}>+ Nuovo Modello</button>
+                <div style={{display:'flex',flexDirection:'column',gap:0}}>
+                  {modelli.map(m => (
+                    <div key={m.id} className={`model-card ${selected?.id === m.id ? 'selected' : ''}`} onClick={() => openEdit(m)}>
+                      <div className="mc-name">{m.nome}</div>
+                      <div className="mc-desc">{m.descrizione || m.titolo_zpl}</div>
+                      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:8}}>
+                        <div className="mc-badges">
+                          <span className={`badge ${m.is_custom ? 'badge-purple' : 'badge-blue'}`}>{m.is_custom ? 'Custom' : 'Base'}</span>
+                          {m.logo_zpl && m.logo_zpl.length > 10 && <span className="badge badge-green">Logo</span>}
+                        </div>
+                        <div style={{display:'flex',gap:4}}>
+                          <button className="btn btn-icon" onClick={(e) => { e.stopPropagation(); handleClone(m); }} title="Clona">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                           </button>
-                        ) : null}
+                          {m.is_custom ? (
+                            <button className="btn btn-icon" style={{background:'var(--red-light)',color:'var(--red)'}} onClick={(e) => { e.stopPropagation(); handleDelete(m); }} title="Elimina">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                            </button>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Colonna 2: Canvas etichetta drag&drop */}
-          <div className="designer-preview">
-            {editing ? (
-              <div className="card">
-                <h2>Anteprima Etichetta (drag & drop)</h2>
-                <div style={{fontSize:12,color:'var(--text2)',marginBottom:8}}>
-                  Dimensione reale: {settings?.label_width_mm || 55} x {settings?.label_height_mm || 35} mm
-                </div>
-                <LabelLayoutEditor layout={layout} setLayout={setLayout} selectedKey={selectedItemKey} setSelectedKey={setSelectedItemKey} />
-                <div className="layout-info">
-                  <div><span style={{color:'var(--text2)'}}>Campo:</span> <strong>{itemDef.label || selectedItemKey}</strong></div>
-                  <div><span style={{color:'var(--text2)'}}>Tipo:</span> <strong>{itemDef.type || selectedItem?.type || '-'}</strong></div>
-                </div>
-              </div>
-            ) : (
-              <div className="card" style={{textAlign:'center',color:'var(--text3)',fontSize:12,padding:24}}>
-                Seleziona o crea un modello per aprire il canvas layout
-              </div>
-            )}
-          </div>
-
-          {/* Colonna 3: Form / proprietà */}
-          <div className="designer-form">
-            {editing ? (
-              <>
-                <div className="card">
-                  <h2>{selected ? 'Modifica Modello' : 'Nuovo Modello'}</h2>
-                  <div className="inline-row">
-                    <div className="field">
-                      <label>Nome Modello *</label>
-                      <input value={form.nome} onChange={e => setForm({...form, nome: e.target.value})}
-                        placeholder="Es: Consegna Express" disabled={selected && !selected.is_custom} />
+            {/* Colonna 2: Form di editing */}
+            <div className="designer-form">
+              {editing ? (
+                <>
+                  <div className="card">
+                    <h2>{selected ? 'Modifica Modello' : 'Nuovo Modello'}</h2>
+                    <div className="inline-row">
+                      <div className="field">
+                        <label>Nome Modello *</label>
+                        <input value={form.nome} onChange={e => setForm({...form, nome: e.target.value})}
+                          placeholder="Es: Consegna Express" disabled={selected && !selected.is_custom} />
+                      </div>
+                      <div className="field">
+                        <label>Descrizione</label>
+                        <input value={form.descrizione} onChange={e => setForm({...form, descrizione: e.target.value})}
+                          placeholder="Breve descrizione" />
+                      </div>
+                    </div>
+                    <div className="inline-row">
+                      <div className="field">
+                        <label>Titolo Etichetta (ZPL) *</label>
+                        <input value={form.titolo_zpl} onChange={e => setForm({...form, titolo_zpl: e.target.value})}
+                          placeholder="Es: CONSEGNA EXPRESS" />
+                      </div>
+                      <div className="field">
+                        <label>Testo Motivo/Azione</label>
+                        <input value={form.motivo_zpl} onChange={e => setForm({...form, motivo_zpl: e.target.value})}
+                          placeholder="Es: >> CONSEGNA EXPRESS <<" />
+                      </div>
                     </div>
                     <div className="field">
-                      <label>Descrizione</label>
-                      <input value={form.descrizione} onChange={e => setForm({...form, descrizione: e.target.value})}
-                        placeholder="Breve descrizione" />
-                    </div>
-                  </div>
-                  <div className="inline-row">
-                    <div className="field">
-                      <label>Titolo Etichetta (ZPL) *</label>
-                      <input value={form.titolo_zpl} onChange={e => setForm({...form, titolo_zpl: e.target.value})}
-                        placeholder="Es: CONSEGNA EXPRESS" />
-                    </div>
-                    <div className="field">
-                      <label>Testo Motivo/Azione</label>
-                      <input value={form.motivo_zpl} onChange={e => setForm({...form, motivo_zpl: e.target.value})}
-                        placeholder="Es: >> CONSEGNA EXPRESS <<" />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label>Logo (PNG, max 500KB)</label>
-                    <div className="logo-upload" onClick={() => fileInputRef.current?.click()}
-                      style={logoPreview ? {borderColor:'var(--green)',borderStyle:'solid'} : {}}>
-                      <input type="file" ref={fileInputRef} accept="image/png,image/jpeg" onChange={handleLogoChange} style={{display:'none'}} />
-                      {logoPreview && logoPreview !== 'existing' ? (
-                        <div>
-                          <img src={logoPreview} alt="logo" className="logo-preview" />
-                          <div style={{fontSize:12,color:'var(--green)'}}>Logo caricato</div>
-                        </div>
-                      ) : logoPreview === 'existing' ? (
-                        <div style={{fontSize:12,color:'var(--green)'}}>Logo esistente nel modello</div>
-                      ) : (
-                        <div style={{fontSize:12,color:'var(--text2)'}}>Clicca per caricare un logo</div>
+                      <label>Logo (PNG, max 500KB)</label>
+                      <div className={`logo-upload ${logoPreview ? 'has-logo' : ''}`} onClick={() => fileInputRef.current?.click()}>
+                        <input type="file" ref={fileInputRef} accept="image/png,image/jpeg" onChange={handleLogoChange} style={{display:'none'}} />
+                        {logoPreview && logoPreview !== 'existing' ? (
+                          <div>
+                            <img src={logoPreview} alt="logo" className="logo-preview" />
+                            <div style={{fontSize:13,color:'var(--green)',fontWeight:600}}>✓ Logo caricato</div>
+                          </div>
+                        ) : logoPreview === 'existing' ? (
+                          <div style={{fontSize:13,color:'var(--green)',fontWeight:600}}>✓ Logo esistente nel modello</div>
+                        ) : (
+                          <div style={{fontSize:14,color:'var(--text2)'}}>Tocca per caricare un logo</div>
+                        )}
+                      </div>
+                      {logoPreview && (
+                        <button className="btn btn-outline btn-sm" style={{marginTop:8}} onClick={handleRemoveLogo}>Rimuovi Logo</button>
                       )}
                     </div>
-                    {logoPreview && (
-                      <button className="btn btn-outline btn-sm" style={{marginTop:6}} onClick={handleRemoveLogo}>Rimuovi Logo</button>
-                    )}
-                  </div>
-                  <div className="field">
-                    <label>Campi Visibili</label>
-                    <div className="chip-group">
-                      {allCampi.map(c => (
-                        <div key={c.id} className={`chip ${
-                          CAMPI_VISIBILI_KEYS.has(c.id)
-                            ? (form.campi_visibili.includes(c.id) ? 'active' : '')
-                            : (layout?.items?.[c.id]?.visible !== false ? 'active' : '')
-                        }`}
-                          onClick={() => toggleCampo(c.id)}>{c.label}</div>
+                    <div className="field">
+                      <label>Campi Visibili</label>
+                      <div className="chip-group">
+                        {allCampi.map(c => (
+                          <div key={c.id} className={`chip ${form.campi_visibili.includes(c.id) ? 'active' : ''}`}
+                            onClick={() => toggleCampo(c.id)}>{c.label}</div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="field">
+                      <label>Dimensioni Font</label>
+                      {[
+                        { key: 'font_titolo', label: 'Titolo', min: 16, max: 30 },
+                        { key: 'font_cliente', label: 'Cliente', min: 14, max: 24 },
+                        { key: 'font_dispositivo', label: 'Dispositivo', min: 12, max: 22 },
+                        { key: 'font_dettagli', label: 'Dettagli', min: 10, max: 20 },
+                        { key: 'font_motivo', label: 'Motivo', min: 12, max: 22 },
+                        { key: 'font_data', label: 'Data', min: 10, max: 18 }
+                      ].map(f => (
+                        <div key={f.key} className="font-slider">
+                          <span style={{fontSize:13,color:'var(--text)',minWidth:84,fontWeight:500}}>{f.label}</span>
+                          <input type="range" min={f.min} max={f.max} value={form[f.key]}
+                            onChange={e => setForm({...form, [f.key]: parseInt(e.target.value)})} />
+                          <span className="val">{form[f.key]}pt</span>
+                        </div>
                       ))}
                     </div>
-                  </div>
-                  {selectedItem && (
                     <div className="field">
-                      <label>Posizione campo selezionato</label>
-                      <div className="inline-row">
-                        <div>
-                          <label style={{fontSize:11,color:'var(--text2)'}}>X</label>
-                          <input type="number" value={selectedItem.x}
-                            onChange={e => setLayout(prev => ({...prev, items: {...prev.items, [selectedItemKey]: {...prev.items[selectedItemKey], x: Math.max(0, Math.min(440 - prev.items[selectedItemKey].w, parseInt(e.target.value)||0))}}}))} />
-                        </div>
-                        <div>
-                          <label style={{fontSize:11,color:'var(--text2)'}}>Y</label>
-                          <input type="number" value={selectedItem.y}
-                            onChange={e => setLayout(prev => ({...prev, items: {...prev.items, [selectedItemKey]: {...prev.items[selectedItemKey], y: Math.max(0, Math.min(280 - prev.items[selectedItemKey].h, parseInt(e.target.value)||0))}}}))} />
-                        </div>
-                      </div>
-                      <div className="inline-row">
-                        <div>
-                          <label style={{fontSize:11,color:'var(--text2)'}}>Larghezza</label>
-                          <input type="number" value={selectedItem.w}
-                            onChange={e => setLayout(prev => {
-                              const maxW = (FIELD_DEFS[selectedItemKey]?.maxW || 420);
-                              const v = Math.max(20, Math.min(maxW, parseInt(e.target.value)||20));
-                              return ({...prev, items: {...prev.items, [selectedItemKey]: {...prev.items[selectedItemKey], w: v}}});
-                            })} />
-                        </div>
-                        <div>
-                          <label style={{fontSize:11,color:'var(--text2)'}}>Altezza</label>
-                          <input type="number" value={selectedItem.h}
-                            onChange={e => setLayout(prev => {
-                              const maxH = (FIELD_DEFS[selectedItemKey]?.maxH || 100);
-                              const v = Math.max(8, Math.min(maxH, parseInt(e.target.value)||8));
-                              return ({...prev, items: {...prev.items, [selectedItemKey]: {...prev.items[selectedItemKey], h: v}}});
-                            })} />
-                        </div>
-                      </div>
-                      <div style={{fontSize:11,color:'var(--text3)',marginTop:6}}>
-                        Ingombro max consigliato: {FIELD_DEFS[selectedItemKey]?.maxW || '-'} x {FIELD_DEFS[selectedItemKey]?.maxH || '-'} dot
-                      </div>
+                      <label style={{display:'flex',alignItems:'center',gap:10,cursor:'pointer',marginBottom:0}}>
+                        <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)',transform:'scale(1.2)'}} checked={form.show_barcode === 1}
+                          onChange={e => setForm({...form, show_barcode: e.target.checked ? 1 : 0})} />
+                        <span style={{fontSize:15,color:'var(--text)',fontWeight:500}}>Mostra Barcode Code 128</span>
+                      </label>
                     </div>
-                  )}
-                  <div className="field">
-                    <label>Dimensioni Font</label>
-                    {[
-                      { key: 'font_titolo', label: 'Titolo', min: 16, max: 30 },
-                      { key: 'font_cliente', label: 'Cliente', min: 14, max: 24 },
-                      { key: 'font_dispositivo', label: 'Dispositivo', min: 12, max: 22 },
-                      { key: 'font_dettagli', label: 'Dettagli', min: 10, max: 20 },
-                      { key: 'font_motivo', label: 'Motivo', min: 12, max: 22 },
-                      { key: 'font_data', label: 'Data', min: 10, max: 18 }
-                    ].map(f => (
-                      <div key={f.key} className="font-slider" style={{marginBottom:4}}>
-                        <span style={{fontSize:11,color:'var(--text2)',minWidth:70}}>{f.label}</span>
-                        <input type="range" min={f.min} max={f.max} value={form[f.key]}
-                          onChange={e => setForm({...form, [f.key]: parseInt(e.target.value)})} />
-                        <span className="val">{form[f.key]}pt</span>
-                      </div>
-                    ))}
+                    <div className="modal-actions" style={{marginTop:20}}>
+                      <button className="btn btn-outline" onClick={() => setEditing(false)}>Annulla</button>
+                      <button className="btn btn-primary" onClick={handleSave}>Salva Modello</button>
+                    </div>
                   </div>
-                  <div className="field">
-                    <label style={{display:'flex',alignItems:'center',gap:8}}>
-                      <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)'}} checked={form.show_barcode === 1}
-                        onChange={e => setForm({...form, show_barcode: e.target.checked ? 1 : 0})} />
-                      Mostra Barcode Code 128
-                    </label>
+                  {/* Anteprima inline per schermi < 1100px */}
+                  <div className="designer-preview-inline">
+                    <div className="card">
+                      <h2>Anteprima</h2>
+                      {previewComponent}
+                    </div>
                   </div>
-                  <div className="modal-actions" style={{marginTop:16}}>
-                    <button className="btn btn-outline" onClick={() => setEditing(false)}>Annulla</button>
-                    <button className="btn btn-primary" onClick={handleSave}>Salva Modello</button>
+                </>
+              ) : (
+                <div className="card">
+                  <div className="empty-state">
+                    <div className="icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                    </div>
+                    <div>Seleziona un modello per modificarlo<br/>o crea un nuovo modello personalizzato</div>
                   </div>
                 </div>
-              </>
-            ) : (
-              <div className="card">
-                <div className="empty-state">
-                  <div className="icon">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a0aab4" strokeWidth="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                  </div>
-                  <div>Seleziona un modello per modificarlo<br/>o crea un nuovo modello personalizzato</div>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-        </div>
+            {/* Colonna 3: Anteprima sticky (visibile solo su desktop > 1100px) */}
+            <div className="designer-preview" style={{display:'none'}}>
+              {editing ? (
+                <div className="card">
+                  <h2>Anteprima Live</h2>
+                  {previewComponent}
+                </div>
+              ) : (
+                <div className="card" style={{textAlign:'center',color:'var(--text3)',fontSize:13,padding:32}}>
+                  Seleziona o crea un modello per vedere l'anteprima
+                </div>
+              )}
+            </div>
+          </div>
+        </>
       );
     }
 
@@ -1188,173 +1808,193 @@
       };
 
       return (
-        <div className="grid-2">
-          <div>
-            <div className="card">
-              <h2>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                Configurazione Etichetta
-              </h2>
+        <>
+          <div className="page-title">Stampa</div>
+          <div className="page-subtitle">Genera e stampa etichette per i tuoi dispositivi</div>
+          <div className="grid-2">
+            <div>
+              <div className="card">
+                <h2>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Configurazione
+                </h2>
 
-              <div className="field">
-                <label>Modalità Cliente</label>
-                <div className="radio-group" style={{flexWrap:'wrap'}}>
-                  {[
-                    { id: 'rubrica', label: 'Da Rubrica' },
-                    { id: 'manuale', label: 'Manuale' },
-                    { id: 'nessuno', label: 'Laboratorio' }
-                  ].map(m => (
-                    <div key={m.id} className={`radio-option ${modoCliente === m.id ? 'selected' : ''}`}
-                      onClick={() => setModoCliente(m.id)}>
-                      {m.label}
-                    </div>
-                  ))}
-                </div>
-                {modoCliente === 'nessuno' && (
-                  <div style={{fontSize:11,color:'var(--yellow)',marginTop:6}}>
-                    Etichetta generica di laboratorio — nessun dato cliente stampato
-                  </div>
-                )}
-              </div>
-
-              {modoCliente === 'rubrica' && (
                 <div className="field">
-                  <label>Cliente *</label>
-                  <ClientSearch clienti={clienti} onSelect={setCliente} />
-                  {cliente && (
-                    <div className="client-info">
-                      <div><div className="ci-label">Telefono</div><div className="ci-value">{cliente.telefono || 'N/D'}</div></div>
-                      <div><div className="ci-label">Email</div><div className="ci-value">{cliente.email || 'N/D'}</div></div>
-                      <div><div className="ci-label">Indirizzo</div><div className="ci-value">{cliente.indirizzo || 'N/D'}</div></div>
-                      <div><div className="ci-label">Città</div><div className="ci-value">{cliente.citta || 'N/D'}</div></div>
+                  <label>Modalità Cliente</label>
+                  <div className="radio-group">
+                    {[
+                      { id: 'rubrica', label: 'Rubrica' },
+                      { id: 'manuale', label: 'Manuale' },
+                      { id: 'nessuno', label: 'Laboratorio' }
+                    ].map(m => (
+                      <div key={m.id} className={`radio-option ${modoCliente === m.id ? 'selected' : ''}`}
+                        onClick={() => setModoCliente(m.id)}>
+                        {m.label}
+                      </div>
+                    ))}
+                  </div>
+                  {modoCliente === 'nessuno' && (
+                    <div style={{fontSize:12,color:'var(--yellow)',marginTop:8,fontWeight:500}}>
+                      ⚠ Etichetta generica di laboratorio — nessun dato cliente
                     </div>
                   )}
                 </div>
-              )}
 
-              {modoCliente === 'manuale' && (
-                <div style={{background:'var(--bg)',borderRadius:6,padding:12,marginBottom:14,border:'1px solid var(--border)'}}>
+                {modoCliente === 'rubrica' && (
                   <div className="field">
-                    <label>Ragione Sociale</label>
-                    <input value={clienteManuale.ragione_sociale} onChange={e => setClienteManuale({...clienteManuale, ragione_sociale: e.target.value})}
-                      placeholder="Nome azienda o persona" />
+                    <label>Cliente *</label>
+                    <ClientSearch clienti={clienti} onSelect={setCliente} />
+                    {cliente && (
+                      <div className="client-info">
+                        <div><div className="ci-label">Telefono</div><div className="ci-value">{cliente.telefono || 'N/D'}</div></div>
+                        <div><div className="ci-label">Email</div><div className="ci-value">{cliente.email || 'N/D'}</div></div>
+                        <div><div className="ci-label">Indirizzo</div><div className="ci-value">{cliente.indirizzo || 'N/D'}</div></div>
+                        <div><div className="ci-label">Città</div><div className="ci-value">{cliente.citta || 'N/D'}</div></div>
+                      </div>
+                    )}
                   </div>
-                  <div className="inline-row">
-                    <div className="field">
-                      <label>Telefono</label>
-                      <input value={clienteManuale.telefono} onChange={e => setClienteManuale({...clienteManuale, telefono: e.target.value})} />
-                    </div>
-                    <div className="field">
-                      <label>Email</label>
-                      <input value={clienteManuale.email} onChange={e => setClienteManuale({...clienteManuale, email: e.target.value})} />
-                    </div>
-                  </div>
-                  <div className="inline-row">
-                    <div className="field">
-                      <label>Indirizzo</label>
-                      <input value={clienteManuale.indirizzo} onChange={e => setClienteManuale({...clienteManuale, indirizzo: e.target.value})} />
-                    </div>
-                    <div className="field">
-                      <label>Città</label>
-                      <input value={clienteManuale.citta} onChange={e => setClienteManuale({...clienteManuale, citta: e.target.value})} placeholder="Es: Genova (GE)" />
-                    </div>
-                  </div>
-                  <label style={{display:'flex',alignItems:'center',gap:8,marginTop:4,cursor:'pointer'}}>
-                    <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)'}} checked={salvaRubrica}
-                      onChange={e => setSalvaRubrica(e.target.checked)} />
-                    <span style={{fontSize:12}}>Salva questo cliente in rubrica dopo la stampa</span>
-                  </label>
-                </div>
-              )}
+                )}
 
-              <div className="field">
-                <label>Modello Etichetta</label>
-                <select value={modelloNome} onChange={e => setModelloNome(e.target.value)}>
-                  {modelli.map(m => (
-                    <option key={m.id} value={m.nome}>{m.nome}{m.is_custom ? ' ✨' : ''}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="field">
-                <label>Tipo Dispositivo</label>
-                <select value={tipoDisp} onChange={e => setTipoDisp(e.target.value)}>
-                  <option>PC Desktop</option><option>Notebook</option><option>Monitor</option><option>Stampante</option><option>Altro</option>
-                </select>
-              </div>
-              <div className="field">
-                <label>Modalità Nome</label>
-                <div className="radio-group">
-                  {['Manuale', 'Automatica'].map(m => (
-                    <div key={m} className={`radio-option ${modalita === m ? 'selected' : ''}`} onClick={() => setModalita(m)}>
-                      {m}
+                {modoCliente === 'manuale' && (
+                  <div style={{background:'var(--bg3)',borderRadius:12,padding:14,marginBottom:14}}>
+                    <div className="field">
+                      <label>Ragione Sociale</label>
+                      <input value={clienteManuale.ragione_sociale} onChange={e => setClienteManuale({...clienteManuale, ragione_sociale: e.target.value})}
+                        placeholder="Nome azienda o persona" />
                     </div>
-                  ))}
-                </div>
-              </div>
-              {modalita === 'Manuale' ? (
+                    <div className="inline-row">
+                      <div className="field">
+                        <label>Telefono</label>
+                        <input value={clienteManuale.telefono} onChange={e => setClienteManuale({...clienteManuale, telefono: e.target.value})} />
+                      </div>
+                      <div className="field">
+                        <label>Email</label>
+                        <input value={clienteManuale.email} onChange={e => setClienteManuale({...clienteManuale, email: e.target.value})} />
+                      </div>
+                    </div>
+                    <div className="inline-row">
+                      <div className="field">
+                        <label>Indirizzo</label>
+                        <input value={clienteManuale.indirizzo} onChange={e => setClienteManuale({...clienteManuale, indirizzo: e.target.value})} />
+                      </div>
+                      <div className="field">
+                        <label>Città</label>
+                        <input value={clienteManuale.citta} onChange={e => setClienteManuale({...clienteManuale, citta: e.target.value})} placeholder="Es: Genova (GE)" />
+                      </div>
+                    </div>
+                    <label style={{display:'flex',alignItems:'center',gap:10,marginTop:4,cursor:'pointer',marginBottom:0}}>
+                      <input type="checkbox" style={{width:'auto',accentColor:'var(--accent)',transform:'scale(1.2)'}} checked={salvaRubrica}
+                        onChange={e => setSalvaRubrica(e.target.checked)} />
+                      <span style={{fontSize:14,color:'var(--text)'}}>Salva questo cliente in rubrica dopo la stampa</span>
+                    </label>
+                  </div>
+                )}
+
                 <div className="field">
-                  <label>Nome Dispositivo</label>
-                  <input value={nomeManuale} onChange={e => setNomeManuale(e.target.value)} placeholder="Es: PC-RECEPTION-01" />
+                  <label>Modello Etichetta</label>
+                  <select value={modelloNome} onChange={e => setModelloNome(e.target.value)}>
+                    {modelli.map(m => (
+                      <option key={m.id} value={m.nome}>{m.nome}{m.is_custom ? ' ✨' : ''}</option>
+                    ))}
+                  </select>
                 </div>
-              ) : (
-                <>
-                  <div className="field">
-                    <label>Prefisso</label>
-                    <input value={prefisso} onChange={e => setPrefisso(e.target.value)} placeholder="Es: CAV2026PC" />
+                <div className="field">
+                  <label>Tipo Dispositivo</label>
+                  <div className="device-pills">
+                    {['PC Desktop','Notebook','Monitor','Stampante','Altro'].map(t => (
+                      <button key={t} className={`device-pill ${tipoDisp===t?'active':''}`} onClick={()=>setTipoDisp(t)}>{t}</button>
+                    ))}
                   </div>
+                </div>
+                <div className="field">
+                  <label>Modalità Nome</label>
+                  <div className="radio-group">
+                    {['Manuale', 'Automatica'].map(m => (
+                      <div key={m} className={`radio-option ${modalita === m ? 'selected' : ''}`} onClick={() => setModalita(m)}>
+                        {m}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {modalita === 'Manuale' ? (
                   <div className="field">
-                    <label>Quantità (1-20)</label>
-                    <div className="counter">
-                      <button onClick={() => setQuantita(Math.max(1, quantita - 1))}>&#8722;</button>
-                      <input type="number" min="1" max="20" value={quantita}
-                        onChange={e => setQuantita(Math.min(20, Math.max(1, parseInt(e.target.value) || 1)))} />
-                      <button onClick={() => setQuantita(Math.min(20, quantita + 1))}>+</button>
+                    <label>Nome Dispositivo</label>
+                    <input value={nomeManuale} onChange={e => setNomeManuale(e.target.value)} placeholder="Es: PC-RECEPTION-01" />
+                  </div>
+                ) : (
+                  <>
+                    <div className="field">
+                      <label>Prefisso</label>
+                      <input value={prefisso} onChange={e => setPrefisso(e.target.value)} placeholder="Es: CAV2026PC" />
                     </div>
-                    {quantita > 1 && <div style={{fontSize:11,color:'var(--text2)',marginTop:6}}>
-                      Nomi: {nomiGen.slice(0,3).join(', ')}{quantita > 3 ? `, ... ${nomiGen[quantita-1]}` : ''}
-                    </div>}
+                    <div className="field">
+                      <label>Quantità (1-20)</label>
+                      <div className="counter">
+                        <button onClick={() => setQuantita(Math.max(1, quantita - 1))}>&#8722;</button>
+                        <input type="number" min="1" max="20" value={quantita}
+                          onChange={e => setQuantita(Math.min(20, Math.max(1, parseInt(e.target.value) || 1)))} />
+                        <button className="plus" onClick={() => setQuantita(Math.min(20, quantita + 1))}>+</button>
+                      </div>
+                      {quantita > 1 && <div style={{fontSize:12,color:'var(--text2)',marginTop:8}}>
+                        Nomi: {nomiGen.slice(0,3).join(', ')}{quantita > 3 ? `, ... ${nomiGen[quantita-1]}` : ''}
+                      </div>}
+                    </div>
+                  </>
+                )}
+                <div className="field">
+                  <label>Copie per etichetta (1-99)</label>
+                  <div className="counter">
+                    <button onClick={() => setCopie(Math.max(1, copie - 1))}>&#8722;</button>
+                    <input type="number" min="1" max="99" value={copie}
+                      onChange={e => setCopie(Math.min(99, Math.max(1, parseInt(e.target.value) || 1)))} />
+                    <button className="plus" onClick={() => setCopie(Math.min(99, copie + 1))}>+</button>
                   </div>
-                </>
-              )}
-              <div className="field">
-                <label>Copie per etichetta (1-99)</label>
-                <div className="counter">
-                  <button onClick={() => setCopie(Math.max(1, copie - 1))}>&#8722;</button>
-                  <input type="number" min="1" max="99" value={copie}
-                    onChange={e => setCopie(Math.min(99, Math.max(1, parseInt(e.target.value) || 1)))} />
-                  <button onClick={() => setCopie(Math.min(99, copie + 1))}>+</button>
                 </div>
               </div>
-            </div>
-            <div style={{display:'flex',gap:10}}>
-              <button className="btn btn-outline" style={{flex:1}} onClick={handleGenera}>Genera ZPL</button>
-              <button className="btn btn-success" style={{flex:2}} onClick={handleStampa} disabled={printing || !canPrint}>
-                {printing ? 'Invio...' : 'STAMPA'}
-              </button>
-            </div>
-          </div>
-          <div>
-            <div className="card">
-              <h2>Anteprima Etichetta</h2>
-              <LabelPreview modello={modelloNome} modelloObj={modelloObj} cliente={clienteEff} tipoDisp={tipoDisp} nomeDisp={nomeDisp} />
-              {modalita === 'Automatica' && quantita > 1 && (
-                <div style={{marginTop:12,fontSize:12,color:'var(--text2)',textAlign:'center'}}>
-                  Anteprima prima etichetta — {quantita} etichette × {copie} copie = {quantita * copie} stampe
-                </div>
-              )}
-            </div>
-            {zplPreview && (
-              <div className="card">
-                <h2>Codice ZPL</h2>
-                <div className="zpl-code">{zplPreview}</div>
-                <button className="btn btn-outline btn-sm" style={{marginTop:8}}
-                  onClick={() => { navigator.clipboard.writeText(zplPreview); setToast({message:'ZPL copiato!',type:'success'}); }}>
-                  Copia
+              <div style={{display:'flex',gap:10,marginTop:4}}>
+                <button className="btn btn-outline" style={{flex:1}} onClick={handleGenera}>Genera ZPL</button>
+                <button className="btn btn-primary btn-lg" style={{flex:2}} onClick={handleStampa} disabled={printing || !canPrint}>
+                  {printing ? (
+                    'Invio...'
+                  ) : (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                      Stampa Etichetta
+                    </>
+                  )}
                 </button>
               </div>
-            )}
+            </div>
+            <div>
+              <div className="card">
+                <h2>Anteprima Etichetta</h2>
+                <LabelPreview modello={modelloNome} modelloObj={modelloObj} cliente={clienteEff} tipoDisp={tipoDisp} nomeDisp={nomeDisp} />
+                {modalita === 'Automatica' && quantita > 1 && (
+                  <div style={{marginTop:12,fontSize:13,color:'var(--text2)',textAlign:'center',fontWeight:500}}>
+                    Anteprima prima etichetta — {quantita} × {copie} = <strong style={{color:'var(--accent)'}}>{quantita * copie} stampe</strong>
+                  </div>
+                )}
+              </div>
+              {zplPreview && (
+                <div style={{marginBottom:14}}>
+                  <div className="zpl-viewer">
+                    <div className="zpl-viewer-header">
+                      <div className="left">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <span>ZPL Code Viewer</span>
+                      </div>
+                      <button className="btn btn-sm" style={{background:'rgba(255,255,255,0.08)',color:'#fff',minHeight:28,padding:'4px 12px',fontSize:12}}
+                        onClick={() => { navigator.clipboard.writeText(zplPreview); setToast({message:'ZPL copiato!',type:'success'}); }}>
+                        Copia
+                      </button>
+                    </div>
+                    <div className="zpl-code">{zplPreview}</div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       );
     }
 
@@ -1377,51 +2017,75 @@
         if (data.success) fetchLogs();
       };
       const totalPages = Math.ceil(total / 15);
+      const successi = logs.filter(l => l.stato === 'inviato' || l.stato === 'ristampato').length;
+      const errori = logs.filter(l => l.stato !== 'inviato' && l.stato !== 'ristampato').length;
+
       return (
-        <div className="card">
-          <h2>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Storico Stampe ({total})
-          </h2>
-          {logs.length === 0 ? (
-            <div className="empty-state"><div className="icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a0aab4" strokeWidth="1.5"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-            </div><div>Nessuna stampa</div></div>
-          ) : (
-            <>
-              <div style={{overflowX:'auto'}}>
-                <table className="log-table">
-                  <thead><tr><th>#</th><th>Data</th><th>Cliente</th><th>Modello</th><th>Dispositivo</th><th>Qta</th><th>Copie</th><th>Stato</th><th></th></tr></thead>
-                  <tbody>
-                    {logs.map(l => {
-                      const d = new Date(l.data_stampa);
-                      return (
-                        <tr key={l.id}>
-                          <td>{l.id}</td>
-                          <td style={{whiteSpace:'nowrap'}}>{d.getDate()}/{d.getMonth()+1}/{d.getFullYear()} {String(d.getHours()).padStart(2,'0')}:{String(d.getMinutes()).padStart(2,'0')}</td>
-                          <td>{l.cliente_nome}</td><td>{l.modello}</td>
-                          <td style={{fontSize:12,maxWidth:200,overflow:'hidden',textOverflow:'ellipsis'}}>{l.nome_dispositivo}</td>
-                          <td>{l.quantita}</td><td>{l.copie}</td>
-                          <td><span className={`badge ${l.stato==='inviato'||l.stato==='ristampato'?'badge-green':'badge-red'}`}>{l.stato}</span></td>
-                          <td><button className="btn btn-outline btn-sm" onClick={() => handleRistampa(l.id)} title="Ristampa">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                          </button></td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-              {totalPages > 1 && (
-                <div style={{display:'flex',justifyContent:'center',gap:8,marginTop:16}}>
-                  <button className="btn btn-outline btn-sm" disabled={page<=1} onClick={()=>setPage(p=>p-1)}>← Prec</button>
-                  <span style={{padding:'6px 12px',fontSize:13,color:'var(--text2)'}}>Pag {page}/{totalPages}</span>
-                  <button className="btn btn-outline btn-sm" disabled={page>=totalPages} onClick={()=>setPage(p=>p+1)}>Succ →</button>
+        <>
+          <div className="page-title">Storico</div>
+          <div className="page-subtitle">{total} stampe totali</div>
+
+          {/* Stats cards */}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(140px,1fr))',gap:12,marginBottom:20}}>
+            <div className="card" style={{margin:0,padding:16}}>
+              <div style={{fontSize:12,color:'var(--text2)',fontWeight:600,textTransform:'uppercase',letterSpacing:'0.06em'}}>Totale</div>
+              <div style={{fontSize:28,fontWeight:700,marginTop:4,letterSpacing:'-0.02em'}}>{total}</div>
+            </div>
+            <div className="card" style={{margin:0,padding:16}}>
+              <div style={{fontSize:12,color:'var(--text2)',fontWeight:600,textTransform:'uppercase',letterSpacing:'0.06em'}}>Successo</div>
+              <div style={{fontSize:28,fontWeight:700,marginTop:4,color:'var(--green)',letterSpacing:'-0.02em'}}>{successi}</div>
+            </div>
+            <div className="card" style={{margin:0,padding:16}}>
+              <div style={{fontSize:12,color:'var(--text2)',fontWeight:600,textTransform:'uppercase',letterSpacing:'0.06em'}}>Errori</div>
+              <div style={{fontSize:28,fontWeight:700,marginTop:4,color:'var(--red)',letterSpacing:'-0.02em'}}>{errori}</div>
+            </div>
+          </div>
+
+          <div className="card">
+            {logs.length === 0 ? (
+              <div className="empty-state">
+                <div className="icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-              )}
-            </>
-          )}
-        </div>
+                <div>Nessuna stampa registrata</div>
+              </div>
+            ) : (
+              <>
+                <div style={{overflowX:'auto'}}>
+                  <table className="log-table">
+                    <thead><tr><th>#</th><th>Data</th><th>Cliente</th><th>Modello</th><th>Dispositivo</th><th>Qta</th><th>Stato</th><th></th></tr></thead>
+                    <tbody>
+                      {logs.map(l => {
+                        const d = new Date(l.data_stampa);
+                        return (
+                          <tr key={l.id}>
+                            <td style={{color:'var(--text2)',fontSize:13}}>{l.id}</td>
+                            <td style={{whiteSpace:'nowrap',fontSize:13}}>{d.getDate()}/{d.getMonth()+1} {String(d.getHours()).padStart(2,'0')}:{String(d.getMinutes()).padStart(2,'0')}</td>
+                            <td style={{fontWeight:600}}>{l.cliente_nome}</td>
+                            <td style={{fontSize:13,color:'var(--text2)'}}>{l.modello}</td>
+                            <td style={{fontSize:12,maxWidth:160,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',color:'var(--text2)'}}>{l.nome_dispositivo}</td>
+                            <td style={{fontSize:13}}>{l.quantita}×{l.copie}</td>
+                            <td><span className={`badge ${l.stato==='inviato'||l.stato==='ristampato'?'badge-green':'badge-red'}`}>{l.stato}</span></td>
+                            <td><button className="btn btn-icon" onClick={() => handleRistampa(l.id)} title="Ristampa">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            </button></td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                {totalPages > 1 && (
+                  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:10,marginTop:20,paddingTop:16,borderTop:'var(--hairline)'}}>
+                    <button className="btn btn-outline btn-sm" disabled={page<=1} onClick={()=>setPage(p=>p-1)}>← Precedente</button>
+                    <span style={{fontSize:13,color:'var(--text2)',fontWeight:500}}>Pagina {page} di {totalPages}</span>
+                    <button className="btn btn-outline btn-sm" disabled={page>=totalPages} onClick={()=>setPage(p=>p+1)}>Successiva →</button>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </>
       );
     }
 
@@ -1441,31 +2105,43 @@
       };
 
       return (
-        <div className="card">
-          <h2>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            Gestione Clienti ({clienti.length})
-          </h2>
-          <div style={{display:'flex',gap:12,marginBottom:16}}>
-            <input placeholder="Cerca cliente..." value={search} onChange={e=>setSearch(e.target.value)} style={{flex:1}} />
-            <button className="btn btn-primary btn-sm" onClick={()=>{setForm({ragione_sociale:'',telefono:'',email:'',indirizzo:'',citta:''});setEditing('new');}}>+ Nuovo</button>
+        <>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',marginBottom:20,gap:12,flexWrap:'wrap'}}>
+            <div>
+              <div className="page-title">Clienti</div>
+              <div className="page-subtitle" style={{marginBottom:0}}>{clienti.length} clienti in rubrica</div>
+            </div>
+            <button className="btn btn-primary" onClick={()=>{setForm({ragione_sociale:'',telefono:'',email:'',indirizzo:'',citta:''});setEditing('new');}}>+ Nuovo Cliente</button>
           </div>
-          <div style={{overflowX:'auto',maxHeight:'60vh',overflowY:'auto'}}>
-            <table className="log-table">
-              <thead><tr><th>ID</th><th>Ragione Sociale</th><th>Telefono</th><th>Email</th><th>Città</th><th></th></tr></thead>
-              <tbody>
-                {filtered.slice(0,50).map(c => (
-                  <tr key={c.id}><td>{c.id}</td><td style={{fontWeight:500}}>{c.ragione_sociale}</td><td>{c.telefono||'-'}</td>
-                    <td style={{fontSize:12}}>{c.email||'-'}</td><td>{c.citta||'-'}</td>
-                    <td><button className="btn btn-outline btn-sm" onClick={()=>{setForm({ragione_sociale:c.ragione_sociale,telefono:c.telefono,email:c.email,indirizzo:c.indirizzo,citta:c.citta});setEditing(c.id);}}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    </button></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+          <div className="card">
+            <div className="search-input" style={{marginBottom:16}}>
+              <input placeholder="Cerca cliente..." value={search} onChange={e=>setSearch(e.target.value)} />
+            </div>
+            <div style={{overflowX:'auto',maxHeight:'62vh',overflowY:'auto'}}>
+              <table className="log-table">
+                <thead><tr><th>ID</th><th>Ragione Sociale</th><th>Telefono</th><th>Email</th><th>Città</th><th></th></tr></thead>
+                <tbody>
+                  {filtered.slice(0,50).map(c => (
+                    <tr key={c.id}>
+                      <td style={{color:'var(--text2)',fontSize:13}}>{c.id}</td>
+                      <td style={{fontWeight:600}}>{c.ragione_sociale}</td>
+                      <td style={{fontSize:13}}>{c.telefono||'—'}</td>
+                      <td style={{fontSize:13,color:'var(--text2)'}}>{c.email||'—'}</td>
+                      <td style={{fontSize:13}}>{c.citta||'—'}</td>
+                      <td>
+                        <button className="btn btn-icon" onClick={()=>{setForm({ragione_sociale:c.ragione_sociale,telefono:c.telefono,email:c.email,indirizzo:c.indirizzo,citta:c.citta});setEditing(c.id);}}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {filtered.length > 50 && <div style={{textAlign:'center',padding:14,fontSize:13,color:'var(--text2)',fontWeight:500}}>Visualizzati 50 di {filtered.length} — affina la ricerca</div>}
           </div>
-          {filtered.length > 50 && <div style={{textAlign:'center',padding:12,fontSize:13,color:'var(--text2)'}}>50 di {filtered.length} mostrati</div>}
+
           {editing !== null && (
             <div className="modal-overlay" onClick={()=>setEditing(null)}>
               <div className="modal" onClick={e=>e.stopPropagation()}>
@@ -1483,7 +2159,7 @@
               </div>
             </div>
           )}
-        </div>
+        </>
       );
     }
 
@@ -1496,8 +2172,7 @@
       const [toast, setToast] = useState(null);
       const [settings, setSettings] = useState({
         printer_ip: '10.0.50.92', printer_port: 9100,
-        label_width_mm: 55, label_height_mm: 35, dpi: 203,
-        top_margin_dots: 14, show_barcode: false, show_cloud3_header: true, hide_logo: true
+        label_width_mm: 55, label_height_mm: 35, dpi: 203
       });
 
       const loadClienti = async () => { const r = await fetch(`${API}/clienti/all`); setClienti(await r.json()); };
@@ -1526,36 +2201,34 @@
 
       const TabIcon = ({ name }) => {
         const icons = {
-          stampa: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>,
-          designer: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>,
-          storico: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
-          clienti: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-          impostazioni: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          stampa: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>,
+          designer: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>,
+          storico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+          clienti: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+          impostazioni: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         };
         return icons[name] || null;
+      };
+
+      const tabLabels = {
+        stampa: 'Stampa', designer: 'Designer', storico: 'Storico',
+        clienti: 'Clienti', impostazioni: 'Config'
       };
 
       return (
         <div>
           <div className="app-header">
             <div className="logo-area">
-              <Cloud3Logo size={34} />
+              <Cloud3Logo size={32} />
               <h1>Zebra Labels <span>| Cloud3</span></h1>
             </div>
             <div className={`printer-status ${printerStatus}`} onClick={checkPrinter} title="Verifica stampante">
               <div className={`dot ${printerStatus==='online'?'green':printerStatus==='offline'?'red':'yellow'}`}></div>
-              GK420t — {printerStatus==='online'?'Online':printerStatus==='offline'?'Offline':'Verifica...'}
-              <span style={{fontSize:11,opacity:.6}}>{settings.printer_ip}</span>
+              <span>{printerStatus==='online'?'Online':printerStatus==='offline'?'Offline':'Verifica...'}</span>
+              <span className="ip">{settings.printer_ip}</span>
             </div>
           </div>
-          <div className="tabs">
-            {['stampa','designer','storico','clienti','impostazioni'].map(t => (
-              <div key={t} className={`tab ${tab===t?'active':''}`} onClick={()=>setTab(t)} style={{display:'flex',alignItems:'center',gap:6}}>
-                <TabIcon name={t} />
-                {t.charAt(0).toUpperCase()+t.slice(1)}
-              </div>
-            ))}
-          </div>
+
           <div className="main">
             {tab==='stampa' && <PrintPage clienti={clienti} modelli={modelli} setToast={setToast} reloadClienti={loadClienti} settings={settings} />}
             {tab==='designer' && <DesignerPage modelli={modelli} reloadModelli={loadModelli} setToast={setToast} settings={settings} />}
@@ -1563,6 +2236,16 @@
             {tab==='clienti' && <ClientiPage clienti={clienti} reloadClienti={loadClienti} setToast={setToast} />}
             {tab==='impostazioni' && <SettingsPage settings={settings} onSave={setSettings} setToast={setToast} />}
           </div>
+
+          <div className="tabs">
+            {['stampa','designer','storico','clienti','impostazioni'].map(t => (
+              <div key={t} className={`tab ${tab===t?'active':''}`} onClick={()=>setTab(t)}>
+                <TabIcon name={t} />
+                <span>{tabLabels[t]}</span>
+              </div>
+            ))}
+          </div>
+
           {toast && <Toast message={toast.message} type={toast.type} onClose={()=>setToast(null)} />}
         </div>
       );

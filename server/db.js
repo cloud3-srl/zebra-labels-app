@@ -53,12 +53,14 @@ async function initDb() {
     );
   `);
 
-  // Migrazione soft: aggiunge layout_json se il DB esiste gia senza colonna
-  const cols = query("PRAGMA table_info(modelli_etichetta)");
-  const hasLayoutJson = cols.some(c => c.name === 'layout_json');
-  if (!hasLayoutJson) {
-    db.run("ALTER TABLE modelli_etichetta ADD COLUMN layout_json TEXT DEFAULT ''");
-  }
+  // Migration: add layout_json column if missing
+  try {
+    const cols = db.exec("PRAGMA table_info(modelli_etichetta)");
+    const hasLayout = cols[0] && cols[0].values.some(r => r[1] === 'layout_json');
+    if (!hasLayout) {
+      db.run("ALTER TABLE modelli_etichetta ADD COLUMN layout_json TEXT DEFAULT ''");
+    }
+  } catch(e) { console.warn('migration layout_json:', e.message); }
 
   db.run(`
     CREATE TABLE IF NOT EXISTS tipi_dispositivo (

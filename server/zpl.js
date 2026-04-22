@@ -18,58 +18,6 @@ function truncate(str, max) {
   return str.length > max ? str.substring(0, max - 1) + '.' : str;
 }
 
-function clamp(v, min, max) {
-  return Math.max(min, Math.min(max, v));
-}
-
-function parseLayout(layoutJson) {
-  if (!layoutJson) return null;
-  try {
-    const parsed = typeof layoutJson === 'string' ? JSON.parse(layoutJson) : layoutJson;
-    if (parsed && parsed.items && typeof parsed.items === 'object') return parsed;
-  } catch (_) {}
-  return null;
-}
-
-function renderLayoutZpl({
-  items, values, copies, showBarcode, labelWidth = 440, labelHeight = 280
-}) {
-  let zpl = `^XA\n^MMT^PW${labelWidth}^LL${labelHeight}^LS0\n`;
-  const ordered = Object.values(items)
-    .filter(it => it && it.visible !== false)
-    .sort((a, b) => (a.z || 0) - (b.z || 0));
-
-  for (const it of ordered) {
-    const x = clamp(parseInt(it.x || 0, 10), 0, labelWidth - 1);
-    const y = clamp(parseInt(it.y || 0, 10), 0, labelHeight - 1);
-    const w = clamp(parseInt(it.w || 100, 10), 8, labelWidth);
-    const h = clamp(parseInt(it.h || 18, 10), 8, labelHeight);
-
-    if (it.type === 'line') {
-      const t = clamp(parseInt(it.thickness || 2, 10), 1, 8);
-      zpl += `^FO${x},${y}^GB${w},${t},${t}^FS\n`;
-      continue;
-    }
-
-    if (it.type === 'barcode') {
-      if (!showBarcode) continue;
-      const val = truncate(values[it.key] || values.nome_dispositivo || 'DISPOSITIVO', 20);
-      const bh = clamp(h, 20, 120);
-      zpl += `^BY2,2,${bh}^FO${x},${y}^BCN,${bh},Y,N,N^FD${val}^FS\n`;
-      continue;
-    }
-
-    const text = values[it.key] || '';
-    if (!text) continue;
-    const fs = clamp(parseInt(it.font || 16, 10), 10, 40);
-    const align = it.align === 'R' ? 'R' : (it.align === 'C' ? 'C' : 'L');
-    zpl += `^CF0,${fs}^FO${x},${y}^FB${w},1,0,${align},0^FD${text}^FS\n`;
-  }
-
-  zpl += `^PQ${copies}\n^XZ`;
-  return zpl;
-}
-
 /**
  * Genera ZPL per una singola etichetta con supporto logo e layout personalizzato
  */
@@ -96,9 +44,7 @@ function generaZPLSingolo(params) {
     font_dettagli = 16,
     font_motivo = 18,
     font_data = 14,
-    show_barcode = true,
-    layout_settings = {},
-    layout_json = ''
+    show_barcode = true
   } = params;
 
   const oggi = new Date();
@@ -111,54 +57,26 @@ function generaZPLSingolo(params) {
 
   let zpl = '^XA\n^MMT^PW440^LL280^LS0\n';
 
-  const topMargin = Math.max(0, Math.min(parseInt(layout_settings.top_margin_dots ?? 8, 10) || 8, 60));
-  const showCloud3Header = layout_settings.show_cloud3_header !== false;
-  const hideLogo = layout_settings.hide_logo !== false;
-  const globalShowBarcode = layout_settings.show_barcode !== undefined
-    ? !!layout_settings.show_barcode
-    : true;
-  const effectiveShowBarcode = !!show_barcode && globalShowBarcode;
-  const hasLogo = !hideLogo && logo_zpl && logo_zpl.length > 0;
+  // Calcola offset X per il titolo se c'è il logo
+  const hasLogo = logo_zpl && logo_zpl.length > 0;
+  const titleX = hasLogo ? (logo_width + 15) : 10;
+  const titleFieldWidth = 440 - titleX - 10;
   const contentX = 10;
 
-  const parsedLayout = parseLayout(layout_json);
-  if (parsedLayout) {
-    const values = {
-      cloud3: 'CLOUD3',
-      data_top: data,
-      titolo,
-      cliente: `Cliente: ${truncate(ragione_sociale, 38)}`,
-      dispositivo: `Disp: ${truncate(`${tipo_dispositivo} | ${nome}`, 36)}`,
-      telefono_email: truncate(`Tel: ${tel} | ${mail}`, 42),
-      indirizzo: truncate(`Ind: ${ind} - ${city}`, 42),
-      motivo: motivo || '',
-      data: `Data: ${data}`,
-      barcode: nome
-    };
-    return renderLayoutZpl({
-      items: parsedLayout.items,
-      values,
-      copies: copie,
-      showBarcode: effectiveShowBarcode
-    });
-  }
-
   // Y tracking per layout dinamico
-  let y = topMargin;
-
-  if (showCloud3Header) {
-    zpl += `^CF0,18^FO10,${y}^FDCLOUD3^FS\n`;
-    zpl += `^CF0,${font_data}^FO320,${y + 2}^FD${data}^FS\n`;
-    y += 20;
-  }
+  let y = 8;
 
   // === LOGO (se presente, in alto a sinistra) ===
   if (hasLogo) {
     zpl += `^FO5,4${logo_zpl}^FS\n`;
   }
 
-  // === TITOLO (sempre centrato) ===
-  zpl += `^CF0,${font_titolo}^FO10,${y}^FB420,1,0,C,0^FD${titolo}^FS\n`;
+  // === TITOLO (centrato, o spostato a destra se c'è logo) ===
+  if (hasLogo) {
+    zpl += `^CF0,${font_titolo}^FO${titleX},${y}^FB${titleFieldWidth},1,0,C,0^FD${titolo}^FS\n`;
+  } else {
+    zpl += `^CF0,${font_titolo}^FO10,${y}^FB420,1,0,C,0^FD${titolo}^FS\n`;
+  }
 
   // Linea separatore sotto titolo
   const lineY = Math.max(y + font_titolo + 4, hasLogo ? (logo_height + 8) : 0);
@@ -265,12 +183,12 @@ function generaZPLSingolo(params) {
     zpl += `^FO10,${y}^GB420,2,2^FS\n`;
     y += 6;
 
-    if ((fields.includes('data') || fields.length === 0) && !showCloud3Header) {
+    if (fields.includes('data') || fields.length === 0) {
       zpl += `^CF0,${font_data}^FO${contentX},${y}^FDData: ${data}^FS\n`;
       y += font_data + 4;
     }
 
-  if ((fields.includes('barcode') || fields.length === 0) && effectiveShowBarcode) {
+    if ((fields.includes('barcode') || fields.length === 0) && show_barcode) {
       const barcodeVal = nome.length > 20 ? nome.substring(0, 20) : nome;
       const barcodeHeight = Math.max(25, Math.min(40, 280 - y - 10));
       zpl += `^BY2,2,${barcodeHeight}^FO100,${y}^BCN,${barcodeHeight},Y,N,N^FD${barcodeVal}^FS\n`;
@@ -295,8 +213,7 @@ function generaZPLMultiplo(params) {
     quantita = 1,
     copie = 1,
     // Opzioni modello personalizzato
-    modello_custom = null,
-    layout_settings = {}
+    modello_custom = null
   } = params;
 
   // Modelli predefiniti
@@ -333,8 +250,6 @@ function generaZPLMultiplo(params) {
       font_motivo: modello_custom.font_motivo || 18,
       font_data: modello_custom.font_data || 14,
       show_barcode: modello_custom.show_barcode !== 0
-      ,
-      layout_json: modello_custom.layout_json || ''
     };
   } else {
     modInfo = modelliMap[modello] || modelliMap['Generico'];
@@ -359,7 +274,6 @@ function generaZPLMultiplo(params) {
       indirizzo: cliente.indirizzo,
       citta: cliente.citta,
       copie: copie,
-      layout_settings,
       ...layoutOpts
     })
   );

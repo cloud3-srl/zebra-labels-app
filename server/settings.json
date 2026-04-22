@@ -3,9 +3,5 @@
   "printer_port": 9100,
   "label_width_mm": 55,
   "label_height_mm": 35,
-  "dpi": 203,
-  "top_margin_dots": 14,
-  "show_barcode": false,
-  "show_cloud3_header": true,
-  "hide_logo": true
+  "dpi": 203
 }

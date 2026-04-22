@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZebraPrint Pro - Label Designer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#0070eb",
+                    "outline": "#717786",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#adc6ff",
+                    "tertiary-container": "#008733",
+                    "secondary-fixed-dim": "#c7c6c9",
+                    "on-primary-fixed-variant": "#004493",
+                    "outline-variant": "#c1c6d7",
+                    "on-surface-variant": "#414755",
+                    "inverse-surface": "#2e3034",
+                    "primary": "#0058bc",
+                    "secondary-container": "#e1dfe2",
+                    "on-primary-container": "#fefcff",
+                    "surface-container-highest": "#e2e2e7",
+                    "surface-dim": "#d9dade",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f9f9fe",
+                    "secondary": "#5e5e61",
+                    "surface-container": "#ededf2",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#e3e2e5",
+                    "on-secondary-fixed": "#1b1b1e",
+                    "surface": "#f9f9fe",
+                    "on-background": "#1a1c1f",
+                    "surface-bright": "#f9f9fe",
+                    "tertiary": "#006b27",
+                    "on-secondary-container": "#626265",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#53e16f",
+                    "surface-tint": "#005bc1",
+                    "on-tertiary-fixed-variant": "#00531c",
+                    "surface-variant": "#e2e2e7",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "inverse-on-surface": "#f0f0f5",
+                    "on-tertiary-container": "#f7fff2",
+                    "on-secondary-fixed-variant": "#464649",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#72fe88",
+                    "surface-container-high": "#e8e8ed",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-surface": "#1a1c1f",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f3f8",
+                    "on-primary-fixed": "#001a41",
+                    "on-tertiary-fixed": "#002107"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ios-blur {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            cursor: pointer;
+            margin-top: -8px;
+            border: 0.5px solid rgba(0,0,0,0.1);
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            height: 8px;
+            background: #007AFF;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-[59px] bg-[#F2F2F7]/85 dark:bg-zinc-900/85 backdrop-blur-[40px] shadow-sm hairline border-b border-zinc-200 dark:border-zinc-800">
+<div class="flex items-center gap-4">
+<span class="text-xl font-extrabold text-zinc-900 dark:text-white font-headline tracking-tight">ZebraPrint Pro</span>
+<div class="h-4 w-[1px] bg-outline-variant mx-2"></div>
+<span class="text-on-surface-variant font-medium text-sm">Template Editor</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<div class="flex bg-surface-container rounded-full p-1 h-9 items-center">
+<input class="bg-transparent border-none focus:ring-0 text-sm px-4 w-64 outline-none" placeholder="Search templates..." type="text"/>
+<div class="pr-2 text-outline">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-zinc-500">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="professional male portrait avatar clean lighting minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtlpq5y9v8YJmPes5h3ARdvwcY2-QugDC_p53RKZntlZ8jETJihKN7FO8q0nJa_ATOXko62uPOCZ5f5tUiGRt9xUiVc0e2Rp-b5oxPqIp0CfD0mzWr-ic23bLH8f6AwZdG2vqPF3STuWbRrKmVjpSvVwmIeX3C7kHgcYCD8A-7RzqjfAnsm6VwriaQRdrFiujcYABF4OuJTBx_8OaXwvNYX0wiERR36FQqKtgpm4iin6zVOfKIFqw8Zbbs2Ik0UcjS2mzQneyO5NcD"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[59px] pb-[120px] px-6 min-h-screen max-w-[1600px] mx-auto">
+<div class="grid grid-cols-12 gap-6 mt-8 items-start">
+<!-- Left Column: Modelli Label -->
+<aside class="col-span-3 flex flex-col gap-6">
+<h2 class="text-2xl font-bold font-headline tracking-tight px-1">Modelli Label</h2>
+<div class="flex flex-col gap-4">
+<!-- Template Card -->
+<div class="group cursor-pointer p-4 bg-surface-container-lowest rounded-xl border-2 border-primary shadow-sm transition-all hover:shadow-md">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">Active</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Standard A4</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">210 x 297 mm • Multi-asset layout for warehouse inventory.</p>
+</div>
+<!-- Template Card -->
+<div class="group cursor-pointer p-4 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary/50 transition-all hover:shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline bg-surface-container px-2 py-0.5 rounded-full">Legacy</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Compact 50x30</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">50 x 30 mm • Thermal transfer for retail pricing tags.</p>
+</div>
+<!-- Template Card -->
+<div class="group cursor-pointer p-4 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary/50 transition-all hover:shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline bg-surface-container px-2 py-0.5 rounded-full">Specialty</span>
+</div>
+<h3 class="font-bold text-on-surface mb-1">Full Label</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">100 x 150 mm • Shipping label with high-density barcode.</p>
+</div>
+<button class="flex items-center justify-center gap-2 py-4 border-2 border-dashed border-outline-variant rounded-xl text-outline hover:text-primary hover:border-primary transition-colors mt-2">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-semibold text-sm">Nuovo Modello</span>
+</button>
+</div>
+</aside>
+<!-- Center Column: Scrollable Editor -->
+<section class="col-span-5 flex flex-col gap-8 px-2 overflow-y-auto hide-scrollbar max-h-[calc(100vh-180px)]">
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-sm border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl">edit_document</span>
+<h1 class="text-2xl font-bold font-headline">Configurazione</h1>
+</div>
+<!-- Font Dimensions -->
+<div class="space-y-8 mb-12">
+<h3 class="text-sm font-bold text-primary uppercase tracking-[0.1em] border-b border-outline-variant pb-2">Font Dimensions</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<label class="font-medium">Title</label>
+<span class="text-primary font-bold">24pt</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer" max="48" min="12" type="range" value="24"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<label class="font-medium">Subtitle</label>
+<span class="text-primary font-bold">18pt</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer" max="32" min="8" type="range" value="18"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<label class="font-medium">Body</label>
+<span class="text-primary font-bold">12pt</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer" max="24" min="6" type="range" value="12"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-sm">
+<label class="font-medium">Barcode Height</label>
+<span class="text-primary font-bold">42px</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer" max="80" min="20" type="range" value="42"/>
+</div>
+</div>
+</div>
+<!-- Visible Fields -->
+<div class="space-y-6 mb-12">
+<h3 class="text-sm font-bold text-primary uppercase tracking-[0.1em] border-b border-outline-variant pb-2">Visible Fields</h3>
+<div class="grid gap-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">corporate_fare</span>
+<span class="text-sm font-medium">Company Name</span>
+</div>
+<div class="w-10 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">id_card</span>
+<span class="text-sm font-medium">Device Identifier</span>
+</div>
+<div class="w-10 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">123</span>
+<span class="text-sm font-medium">Serial Number</span>
+</div>
+<div class="w-10 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<span class="text-sm font-medium">Office Address</span>
+</div>
+<div class="w-10 h-6 bg-surface-container-highest rounded-full relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<span class="text-sm font-medium">Creation Date</span>
+</div>
+<div class="w-10 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-4 pt-4">
+<button class="flex-1 bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20">
+                            Salva Modello
+                        </button>
+<button class="px-8 bg-surface-container text-on-surface-variant py-4 rounded-xl font-bold hover:bg-surface-container-highest transition-all active:scale-95">
+                            Ripristina
+                        </button>
+</div>
+</div>
+</section>
+<!-- Right Column: Live Preview -->
+<aside class="col-span-4 sticky top-24">
+<div class="bg-white rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-outline-variant/20 p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-bold text-lg font-headline">Live Preview</h3>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-[11px] font-bold">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                            STAMPANTE PRONTA
+                        </span>
+</div>
+<!-- High Fidelity Label Preview -->
+<div class="aspect-[3/4] bg-white border border-zinc-100 rounded-sm shadow-inner p-8 flex flex-col justify-between overflow-hidden relative">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<p class="text-[24px] font-black leading-none text-zinc-900 font-headline">ZEBRA-X1</p>
+<p class="text-[14px] font-bold text-zinc-500 uppercase tracking-widest">Enterprise Series</p>
+</div>
+<div class="w-12 h-12 bg-zinc-900 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-white text-3xl">qr_code_2</span>
+</div>
+</div>
+<div class="my-8 space-y-4">
+<div class="border-l-4 border-zinc-900 pl-4 py-1">
+<p class="text-[12px] font-medium text-zinc-400 uppercase tracking-tighter">Serial Number</p>
+<p class="text-[18px] font-bold text-zinc-800">SN-9920-XPB-2024</p>
+</div>
+<div class="border-l-4 border-zinc-900 pl-4 py-1">
+<p class="text-[12px] font-medium text-zinc-400 uppercase tracking-tighter">Manufactured</p>
+<p class="text-[18px] font-bold text-zinc-800">MILAN, ITALY - SEP 2024</p>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Simulated Barcode -->
+<div class="h-[60px] w-full bg-white flex items-end gap-[2px]">
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[3px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[4px]"></div>
+<div class="bg-zinc-900 h-full w-[2px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[3px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[2px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[4px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[3px]"></div>
+<div class="bg-zinc-900 h-full w-[2px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[5px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[3px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[4px]"></div>
+<div class="bg-zinc-900 h-full w-[2px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[1px]"></div>
+<div class="bg-zinc-900 h-full w-[4px]"></div>
+</div>
+<p class="text-center font-mono text-[10px] tracking-[0.4em] text-zinc-900">01234567890123</p>
+</div>
+</div>
+<div class="mt-6 p-4 bg-surface-container rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-zinc-400">info</span>
+<p class="text-[11px] text-zinc-500 leading-tight">Le modifiche apportate verranno sincronizzate con tutti i terminali collegati alla rete aziendale.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-8 pointer-events-none">
+<div class="pointer-events-auto bg-white/85 dark:bg-zinc-800/85 backdrop-blur-[40px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/30 rounded-full w-full max-w-lg h-16 flex justify-around items-center px-4">
+<!-- Print -->
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined text-[24px]">print</span>
+<span class="font-['Inter'] text-[11px] font-medium">Print</span>
+</button>
+<!-- Labels (Active) -->
+<button class="flex flex-col items-center justify-center text-[#007AFF] dark:text-blue-400 scale-110 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">label</span>
+<span class="font-['Inter'] text-[11px] font-bold">Labels</span>
+</button>
+<!-- History -->
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined text-[24px]">history</span>
+<span class="font-['Inter'] text-[11px] font-medium">History</span>
+</button>
+<!-- Printers -->
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined text-[24px]">print_connect</span>
+<span class="font-['Inter'] text-[11px] font-medium">Printers</span>
+</button>
+<!-- Settings -->
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-all active:scale-90">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="font-['Inter'] text-[11px] font-medium">Settings</span>
+</button>
+</div>
+</footer>
+</body></html>

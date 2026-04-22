@@ -3,27 +3,9 @@
  * Supporta ridimensionamento automatico e dithering per stampa monocromatica
  */
 
-const { execFileSync } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-
-function runPythonInline(script, args = [], timeout = 10000) {
-  const commands = ['python3', 'python'];
-  let lastError = null;
-
-  for (const cmd of commands) {
-    try {
-        return execFileSync(cmd, ['-c', script, ...args], {
-        encoding: 'utf-8',
-        timeout
-      });
-    } catch (err) {
-      lastError = err;
-    }
-  }
-
-  throw lastError || new Error('Python non disponibile');
-}
 
 /**
  * Converte un file immagine in comando ZPL ^GFA
@@ -39,7 +21,7 @@ function imageToZPL(imagePath, maxWidth = 80, maxHeight = 60) {
 import sys, json
 from PIL import Image
 
-img = Image.open(sys.argv[1])
+img = Image.open('${imagePath.replace(/'/g, "\\'")}')
 
 # Convert to grayscale then to 1-bit (black/white)
 img = img.convert('L')
@@ -87,7 +69,10 @@ result = {
 print(json.dumps(result))
 `;
 
-    const result = runPythonInline(pythonScript, [imagePath], 10000);
+    const result = execSync(`python3 -c '${pythonScript.replace(/'/g, "'\"'\"'")}'`, {
+      encoding: 'utf-8',
+      timeout: 10000
+    });
 
     const data = JSON.parse(result.trim());
 

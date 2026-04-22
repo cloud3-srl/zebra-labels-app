@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zebra Print Pro - Impostazioni</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Hide scrollbars for cleaner liquid glass look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3034",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "primary-container": "#0070eb",
+                        "inverse-primary": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-background": "#1a1c1f",
+                        "surface-container-low": "#f3f3f8",
+                        "surface-dim": "#d9dade",
+                        "surface-bright": "#f9f9fe",
+                        "on-secondary-container": "#626265",
+                        "tertiary-fixed-dim": "#53e16f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f9f9fe",
+                        "surface-container-high": "#e8e8ed",
+                        "secondary-fixed": "#e3e2e5",
+                        "surface": "#f9f9fe",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ededf2",
+                        "on-surface-variant": "#414755",
+                        "surface-tint": "#005bc1",
+                        "tertiary-container": "#008733",
+                        "tertiary": "#006b27",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#72fe88",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#fefcff",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-primary-fixed": "#001a41",
+                        "on-surface": "#1a1c1f",
+                        "outline": "#717786",
+                        "on-tertiary-fixed": "#002107",
+                        "inverse-on-surface": "#f0f0f5",
+                        "surface-container-highest": "#e2e2e7",
+                        "on-tertiary-fixed-variant": "#00531c",
+                        "surface-variant": "#e2e2e7",
+                        "on-tertiary-container": "#f7fff2",
+                        "primary": "#0058bc",
+                        "secondary": "#5e5e61",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c1c6d7",
+                        "on-secondary-fixed-variant": "#464649",
+                        "secondary-fixed-dim": "#c7c6c9",
+                        "secondary-container": "#e1dfe2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low text-on-surface font-body h-screen w-screen overflow-hidden flex flex-col items-center justify-center antialiased">
+<!-- iPad Landscape Container Canvas (1024x768) -->
+<div class="w-full max-w-[1024px] h-[768px] bg-surface-container-low relative flex flex-col shadow-2xl rounded-2xl overflow-hidden ring-1 ring-outline-variant/20">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-slate-50/85 dark:bg-slate-900/85 backdrop-blur-3xl font-['Plus_Jakarta_Sans'] font-medium docked full-width top-0 z-50 sticky border-b border-white/20 dark:border-white/10 shadow-sm flex justify-between items-center px-8 py-3 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-3xl">print</span>
+<span class="text-xl font-bold text-slate-900 dark:text-slate-50">Zebra Print Pro</span>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar Placeholder -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors px-4 py-2 rounded-full flex items-center gap-2 text-slate-500 dark:text-slate-400 w-64">
+<span class="material-symbols-outlined text-sm">search</span>
+<span class="text-sm">Search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-blue-600 dark:text-blue-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-blue-600 dark:text-blue-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors p-2 rounded-full active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-primary/20 overflow-hidden ml-2 ring-2 ring-surface-container-highest">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close up portrait of a young professional woman with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyp5byBnjU4qWd_0qZKFyhbJswxXLBHzyIplFHrUvWKLh0OdO-WVz2qGU3EvjxEnE8s7EAni3PQmmYAiTL829BczPo5lZBX-Q2r8tKHAfPnPCR2F-NiaHo-al04e3pwJsgvW79-wXTG4pO2qO5TRfr7nxLaMBLV_Wq90cw3ESdVn30hz5CZv7iOKVD8mO5foK5nede3LYq_jt5OcDkYNno95XJk2zsqu7gqZQ_FmSEzZqybnr0srJcGu2Iv6_OpnuWHg8L4DDzk45J"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Layout: Two Column Split -->
+<div class="flex-1 flex overflow-hidden w-full relative z-10 pb-24"> <!-- pb-24 to clear bottom nav -->
+<!-- Left Column: Sidebar Menu (320px) -->
+<aside class="w-[320px] bg-surface-container-low/50 border-r border-outline-variant/30 flex flex-col overflow-y-auto">
+<div class="px-8 pt-8 pb-4">
+<h1 class="font-headline text-[34px] font-bold text-on-surface tracking-tight">Impostazioni</h1>
+</div>
+<div class="px-4 pb-8 space-y-6">
+<!-- Section: Stampante -->
+<div>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.04)] overflow-hidden">
+<!-- Active Item -->
+<button class="w-full flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary border-b border-outline-variant/10 transition-colors text-left">
+<span class="material-symbols-outlined filled text-[20px]">router</span>
+<span class="font-medium text-[15px]">Connessione Stampante</span>
+</button>
+<!-- Other item -->
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface hover:bg-surface-container transition-colors text-left">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">print</span>
+<span class="text-[15px]">Stato Dispositivo</span>
+</button>
+</div>
+</div>
+<!-- Section: Etichetta -->
+<div>
+<h2 class="text-[13px] font-semibold text-on-surface-variant uppercase tracking-wider ml-4 mb-2">Etichetta</h2>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.04)] overflow-hidden">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface border-b border-outline-variant/10 hover:bg-surface-container transition-colors text-left">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">aspect_ratio</span>
+<span class="text-[15px]">Dimensioni Etichetta</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface hover:bg-surface-container transition-colors text-left">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">high_quality</span>
+<span class="text-[15px]">Configurazione DPI</span>
+</button>
+</div>
+</div>
+<!-- Section: Applicazione -->
+<div>
+<h2 class="text-[13px] font-semibold text-on-surface-variant uppercase tracking-wider ml-4 mb-2">Applicazione</h2>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.04)] overflow-hidden">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface border-b border-outline-variant/10 hover:bg-surface-container transition-colors text-left">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">info</span>
+<span class="text-[15px]">Informazioni</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/30 transition-colors text-left">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+<span class="text-[15px]">Ripristina Impostazioni</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Column: Detail Panel -->
+<main class="flex-1 bg-surface-bright overflow-y-auto">
+<div class="max-w-3xl mx-auto px-12 py-10">
+<!-- Header -->
+<div class="mb-10">
+<h2 class="font-headline text-[28px] font-bold text-on-surface tracking-tight mb-1">Connessione Stampante</h2>
+<p class="text-on-surface-variant text-[15px]">Configurazione rete stampante Zebra</p>
+</div>
+<!-- Detail Sections -->
+<div class="space-y-8">
+<!-- Indirizzo di Rete Card -->
+<section>
+<h3 class="text-[13px] font-semibold text-on-surface-variant uppercase tracking-wider ml-4 mb-2">Indirizzo di Rete</h3>
+<div class="bg-surface-container-lowest rounded-[20px] shadow-[0_2px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant/10">
+<span class="text-[16px] text-on-surface">Indirizzo IP</span>
+<span class="text-[16px] text-on-surface-variant font-mono">192.168.1.100</span>
+</div>
+<div class="flex items-center justify-between px-6 py-4">
+<span class="text-[16px] text-on-surface">Porta TCP</span>
+<span class="text-[16px] text-on-surface-variant font-mono">9100</span>
+</div>
+</div>
+</section>
+<!-- Stato Connessione Card -->
+<section>
+<h3 class="text-[13px] font-semibold text-on-surface-variant uppercase tracking-wider ml-4 mb-2">Stato Connessione</h3>
+<div class="bg-surface-container-lowest rounded-[20px] shadow-[0_2px_20px_rgba(0,0,0,0.04)] p-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_8px_rgba(0,107,39,0.6)] relative">
+<div class="absolute inset-0 rounded-full bg-tertiary animate-ping opacity-75"></div>
+</div>
+<span class="text-[16px] font-medium text-on-surface">Stampante Online</span>
+</div>
+<button class="text-primary font-medium text-[15px] hover:bg-primary/5 px-4 py-2 rounded-lg transition-colors">
+                                    Testa Connessione
+                                </button>
+</div>
+</section>
+<!-- Dimensioni Etichetta Card -->
+<section>
+<h3 class="text-[13px] font-semibold text-on-surface-variant uppercase tracking-wider ml-4 mb-2">Configurazione Attuale</h3>
+<div class="bg-surface-container-lowest rounded-[20px] shadow-[0_2px_20px_rgba(0,0,0,0.04)] p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[16px] text-on-surface font-medium">Dimensioni Etichetta</span>
+<span class="text-[14px] text-on-surface-variant">4.00" x 6.00" (101.6 x 152.4 mm)</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="h-px w-full bg-outline-variant/10"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[16px] text-on-surface font-medium">Risoluzione</span>
+<span class="text-[14px] text-on-surface-variant">203 DPI</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="pt-8 flex flex-col items-center gap-4">
+<button class="w-full max-w-md bg-primary text-on-primary py-4 rounded-full font-headline font-bold text-[16px] shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                Salva Impostazioni
+                            </button>
+<button class="text-error font-medium text-[15px] hover:underline underline-offset-4">
+                                Ripristina Default
+                            </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl w-auto min-w-[500px] rounded-full px-6 py-2 border border-white/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:scale-110 transition-transform vibration-light active:scale-90 duration-150 group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:text-slate-600 transition-colors">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">Status</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:scale-110 transition-transform vibration-light active:scale-90 duration-150 group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:text-slate-600 transition-colors">print</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">Printers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:scale-110 transition-transform vibration-light active:scale-90 duration-150 group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:text-slate-600 transition-colors">label</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">Templates</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:scale-110 transition-transform vibration-light active:scale-90 duration-150 group">
+<span class="material-symbols-outlined text-[24px] mb-1 group-hover:text-slate-600 transition-colors">list_alt</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">Queue</span>
+</button>
+<!-- Active Navigation Item -->
+<button class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/30 rounded-full px-4 py-1 hover:scale-110 transition-transform vibration-light active:scale-90 duration-150">
+<span class="material-symbols-outlined filled text-[24px] mb-1">settings_heart</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold tracking-tight">Settings</span>
+</button>
+</nav>
+</div>
+</body></html>

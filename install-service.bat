@@ -40,38 +40,21 @@ for /f "tokens=*" %%i in ('node -v') do echo         Node.js %%i trovato
 echo.
 
 :: Installa dipendenze server se mancanti
-echo  [2/4] Installazione dipendenze server...
-cd server
-if exist "package-lock.json" (
-    npm ci --omit=dev --no-audit --no-fund
-) else (
-    npm install --omit=dev --no-audit --no-fund
-)
-if %ERRORLEVEL% neq 0 (
-    color 0C
-    echo  [ERRORE] Installazione dipendenze server fallita!
-    echo  Verifica connessione internet e riprova.
+echo  [2/4] Verifica dipendenze server...
+if not exist "server\node_modules" (
+    echo         Installazione dipendenze server...
+    cd server
+    npm install
     cd ..
-    pause
-    exit /b 1
 )
-cd ..
 echo         Dipendenze server OK
 echo.
 
 :: Installa node-windows se mancante
-echo  [3/4] Installazione dipendenze root...
-if exist "package-lock.json" (
-    npm ci --omit=dev --no-audit --no-fund
-) else (
-    npm install --omit=dev --no-audit --no-fund
-)
-if %ERRORLEVEL% neq 0 (
-    color 0C
-    echo  [ERRORE] Installazione dipendenze root fallita!
-    echo  Verifica connessione internet e riprova.
-    pause
-    exit /b 1
+echo  [3/4] Verifica node-windows...
+if not exist "node_modules\node-windows" (
+    echo         Installazione node-windows...
+    npm install node-windows --save
 )
 echo         node-windows OK
 echo.

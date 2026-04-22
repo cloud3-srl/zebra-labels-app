@@ -2,29 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
-const http = require('http');
 const { initDb, query, run, get, importClienti } = require('./db');
 const { generaZPLMultiplo } = require('./zpl');
 const { inviaZPL, verificaStampante } = require('./printer');
 const { bufferToZPL } = require('./logo-converter');
 
-// Load server config
-function loadServerConfig() {
-  const configPath = path.join(__dirname, '..', 'server-config.json');
-  try {
-    if (fs.existsSync(configPath)) {
-      return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-    }
-  } catch (e) {
-    console.warn('Avviso: impossibile leggere server-config.json, uso defaults');
-  }
-  return { port: 3010, https: { enabled: false }, httpRedirect: false };
-}
-
-const serverConfig = loadServerConfig();
 const app = express();
-const PORT = process.env.PORT || serverConfig.port || 3010;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json({ limit: '5mb' }));
@@ -103,7 +87,6 @@ app.get('/api/modelli/:id', (req, res) => {
 app.post('/api/modelli', (req, res) => {
   const { nome, descrizione, titolo_zpl, motivo_zpl, campi_visibili, font_titolo, font_cliente,
     font_dispositivo, font_dettagli, font_motivo, font_data, show_barcode, layout_json } = req.body;
-  const layoutJsonStr = layout_json ? (typeof layout_json === 'string' ? layout_json : JSON.stringify(layout_json)) : '';
   if (!nome || !titolo_zpl) return res.status(400).json({ error: 'Nome e titolo obbligatori' });
 
   try {
@@ -114,7 +97,8 @@ app.post('/api/modelli', (req, res) => {
     `, [nome, descrizione || '', titolo_zpl, motivo_zpl || '',
         JSON.stringify(campi_visibili || []), font_titolo || 24, font_cliente || 20,
         font_dispositivo || 18, font_dettagli || 16, font_motivo || 18, font_data || 14,
-        show_barcode !== false ? 1 : 0, layoutJsonStr]);
+        show_barcode !== false ? 1 : 0,
+        typeof layout_json === 'string' ? layout_json : JSON.stringify(layout_json || null)]);
     const modello = get('SELECT * FROM modelli_etichetta WHERE id = ?', [result.lastInsertRowid]);
     res.status(201).json(modello);
   } catch (e) {
@@ -125,7 +109,6 @@ app.post('/api/modelli', (req, res) => {
 app.put('/api/modelli/:id', (req, res) => {
   const { nome, descrizione, titolo_zpl, motivo_zpl, campi_visibili, font_titolo, font_cliente,
     font_dispositivo, font_dettagli, font_motivo, font_data, show_barcode, layout_json } = req.body;
-  const layoutJsonStr = layout_json ? (typeof layout_json === 'string' ? layout_json : JSON.stringify(layout_json)) : '';
 
   run(`
     UPDATE modelli_etichetta SET nome=?, descrizione=?, titolo_zpl=?, motivo_zpl=?,
@@ -135,7 +118,9 @@ app.put('/api/modelli/:id', (req, res) => {
   `, [nome, descrizione || '', titolo_zpl, motivo_zpl || '',
       JSON.stringify(campi_visibili || []), font_titolo || 24, font_cliente || 20,
       font_dispositivo || 18, font_dettagli || 16, font_motivo || 18, font_data || 14,
-      show_barcode !== false ? 1 : 0, layoutJsonStr, parseInt(req.params.id)]);
+      show_barcode !== false ? 1 : 0,
+      typeof layout_json === 'string' ? layout_json : JSON.stringify(layout_json || null),
+      parseInt(req.params.id)]);
 
   const modello = get('SELECT * FROM modelli_etichetta WHERE id = ?', [parseInt(req.params.id)]);
   res.json(modello);
@@ -190,12 +175,12 @@ app.post('/api/modelli/:id/clone', (req, res) => {
 
   const ins = run(`INSERT INTO modelli_etichetta
     (nome, descrizione, titolo_zpl, motivo_zpl, is_custom, logo_zpl, logo_width, logo_height,
-     campi_visibili, font_titolo, font_cliente, font_dispositivo, font_dettagli, font_motivo, font_data, show_barcode, layout_json)
-    VALUES (?,?,?,?,1,?,?,?,?,?,?,?,?,?,?,?,?)`,
+     campi_visibili, font_titolo, font_cliente, font_dispositivo, font_dettagli, font_motivo, font_data, show_barcode)
+    VALUES (?,?,?,?,1,?,?,?,?,?,?,?,?,?,?,?)`,
     [newName, orig.descrizione, orig.titolo_zpl, orig.motivo_zpl,
      orig.logo_zpl || '', orig.logo_width || 0, orig.logo_height || 0,
      orig.campi_visibili, orig.font_titolo, orig.font_cliente, orig.font_dispositivo,
-     orig.font_dettagli, orig.font_motivo, orig.font_data, orig.show_barcode, orig.layout_json || '']);
+     orig.font_dettagli, orig.font_motivo, orig.font_data, orig.show_barcode]);
 
   const cloned = get('SELECT * FROM modelli_etichetta WHERE nome = ?', [newName]);
   res.json(cloned);
@@ -213,7 +198,6 @@ app.get('/api/tipi-dispositivo', (req, res) => {
 app.post('/api/stampa/genera-zpl', (req, res) => {
   const { cliente_id, modello, modello_id, tipo_dispositivo, modalita, nome_dispositivo, prefisso, quantita, copie,
     modo_cliente, cliente_manuale } = req.body;
-  const appSettings = loadSettings();
 
   let cliente;
   if (modo_cliente === 'nessuno') {
@@ -240,13 +224,7 @@ app.post('/api/stampa/genera-zpl', (req, res) => {
     cliente, modello, tipo_dispositivo, modalita,
     nome_dispositivo, prefisso,
     quantita: quantita || 1, copie: copie || 1,
-    modello_custom,
-    layout_settings: {
-      top_margin_dots: appSettings.top_margin_dots,
-      show_barcode: appSettings.show_barcode,
-      show_cloud3_header: appSettings.show_cloud3_header,
-      hide_logo: appSettings.hide_logo
-    }
+    modello_custom
   });
   res.json(result);
 });
@@ -258,7 +236,6 @@ app.post('/api/stampa/invia', async (req, res) => {
     stampante_ip = '10.0.50.92', stampante_porta = 9100,
     modo_cliente, cliente_manuale, salva_in_rubrica
   } = req.body;
-  const appSettings = loadSettings();
 
   let cliente;
   let clienteIdLog = 0;
@@ -295,13 +272,7 @@ app.post('/api/stampa/invia', async (req, res) => {
     cliente, modello, tipo_dispositivo, modalita,
     nome_dispositivo, prefisso,
     quantita: quantita || 1, copie: copie || 1,
-    modello_custom,
-    layout_settings: {
-      top_margin_dots: appSettings.top_margin_dots,
-      show_barcode: appSettings.show_barcode,
-      show_cloud3_header: appSettings.show_cloud3_header,
-      hide_logo: appSettings.hide_logo
-    }
+    modello_custom
   });
 
   try {
@@ -395,18 +366,13 @@ const DEFAULT_SETTINGS = {
   printer_port: 9100,
   label_width_mm: 55,
   label_height_mm: 35,
-  dpi: 203,
-  top_margin_dots: 14,
-  show_barcode: false,
-  show_cloud3_header: true,
-  hide_logo: true
+  dpi: 203
 };
 
 function loadSettings() {
   try {
     if (fs.existsSync(SETTINGS_PATH)) {
-      const fromFile = JSON.parse(fs.readFileSync(SETTINGS_PATH, 'utf-8'));
-      return { ...DEFAULT_SETTINGS, ...fromFile };
+      return JSON.parse(fs.readFileSync(SETTINGS_PATH, 'utf-8'));
     }
   } catch(e) {}
   return { ...DEFAULT_SETTINGS };
@@ -421,20 +387,13 @@ app.get('/api/impostazioni', (req, res) => {
 });
 
 app.put('/api/impostazioni', (req, res) => {
-  const {
-    printer_ip, printer_port, label_width_mm, label_height_mm, dpi,
-    top_margin_dots, show_barcode, show_cloud3_header, hide_logo
-  } = req.body;
+  const { printer_ip, printer_port, label_width_mm, label_height_mm, dpi } = req.body;
   const settings = {
     printer_ip: printer_ip || '10.0.50.92',
     printer_port: parseInt(printer_port) || 9100,
     label_width_mm: parseFloat(label_width_mm) || 55,
     label_height_mm: parseFloat(label_height_mm) || 35,
-    dpi: parseInt(dpi) || 203,
-    top_margin_dots: Math.max(0, Math.min(parseInt(top_margin_dots) || 14, 60)),
-    show_barcode: !!show_barcode,
-    show_cloud3_header: show_cloud3_header !== false,
-    hide_logo: hide_logo !== false
+    dpi: parseInt(dpi) || 203
   };
   saveSettings(settings);
   res.json({ success: true, ...settings });
@@ -471,56 +430,11 @@ async function start() {
     }
   }
 
-  const sslConf = serverConfig.https || {};
-  if (sslConf.enabled) {
-    const projectRoot = path.join(__dirname, '..');
-    // Risolvi percorsi: se assoluti li usa, se relativi li risolve da projectRoot
-    const resolveCert = (p) => path.isAbsolute(p) ? p : path.resolve(projectRoot, p);
-    try {
-      const sslOptions = {
-        cert: fs.readFileSync(resolveCert(sslConf.certFile)),
-        key: fs.readFileSync(resolveCert(sslConf.keyFile)),
-      };
-      if (sslConf.caFile) {
-        sslOptions.ca = fs.readFileSync(resolveCert(sslConf.caFile));
-      }
-      if (sslConf.passphrase) {
-        sslOptions.passphrase = sslConf.passphrase;
-      }
-
-      https.createServer(sslOptions, app).listen(PORT, '0.0.0.0', () => {
-        console.log(`\n🔒 Zebra Labels Server HTTPS avviato su https://localhost:${PORT}`);
-        console.log(`📡 Stampante configurata: ${serverConfig.printerIp || '10.0.50.92'}:9100`);
-        console.log(`📊 Database: ${path.join(__dirname, 'zebra-labels.db')}\n`);
-      });
-
-      // HTTP redirect opzionale
-      if (serverConfig.httpRedirect) {
-        const httpPort = serverConfig.httpRedirectPort || 80;
-        const httpApp = express();
-        httpApp.all('*', (req, res) => {
-          res.redirect(301, `https://${req.hostname}:${PORT}${req.url}`);
-        });
-        http.createServer(httpApp).listen(httpPort, '0.0.0.0', () => {
-          console.log(`↪️  Redirect HTTP :${httpPort} -> HTTPS :${PORT}`);
-        }).on('error', () => {
-          // Porta HTTP non disponibile, skip silenzioso
-        });
-      }
-    } catch (e) {
-      console.error('Errore caricamento certificati SSL:', e.message);
-      console.log('Fallback a HTTP...');
-      app.listen(PORT, '0.0.0.0', () => {
-        console.log(`\n🏷️  Zebra Labels Server avviato su http://localhost:${PORT} (HTTP fallback)`);
-      });
-    }
-  } else {
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`\n🏷️  Zebra Labels Server avviato su http://localhost:${PORT}`);
-      console.log(`📡 Stampante configurata: 10.0.50.92:9100`);
-      console.log(`📊 Database: ${path.join(__dirname, 'zebra-labels.db')}\n`);
-    });
-  }
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`\n🏷️  Zebra Labels Server avviato su http://localhost:${PORT}`);
+    console.log(`📡 Stampante configurata: 10.0.50.92:9100`);
+    console.log(`📊 Database: ${path.join(__dirname, 'zebra-labels.db')}\n`);
+  });
 }
 
 start().catch(err => {

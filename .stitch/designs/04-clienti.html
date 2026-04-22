@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clienti - Zebra Printing App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0058bc",
+                        "on-tertiary-fixed-variant": "#00531c",
+                        "tertiary": "#006b27",
+                        "surface-container": "#ededf2",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary-fixed": "#002107",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-variant": "#e2e2e7",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e3e2e5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fefcff",
+                        "secondary": "#5e5e61",
+                        "on-secondary-container": "#626265",
+                        "on-background": "#1a1c1f",
+                        "surface-dim": "#d9dade",
+                        "outline": "#717786",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#008733",
+                        "surface-container-high": "#e8e8ed",
+                        "on-secondary-fixed-variant": "#464649",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f3f3f8",
+                        "tertiary-fixed": "#72fe88",
+                        "surface-tint": "#005bc1",
+                        "surface-container-highest": "#e2e2e7",
+                        "surface-bright": "#f9f9fe",
+                        "inverse-primary": "#adc6ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#0070eb",
+                        "on-tertiary-container": "#f7fff2",
+                        "on-primary-fixed": "#001a41",
+                        "tertiary-fixed-dim": "#53e16f",
+                        "inverse-surface": "#2e3034",
+                        "secondary-fixed-dim": "#c7c6c9",
+                        "on-primary-fixed-variant": "#004493",
+                        "outline-variant": "#c1c6d7",
+                        "on-surface": "#1a1c1f",
+                        "inverse-on-surface": "#f0f0f5",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9fe",
+                        "secondary-container": "#e1dfe2",
+                        "on-surface-variant": "#414755",
+                        "on-error-container": "#93000a",
+                        "background": "#f9f9fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F2F2F7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .liquid-glass-nav {
+            background: rgba(242, 242, 247, 0.85);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .ios-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .ios-input {
+            background-color: rgba(118, 118, 128, 0.12);
+        }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        * {
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<nav class="liquid-glass-nav w-full px-6 py-4 flex justify-between items-center z-50 hairline backdrop-blur-3xl shadow-sm border-b border-white/20">
+<h1 class="font-headline text-[34px] font-bold tracking-tight text-on-surface">Clienti</h1>
+<button class="text-primary hover:opacity-70 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-3xl" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 400;">add</span>
+</button>
+</nav>
+<!-- Main Content: Split View (Tablet) -->
+<main class="flex-1 flex overflow-hidden w-full max-w-[1024px] mx-auto pb-[80px] md:pb-0">
+<!-- Left Panel: List (380px) -->
+<aside class="w-[380px] border-r border-outline-variant/30 flex flex-col bg-surface-container-low h-full overflow-hidden shrink-0">
+<!-- Search & Count -->
+<div class="p-4 pt-6 flex flex-col gap-3 shrink-0">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60" data-icon="search">search</span>
+<input class="w-full ios-input rounded-[10px] py-2 pl-10 pr-4 text-[17px] border-none focus:ring-0 text-on-surface placeholder-on-surface-variant/60" placeholder="Cerca" type="text"/>
+</div>
+<span class="text-[13px] font-medium text-on-surface-variant px-1 uppercase tracking-wider">12 Clienti</span>
+</div>
+<!-- Customer List -->
+<div class="flex-1 overflow-y-auto px-4 pb-20 md:pb-6 space-y-2">
+<!-- Active Item -->
+<div class="ios-card flex items-center p-3 cursor-pointer relative overflow-hidden ring-1 ring-primary/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="w-[42px] h-[42px] rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-[15px] shrink-0">RM</div>
+<div class="ml-3 flex-1 overflow-hidden">
+<h3 class="font-bold text-[17px] text-on-surface truncate">Rossi Marco</h3>
+<p class="text-[15px] text-on-surface-variant truncate">Rossi S.p.A.</p>
+<p class="text-[13px] text-on-surface-variant/70 font-light truncate">+39 345 6789012</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant ml-2 shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Inactive Items -->
+<div class="ios-card flex items-center p-3 cursor-pointer hover:bg-surface-container-highest/50 transition-colors">
+<div class="w-[42px] h-[42px] rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-[15px] shrink-0">AB</div>
+<div class="ml-3 flex-1 overflow-hidden">
+<h3 class="font-bold text-[17px] text-on-surface truncate">Bianchi Anna</h3>
+<p class="text-[15px] text-on-surface-variant truncate">Bianchi Design</p>
+<p class="text-[13px] text-on-surface-variant/70 font-light truncate">+39 333 1122334</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant ml-2 shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="ios-card flex items-center p-3 cursor-pointer hover:bg-surface-container-highest/50 transition-colors">
+<div class="w-[42px] h-[42px] rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-[15px] shrink-0">LV</div>
+<div class="ml-3 flex-1 overflow-hidden">
+<h3 class="font-bold text-[17px] text-on-surface truncate">Verdi Luca</h3>
+<p class="text-[15px] text-on-surface-variant truncate">Verdi Tech S.r.l.</p>
+<p class="text-[13px] text-on-surface-variant/70 font-light truncate">+39 392 9988776</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant ml-2 shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="ios-card flex items-center p-3 cursor-pointer hover:bg-surface-container-highest/50 transition-colors">
+<div class="w-[42px] h-[42px] rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-[15px] shrink-0">GF</div>
+<div class="ml-3 flex-1 overflow-hidden">
+<h3 class="font-bold text-[17px] text-on-surface truncate">Ferrari Giulia</h3>
+<p class="text-[15px] text-on-surface-variant truncate">Freelance</p>
+<p class="text-[13px] text-on-surface-variant/70 font-light truncate">+39 347 5566443</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant ml-2 shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</aside>
+<!-- Right Panel: Detail View -->
+<section class="flex-1 bg-background h-full overflow-y-auto hidden md:flex flex-col">
+<div class="p-10 max-w-2xl mx-auto w-full pb-24">
+<!-- Detail Header -->
+<div class="flex flex-col items-center mb-10 mt-4">
+<div class="w-[100px] h-[100px] rounded-full bg-gradient-to-br from-primary/80 to-primary text-white flex items-center justify-center font-bold text-[36px] shadow-lg mb-4 ring-4 ring-primary/10">
+                        RM
+                    </div>
+<h2 class="font-headline text-[32px] font-bold text-on-surface mb-1">Rossi Marco</h2>
+<p class="text-[19px] text-on-surface-variant">Rossi S.p.A.</p>
+</div>
+<!-- Info Cards -->
+<div class="ios-card overflow-hidden mb-8">
+<div class="flex items-center p-4 border-b border-outline-variant/20">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-4 text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="call" data-weight="fill" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+<div class="flex-1">
+<p class="text-[13px] text-on-surface-variant mb-0.5">Cellulare</p>
+<p class="text-[17px] text-primary cursor-pointer">+39 345 6789012</p>
+</div>
+</div>
+<div class="flex items-center p-4 border-b border-outline-variant/20">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-4 text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="mail" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<div class="flex-1">
+<p class="text-[13px] text-on-surface-variant mb-0.5">Email</p>
+<p class="text-[17px] text-primary cursor-pointer">marco.rossi@rossispa.it</p>
+</div>
+</div>
+<div class="flex items-center p-4 border-b border-outline-variant/20">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-4 text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="flex-1">
+<p class="text-[13px] text-on-surface-variant mb-0.5">Indirizzo</p>
+<p class="text-[17px] text-on-surface">Via Roma 123<br/>20100 Milano (MI)</p>
+</div>
+</div>
+<div class="flex items-center p-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-4 text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="business" data-weight="fill" style="font-variation-settings: 'FILL' 1;">business</span>
+</div>
+<div class="flex-1">
+<p class="text-[13px] text-on-surface-variant mb-0.5">Azienda</p>
+<p class="text-[17px] text-on-surface">Rossi S.p.A. - P.IVA 12345678901</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-primary text-white rounded-full py-3.5 px-6 font-semibold text-[17px] flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+                        Modifica
+                    </button>
+<button class="bg-primary/10 text-primary rounded-full py-3.5 px-6 font-semibold text-[17px] flex items-center justify-center gap-2 hover:bg-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="print">print</span>
+                        Stampa Etichetta
+                    </button>
+<button class="col-span-2 border border-error text-error rounded-full py-3.5 px-6 font-semibold text-[17px] flex items-center justify-center gap-2 hover:bg-error/5 active:scale-95 transition-all mt-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+                        Elimina Cliente
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden liquid-glass fixed bottom-0 w-full z-50 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center px-4 pb-8 pt-2">
+<button class="flex flex-col items-center justify-center text-[#636366] hover:bg-black/5 rounded-full tap-highlight-none transition-all duration-300 w-16 h-12">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="print">print</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans']">Stampa</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#636366] hover:bg-black/5 rounded-full tap-highlight-none transition-all duration-300 w-16 h-12">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="label">label</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans']">Etichette</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary hover:bg-black/5 rounded-full tap-highlight-none transition-all duration-300 w-16 h-12">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="person_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person_2</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans']">Clienti</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#636366] hover:bg-black/5 rounded-full tap-highlight-none transition-all duration-300 w-16 h-12">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="print_connect">print_connect</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans']">Stampanti</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#636366] hover:bg-black/5 rounded-full tap-highlight-none transition-all duration-300 w-16 h-12">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="settings">settings</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans']">Impostazioni</span>
+</button>
+</nav>
+</body></html>
